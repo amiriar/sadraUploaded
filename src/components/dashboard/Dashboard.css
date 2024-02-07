@@ -1,0 +1,141 @@
+.panelContainer{
+    margin: 0 auto;
+    max-width: 1920px;
+}
+.userPanel{
+    min-height: fit-content;
+    display: flex;
+}
+.sideBarPanel{
+    /* height: calc(100% + 21px); */
+    min-width: 250px;
+    display: flex;
+    padding: 3rem 1rem;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #1c1c1c;
+    color: var(--Gray-300);
+}
+.sideBarPanel div{
+    display: flex;
+    padding: 0.5rem 1rem;
+    gap: 5px;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #1c1c1c;
+    color: var(--Gray-300);
+    transition: all 0.5s ease-in-out;
+}
+.sideBarPanel div a{
+    color: var(--Gray-300);
+    background-color: #1c1c1c;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, padding 0.2s ease-in-out;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.sideBarPanel div a:hover{
+    color: var(--Primary-50);
+    background-color: var(--Primary-900);
+    border-radius: 0.5rem;
+    transition: all 0.2s ease-in-out;
+}
+.mainPanel{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 2rem;
+}
+.linkPanel{
+    color: var(--Primary-500);
+    cursor: pointer;
+}
+
+.formPanel {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 1rem;
+}
+.panelHint{
+    color: var(--Neutral-70);
+    margin-top: 1.5rem;
+}
+.birthdateInputs {
+    display: flex;
+    flex-direction: column-reverse;
+    /* gap: 10%; */
+}
+
+
+@media (max-width : 950px) {
+    .formPanel {
+        width: 70%;
+    }
+    .newBlogForm{
+        width: 95% !important;
+    }
+}
+
+@media (max-width : 700px) {
+    .formPanel {
+        width: 100%;
+    }
+    .mainPanel h1{
+        font-size: 1.5rem;
+    }
+}
+@media (max-width : 600px) {
+    .mainPanel h1{
+        font-size: 1.5rem;
+    }
+    .sideBarPanel{
+        display: none;
+    }
+    .newBlogForm{
+        width: 100% !important;
+    }
+}
+
+@media (max-width : 400px) {
+    .mainPanel h1{
+        font-size: 1.2rem;
+    }
+    /* .sideBarPanel{
+        display: none;
+    } */
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.card {
+    width: calc(33.33% - 20px); /* 33.33% width with a gap of 20px between cards */
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 1100px) {
+    .card {
+        width: calc(50% - 20px); /* 50% width on medium screens */
+    }
+}
+
+@media (max-width: 700px) {
+    .card {
+        width: 100%; /* 100% width on small screens */
+    }
+}
+.newBlogForm{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}

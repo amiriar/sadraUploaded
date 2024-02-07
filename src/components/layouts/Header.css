@@ -1,0 +1,158 @@
+.NavBar{
+    background-color: var(--primary-black);
+    max-width: 1920px !important;
+    color: var(--base-white);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 00;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 12px 124px;
+    margin: 0 auto;
+    
+}
+.link{
+    color: var(--base-white);
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.List_Logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.List_Logo .logo_Container{
+    display: flex;
+    align-items: center;
+}
+
+
+.List_Logo ul{
+    display: flex;
+    margin: 0px 75px 0px 0px;
+}
+.List_Logo ul li{
+    margin: 12px 15px;
+    cursor: pointer;
+}
+
+.login_Btn{
+    background-color: var(--prime-green);
+    color: var(--base-white);
+    display: flex;
+    padding: 12px 24px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1000px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    font-family: inherit;
+}
+
+.login_Btn_No_Hid{
+    background-color: var(--prime-green);
+    color: var(--base-white);
+    display: flex;
+    padding: 12px 24px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1000px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    font-family: inherit;
+}
+
+.burgur{
+    display: none;
+}
+
+/* Responsive */
+
+@media (max-width : 1350px) {
+    .NavBar{
+        padding:  12px 20px;
+    }
+    .List_Logo ul li{
+        margin: 12px 10px;
+        cursor: pointer;
+    }
+}
+
+@media (max-width : 1073px) {
+    .NavBar{
+        padding:  12px 20px;
+    }
+    .List_Logo ul li{
+        margin: 12px 10px;
+        cursor: pointer;
+    }
+}
+@media (max-width : 1074px) {
+    .NavBar{
+        padding:  12px 20px;
+    }
+    .List_Logo ul li{
+        margin: 12px 10px;
+        cursor: pointer;
+    }
+    .List_Logo ul{
+        display: flex;
+        margin: 0px 15px 0px 0px;
+    }
+}
+
+@media (max-width : 1012px) {
+    .NavBar{
+        padding: 12px 32px;
+    }
+    .List_Logo ul li{
+        display: none;
+    }
+    .login_Btn{
+        display: none;
+    }
+    .burgur{
+        display: inline-flex;
+        font-size: 30px;
+    }
+}
+
+@media (max-width : 900px) {
+    .NavBar{
+        padding: 12px 32px;
+    }
+    .List_Logo ul li{
+        display: none;
+    }
+    .login_Btn{
+        display: none;
+    }
+    .burgur{
+        display: inline-flex;
+        font-size: 30px;
+    }   
+}
+
+.login_Btn_No_Hid_2{
+    background-color: var(--prime-green);
+    color: var(--base-white);
+    display: flex;
+    padding: 12px 24px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1000px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    font-family: inherit;
+}
+.active {
+    color: var(--base-white);
+    font-weight: 900;
+}

@@ -1,0 +1,130 @@
+.classContainer{
+  max-width: 1920px;
+  margin: 0 auto;
+  
+}
+
+.TopClassContainer{
+  background-color: var(--primary-black);
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  padding: 2.5rem 8rem;
+}
+
+.TopClassContainer h1 {
+  color: var(--Neutral-20);
+  font-size: 2.5rem;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+.TopClassContainer p{
+  color: var(--Gray-300);
+  font-size: 1.125rem;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.searchBoxContainer{
+  background-color: var(--primary-black);
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+
+
+
+}
+
+.Categories h2{
+  color: var(--Neutral-20);
+  font-size: 2.125rem;
+
+}
+.BoxContainer{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin: 2.5rem 0rem;
+  font-size: 1rem;
+
+}
+.Box{
+  padding: 1.5rem;
+  border-radius: 15px;
+  border-radius: 16px;
+  border: 1px solid var(--Neutral-80);
+  background: var(--Neutral-90);
+  color: var(--Neutral-20);
+  min-width: 15rem;
+  max-width: 15rem;
+  height: 4.5rem;
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: 16px;
+  border: 1px solid var(--Neutral-80);
+  background: var(--Neutral-90);
+
+}
+
+
+/* Body */
+.classBody{
+  padding: 2.5rem 8rem;
+
+}
+.classBodyTitle{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  span{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width : 120px;
+    color: var(--Primary-100);
+    font-size: 1.2rem;
+  }
+}
+
+
+
+
+@media (max-width : 1024px) {
+  .TopClassContainer h1 {
+    color: var(--Neutral-20);
+    font-size: 2rem;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+  }
+  .TopClassContainer p{
+    font-size: 0.9rem;
+  }
+  .Categories h2{
+    font-size: 1.8rem;
+  }
+  
+  .TopClassContainer{
+    padding: 2.5rem 1.5rem;
+  }
+  .classBody{
+    padding: 2.5rem 1.5rem;
+  }
+  .BoxContainer{
+    margin: 2.5rem 0rem;
+
+  }
+}
+
+@media (max-width : 564px) {
+  .TopClassContainer{
+    padding: 2rem 1.2rem;
+  }
+  .classBody{
+    padding: 2rem 0.2rem;
+  }
+  .BoxContainer{
+    margin: 2rem 0rem;
+
+  }
+}

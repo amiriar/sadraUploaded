@@ -1,0 +1,36 @@
+video{
+    max-width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 30px;
+}
+
+@media (max-width : 768px) {
+    video{
+        min-width: 100%;
+        max-width: 570px;
+    }
+}
+@media (max-width : 580px) {
+    video{
+        min-width: 100%;
+        max-width: 470px;
+    }
+}
+@media (max-width : 468px) {
+    video{
+        min-width: 100%;
+        max-width: 420px;
+    }
+}
+@media (max-width : 428px) {
+    video{
+        min-width: 100%;
+        max-width: 320px;
+    }
+}
+@media (max-width : 280px) {
+    video{
+        min-width: 100%;
+        max-width: 270px;
+    }
+}

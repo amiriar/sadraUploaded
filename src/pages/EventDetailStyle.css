@@ -1,0 +1,299 @@
+.Details{
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 3.5rem 5rem;
+    background: var(--Neutral-100, #1C1C1C);
+}
+.HeadDetail{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    gap: 2rem;
+    text-align: justify;
+    text-justify: inter-word;
+}
+.timeLeft{
+    display: flex;
+    gap: 2rem;
+}
+.timerStyle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--Neutral-20);
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 3.5rem; /* 140% */
+    margin-bottom: 10%;
+}
+.bodyDetailContainer{
+    padding: 3.5rem 5rem 0rem 3rem;
+    display: flex;
+    flex-direction: row;
+    max-width: 1920px;
+    margin: 0 auto;
+    text-align: justify;
+    text-justify: inter-word;
+
+}
+.info1 , .info2 , .info3 , .info4{
+    width: calc(100vw - 520px);
+    text-align: justify;
+    text-justify: inter-word;
+
+}
+.info1 h3 , .info2 h3, .info3 h3, .info4 h3 {
+    color: var(--Gray-800);
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 28px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+.info1 p , .info2 p, .info3 p, .info4 p {
+    color: var(--Gray-500);
+    font-size: 1rem ;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/* Card */
+
+.CardContainer{
+    padding: 1.5rem;
+    min-width: 25rem;
+    max-width: 25rem;
+    min-height: 100vh;
+    position: relative;
+    text-align: justify;
+    text-justify: inter-word;
+}
+.CardDetail{
+    border: 1px solid var(--Neutral-40);
+    background: var(--Neutral-10);
+    padding: 1.5rem;
+    width: 100%;
+    top: -24rem;
+    left: 1.5%;
+    position: absolute;
+    border-radius: 1rem;
+    margin-bottom: 1.1rem;
+    text-align: justify;
+    text-justify: inter-word;
+}
+.topCard{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    text-justify: inter-word;
+
+}
+.topCard p{
+    color: var(--Gray-500);
+    font-size: 1rem;
+    text-align: justify;
+    text-justify: inter-word;
+}
+#price span:first-child {
+    color: var(--Gray-900);
+    font-size: 1.7rem;
+    text-align: justify;
+    text-justify: inter-word;
+}
+#price span:last-child {
+    color: var(--Gray-900);
+    font-size: 0.75rem;
+    text-align: justify;
+    text-justify: inter-word;
+}
+.CardDetail img {
+    border-radius: 1rem;
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover !important ;
+}
+.CardDetail button {
+    background-color: var(--Primary-500);
+    padding: 1rem 3rem;
+    color: var(--base-white);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 24px;
+    border-radius: 2rem;
+    width: 100%;
+    margin-bottom: 3rem;
+    font-family: "Yekan";
+
+
+
+}
+.CardDetail button:hover{
+    background-color: green;
+    
+}
+.cadTitle h3 {
+    color: var(--Gray-700);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    text-align: justify;
+    text-justify: inter-word;
+
+}
+.cadTitle h1{
+    color: var(--Gray-600);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    text-justify: inter-word;
+}
+.CardFooter h2{
+    color: var(--Gray-700);
+    font-size: 1.25rem;
+    padding-bottom: 1rem;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.detailFooter{
+    max-width: 1920px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.detailFooterTitle{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+}
+.detailFooterTitle h2{
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+@media (max-width : 1200px) {
+    .bodyDetailContainer{
+        padding: 2rem 5rem 0rem 0rem;
+    }
+    .info1 , .info2 , .info3 , .info4{
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        width: calc(100vw - 500px);
+        padding-left: 4%;
+        text-align: justify;
+        text-justify: inter-word;
+    
+    }
+}
+@media (max-width : 1070px) {
+    .HeadDetail{
+        max-width: 100%;
+        padding-left: 1%;
+        width: 100%;
+    }
+    .info1 , .info2 , .info3 , .info4{
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        width: calc(100vw - 480px);
+        padding-left: 4%;
+        text-align: justify;
+        text-justify: inter-word;
+    
+    }
+    .CardDetail{
+        border: 1px solid var(--Neutral-40);
+        background: var(--Neutral-10);
+        padding: 1.5rem;
+        width: 85%;
+        top: -18rem;
+        left: 3%;
+        position: absolute;
+        border-radius: 1rem;
+        margin-bottom: 1.1rem;
+    }
+    .info1 p , .info2 p, .info3 p, .info4 p {
+        color: var(--Gray-500);
+        font-size: 0.9rem ;
+        font-weight: 400;
+        line-height: 24px;
+        text-align: justify;
+        text-justify: inter-word;
+    
+        
+    }
+}
+@media (max-width : 768px){
+    .HeadDetail{
+        padding: 0px;
+        max-width: 100%;
+    }
+   
+    .infoContainer{
+        margin-top: 200px;
+    }
+    .Details{
+        max-width: 1920px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: var(--Neutral-100, #1C1C1C);
+    }
+    .HeadDetail{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 2rem;
+    }
+    .bodyDetailContainer{
+        padding: 0px;
+        display: flex;
+        flex-direction: column-reverse;
+        max-width: 1920px;
+        margin: 0 auto;
+    }
+    .CardContainer{
+        padding: 1px;
+        min-width: 100%;
+        max-width: 100%;
+        position: static;
+    
+    }
+    .CardDetail{
+        border: 1px solid var(--Neutral-40);
+        background: var(--Neutral-10);
+        padding: 1.5rem;
+        width: 1%;
+        position: static;
+        border-radius: 1rem;
+        margin-bottom: 1.1rem;
+
+    }
+    .CardDetail{
+        min-width: 100%;
+        margin: 0 auto;
+    }
+    .CardDetail{
+        left: 0px;
+    }
+    .infoContainer{
+        padding: 0.5rem 1.5rem;
+        width: 120%;
+        
+    }
+    .infoContainer{
+        max-width: 100%;
+    }
+}
+

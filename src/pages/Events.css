@@ -1,0 +1,184 @@
+.eventContainer{
+    max-width: 1920px;
+    margin: 0 auto;
+    text-align: right;
+}
+.eventHeader{
+    background-color: var(--primary-black);
+    max-width: 100%;
+    padding: 4% 6.5%;
+    display: flex;
+    flex-direction: column;
+}
+.eventHeader h1{
+    color : var(--neutral--20);
+    font-size: 40px;
+    margin-bottom: 12px;
+    padding: 12px 0px;
+}
+.eventHeader p {
+    color: var(--Gray-300);
+    margin-bottom: 32px;
+    padding: 0px 0px 32px 0px;
+}
+#popStyle {
+    color: var(--Gray-400);
+    font-size: 16px;
+    padding: 18px;
+}
+
+/* Part Two */
+
+.eventBody{
+    max-height: 100%;
+    padding: 1rem 0rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+}
+
+.tutorialBox{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin-right: 1%;
+    flex-direction: column-reverse;
+}
+
+
+.EventCardCon{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.event_card_info{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 3rem;
+}
+
+
+.FilterContainer{
+    width: 22rem;
+    margin-right: 6rem;
+}
+
+.ListItems{
+    margin: 0.4rem 0rem;
+    padding: 5px;
+    font-size: 1.1rem;
+    span {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+}
+
+.MobileFilter{
+    display: none;
+}
+
+@media (max-width : 1440px) {
+    
+    .FilterContainer{
+        width: 20rem;
+        margin-right: 6rem;
+    }
+    
+    .ListItems{
+        margin: 0.4rem 0rem;
+        padding: px;
+        font-size: 1.1rem;
+        span {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+    .FilterContainer{
+        width: 22rem;
+        margin-right: 0rem;
+
+    }
+    
+}
+
+@media (max-width : 1024px) {
+    .eventContainer{
+        max-width: 1920px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .eventBody{
+        padding: 0;
+    }
+    .FilterContainer{
+        width: 20rem;
+        margin-right: 6rem;
+    }
+    
+    .ListItems{
+        margin: 0.4rem 0rem;
+        padding: 5px;
+        font-size: 1.1rem;
+        span {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+    .FilterContainer{
+        width: 22rem;
+        margin-right: 2rem;
+
+    }
+    
+}
+
+
+@media (max-width : 768px) {
+    .FilterContainer{
+        width: 100%;
+        display: none;
+        margin-right: 0rem;
+    }
+    
+    .ListItems{
+        margin: 0rem 0rem;
+        padding: 0px;
+        font-size: 1.1rem;
+
+        span {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+    .tutorialBox{
+        margin-right: 0%;
+        margin-top: 4rem;
+    }
+    .event_card_info{
+        justify-content: center;
+    }
+    .MobileFilter{
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: 1%;
+        width:  50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        border-radius: 0px 16px 16px 0px;
+        background-color: var(--prime-green);
+        color: whitesmoke;
+    }
+   
+}

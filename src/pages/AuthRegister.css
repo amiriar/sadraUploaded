@@ -1,0 +1,39 @@
+.authDiv{
+    width: 100%;
+    max-width: 1920px;
+    /* height: 50vh; */
+    margin: 0 auto;
+    padding: 4rem 25%;
+    background-color: #F9FAFB;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    text-align: center;
+}
+.buttonsClass{
+    color: #4ca773;
+    background-color: #e5e8ec;
+    border-radius: 0.5rem;
+    padding: 6px 10px;
+}
+
+
+@media (max-width : 900px) {
+    .authDiv{
+        padding: 4rem 15%;
+    }
+}
+@media (max-width : 550px) {
+    .authDiv{
+        padding: 4rem 10%;
+    }
+    .buttonsClass{
+        font-size: 0.7rem !important;
+        padding: 6px;
+    }
+}
+@media (max-width : 400px) {
+    .authDiv{
+        padding: 4rem 5%;
+    }
+}

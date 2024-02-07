@@ -1,0 +1,31 @@
+.contact_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.contact_container img{
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+}
+.contact_container p{
+    max-width: 58%;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+    color: var(--base-white);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.contact_container h2:nth-child(3){
+    padding: 12px;
+    font-size: 16px;
+    color: var(--base-white);
+}
+.contact_container h2:nth-child(4){
+    font-size: 14px;
+    color: var(--Gray-400);
+}

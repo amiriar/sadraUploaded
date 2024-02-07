@@ -1,0 +1,114 @@
+@font-face {
+  font-family: 'Yekan';
+  src:	url('/assets/fonts/Yekan.eot');
+  src:	url('/assets/fonts/Yekan.eot?#iefix') format('embedded-opentype'),
+      url('/assets/fonts/Yekan.woff2') format('woff2'), 
+      url('/assets/fonts/Yekan.woff') format('woff'),
+      url('/assets/fonts/Yekan.otf') format('opentype'),
+      url('/assets/fonts/Yekan.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+  font-display: auto;
+}
+
+:root{
+  --base-white : #FFFFFF ;
+  --neutral--20  : #F9F9F9;
+  /* --Neutral-10 : #FFFFFF; */
+  --prime-green : #4CA773;
+  --Primary-500 : #4CA773;
+  --Primary-100 : #32BCA3;
+  --Primary-50 : #D9F9E4;
+  --Primary-700 : #295E43;
+  --Primary-800 : #214D39;
+  --Primary-900 : #0F2B21;
+  --primary-black : #1C1C1C;
+  --Neutral-20 : #F9F9F9;
+  --Neutral-40 : #E0E0E0;
+  --Neutral-10 : #FFF;
+  --Neutral-11 : #FFFFFF;
+  --Neutral-70 : #7C7C7C;
+  --Neutral-60 : #A8A8A8 ; 
+  --Gray-700 : #344054 ;
+  --Neutral-90 : #252525 ;
+  --Primary-900 : #0F2B21;
+  --Gray-200 : #EAECF0;
+  --Gray-400 : #98A2B3 ;
+  --Gray-900 : #101828 ;
+  --Gray-500 : #667085;
+  --Gray-300 : #D0D5DD;
+  --Gray-100 : #F2F4F7 ;
+  --Gray-600 : #475467 ;
+  --Gray-50 : #F9FAFB ;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  list-style-type: none;
+  
+}
+
+button{
+  background: none;
+}
+body{
+  font-family: 'Yekan', sans-serif !important;
+  font-variant-numeric: lining-nums;
+}
+#maxWidth{
+  max-width: 1920px;
+  margin: 0 auto;
+}
+@media (max-width : 950px) {
+  body{
+    cursor: default;
+  }
+}
+
+a {
+  color: inherit;
+}
+
+select {
+  background:  none;
+}
+
+/* Style for Webkit (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4ca773;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #1c1c1c;
+}
+
+/* Style for Firefox */
+* {
+  scrollbar-color: #4ca773 #1c1c1c;
+  scrollbar-width: thin;
+}
+
+/* Style for Edge and IE */
+*::-ms-scrollbar {
+  width: 12px;
+}
+
+*::-ms-thumb {
+  background-color: #4ca773;
+  border-radius: 6px;
+}
+
+*::-ms-track {
+  background-color: #1c1c1c;
+}

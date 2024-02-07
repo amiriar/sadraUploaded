@@ -1,0 +1,215 @@
+/*Card Box */
+.CardBox{
+  max-width: 100%;
+  max-height: 7.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 1rem;
+  border: 1px solid var(--Neutral-40);
+  background: var(--Neutral-10);
+  background: var(--Neutral-20);
+  margin: 1.5rem 0rem;
+}
+.imgContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+
+  img {
+    min-width: 185px;
+    max-width: 185px;
+    max-height: 105px;
+    object-fit: cover;
+    margin-left: 2rem;
+    border-radius: 1rem;
+    width: fit-content;
+
+
+  }
+  .cardInfo{
+    height: 100px;
+    
+    h2 {
+      font-size: 1.3rem;
+      color: var(--Neutral-90);
+    }
+    p {
+      color: var(--Gray-500);
+      font-size: 1.1rem;
+    }
+    .moreCardDetail{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 100%;
+      span {
+        color: var(--Neutral-70);
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1rem;
+        margin: 0.5rem 0rem 1rem 1rem;
+
+      }
+    }
+  }
+}
+.priceContainer{
+  padding: 1rem;
+
+}
+.priceContainer span:first-child{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  max-height: 25px;
+}
+.priceContainer span:last-child{
+  color: var(--Gray-900);
+  font-size: 0.8rem;
+
+}
+.classIcon{
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width : 1024px) {
+  .imgContainer {
+    img {
+      min-width: 185px;
+      max-width: 185px;
+      max-height: 105px;
+    }
+    .cardInfo{
+      height: 100px;
+      
+      h2 {
+        font-size: 1.2rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+      .moreCardDetail{
+        span {
+          font-size: 0.8rem;
+          margin: 0.5rem 0rem 1rem 1rem;
+  
+        }
+      }
+    }
+  }
+  .priceContainer span:first-child{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    max-height: 25px;
+  }
+  
+  .classIcon{
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width : 768px) {
+  .CardBox{
+    max-height: 6rem;
+  }
+  .imgContainer {
+    img {
+      min-width: 120px;
+      max-width: 120px;
+    }
+    .cardInfo{
+      height: 80px;
+      h2 {
+        font-size: 1rem;
+        color: var(--Neutral-90);
+      }
+      p {
+        font-size: 0.8rem;
+        padding: 5px;
+      }
+      .moreCardDetail{
+        span {
+          font-size: 0.7rem;
+          margin: 0.5rem 0rem 1rem 1rem;
+        }
+      }
+    }
+  }
+  .priceContainer span:first-child{
+    font-size: 1rem;
+    max-height: 25px;
+  }
+  .priceContainer span:last-child{
+    color: var(--Gray-900);
+    font-size: 0.8rem;
+  }
+  .classIcon{
+    width: 15px;
+    height: 15px;
+  }
+}
+@media (max-width : 564px) {
+  .CardBox{
+    max-height: 10rem;
+  }
+  .imgContainer {
+    padding: 0;
+    img {
+      min-width: 110px;
+      max-width: 110px;
+      max-height: 105px;
+      margin-left: 0.4rem;
+  
+    }
+    .cardInfo{
+      h2 {
+        font-size: 0.9rem;
+        max-width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:"..";
+      }
+      p {
+        color: var(--Gray-500);
+        font-size: 0.7rem;
+        padding: 5px;
+
+      }
+      .moreCardDetail{
+        span {
+          font-size: 0.6rem;
+          margin: 0.5rem 0rem 0rem 0.2rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow:"..";
+        }
+      }
+    }
+  }
+  .priceContainer{
+    padding: 0rem 0rem;
+    padding-left: 1rem;
+  }
+  .priceContainer span:first-child{
+    font-size: 1rem;
+  }
+  .priceContainer span:last-child{
+    font-size: 0.7rem;
+  
+  }
+  .classIcon{
+    width: 12px;
+    height: 12px;
+  }
+}

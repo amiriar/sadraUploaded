@@ -1,0 +1,12 @@
+.MyLine{
+    position: absolute;
+    right: -9px;
+    top: -50%;
+    height: 200%;
+}
+
+.GreenDot{
+    position: absolute;
+    right: -20px;
+    margin-top: 20px;
+}

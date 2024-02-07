@@ -1,0 +1,60 @@
+.JobsCard{
+    background-color: red;
+    border-radius: 12px;
+    border: 1px solid var(--Gray-300);
+    background: #FFF;
+    padding: 16px;
+    gap: 12px;
+    display: flex;
+    flex: 1 0 0;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 49%;
+    height: 90px;
+    font-family: 'Yekan';
+}
+
+.topPart{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #000;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+
+}
+.topPart span{
+    padding: 4px 16px;
+    background-color: var(--Primary-50);
+    color: var(--Primary-500);
+    font-size: 14px;
+    line-height: 20px;
+
+}
+
+.botton{
+    display: inline-flex;
+    color: var(--Primary-500);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+@media (max-width : 768px) {
+    .topPart{
+        font-size: 1rem;
+    }
+}
+@media (max-width : 600px) {
+    .topPart{
+        font-size: 0.7rem;
+    }
+}
+@media (max-width : 400px) {
+    .topPart{
+        font-size: 0.6rem;
+    }
+}

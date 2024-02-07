@@ -1,0 +1,226 @@
+.Footer{
+    max-width: 100%;
+    background-color: var(--primary-black);
+    border-radius: 24px 24px 0px 0px;
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    max-width: 1920px;
+
+    margin: 0 auto;
+}
+.Footer_content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Footer .Footer_text_1{
+    display: inline-flex;
+    width: 35%;
+    color: var(--base-white);
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 56px;
+    margin-bottom: 24px;
+}
+
+.Footer .Footer_text_2{
+    display: inline-flex;
+    color: var(--Gray-300);
+    text-align: center;
+    font-size: 25px;
+    width: 50%;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px; /* 150% */
+    margin-bottom: 48px;
+}
+
+.start_Btn {
+    background-color: var(--prime-green);
+    border-radius: 1000px;
+    display: inline-flex;
+    width: 236px;
+    padding: 20px 40px;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: var(--base-white);
+    margin-bottom: 114px;
+    font-family: inherit;
+}
+
+.corporations{
+    display: flex;
+    justify-content: center;
+}
+
+.corporations ul{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.corporations li{
+    padding: 50px;
+    margin: 5px;
+    flex-wrap: wrap;
+}
+
+.detail_container{
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--base-white);
+    border-bottom: 1px solid var(--Neutral-70) ;
+}
+
+.More_Detail{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.lists{
+    display: flex;
+
+}
+.lists div {
+    margin: 2px 100px;
+    width: 12%;
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.lists li{
+    margin: 7%;
+}
+
+
+.More_Detail .detail_right{
+    margin-right: 10%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 20%;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.detail_right div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--base-white);
+}
+
+.lists div{
+    display: flex;
+    width: 100%;
+    background-color: var(--primary-black);
+}
+
+
+
+.footer_end{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--base-white);
+}
+
+.end_container{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icons{
+    font-size: 20px;
+    color: var(--base-white);
+    margin: 2px 6px ;
+    cursor: pointer;
+}
+
+
+
+
+@media (max-width : 1060px) {
+    .lists div {
+        margin: 2px 50px;
+        width: 12%;
+        display: flex;
+        justify-content: flex-end;
+        text-align: right;
+    }
+    .Footer .Footer_text_1{
+        font-size: 34px;
+        width: 80%;
+    }
+}
+
+@media (max-width : 740px) {
+    .More_Detail{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .More_Detail .detail_right{
+        width: 80%;
+        align-items: center;
+        margin: 15px;
+        line-height: 30px;
+        margin-bottom: 60px;
+        font-size: 18px;
+    }
+    .Footer .Footer_text_1{
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 28px; /* 140% */
+        line-height: 40px;
+    }
+    .Footer .Footer_text_2{
+        font-size: 14px;
+    }
+    .start_Btn{
+        padding: 12px 10px;
+    }
+    .lists{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 90%;
+    }
+    .lists div{
+        margin: 20px;
+        width: 80%;
+    }
+    .lists li{
+        margin: 12px;
+    }
+    .icons{
+        font-size: 16px;
+        margin: 6px;
+    }
+    .end_container p{
+        font-size: 8px;
+    }
+}

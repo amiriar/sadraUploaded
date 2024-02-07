@@ -1,0 +1,377 @@
+.Employment_container{
+    max-width: 1920px;
+    margin: 0 auto;
+    text-align: right;
+    direction: rtl;
+
+}
+.Employment_Head{
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 6rem 8rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: var(--primary-black);
+}
+.Employment_Head h1{
+    color: var(--Neutral-20);
+    font-size: 40px;
+    font-style: normal;
+    margin-bottom: 15px;
+}
+.Employment_Head p{
+    color: var(--Gray-300);
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 24px;
+    width: 90%;
+}
+
+.OurValue{
+    padding: 76px 124px;
+
+}
+
+.OurValieIconHead{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    color: var(--Primary-500);
+    margin-bottom: 10px;
+    
+}
+
+
+.OurValue_Detail h2{
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 56px;
+    color: var(--Neutral-90);
+    margin-bottom: 16px;
+}
+
+.OurValue_Detail p {
+    color: var(--Neutral-70);
+    font-size: 18px;
+    margin-bottom: 49px;
+}
+
+.Icons{
+    width: 100%;
+        
+}
+
+.iconUnorderedList{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: var(--Gray-400);
+   
+}
+.iconUnorderedList svg{
+    
+    width: 66px;
+    height: 66px;
+}
+.iconUnorderedList li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+
+.Chance_container{
+    max-width: 100%;
+    padding: 56px 124px;
+    text-align: right;
+    background: var(--Gray-50);
+
+}
+
+.ChanceIcon{
+    display: flex;
+    align-items: center;
+    
+}
+
+.ChanceIcon h2{
+    color: var(--Primary-500);
+}
+
+.Chance_container > h2{
+    font-size: 40px;
+    color: var(--Neutral-90);
+    margin-bottom: 48px;
+}
+
+.JonsCardsContainer{
+    width: 100%;
+    max-height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 32px;
+    grid-row-gap: 32px;
+    flex-wrap: wrap;
+
+
+}
+.whyUs_container{
+    padding: 2rem 0rem;
+    margin-top: 2rem;
+
+}
+
+.VideoContents{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow-x: scroll;
+}
+.whyUs_container > h2 {
+    color: var(--Neutral-90);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 56px;
+
+}
+
+.videoContainer{
+    margin-top: 46px;
+    padding-top: 15px;
+    min-width: 349px;
+    max-width: 350px;
+}
+
+.Questions{
+    padding: 24px 0px ;
+    margin: 24px 0px;
+}
+
+
+.TeamContainer{
+    max-width: 100%;
+    background-color: var(--Gray-100);
+    padding: 56px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.TeamContainer h1{
+    color: var(--Neutral-90, #252525);
+
+    /* Heading/H1/Bold */
+    font-family: 'Yekan';
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 56px; /* 140% */
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+}
+
+.Cardss{
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    gap: 32px;
+
+}
+
+#ArzeshIcon{
+}
+
+/* Media-query */
+
+@media (max-width : 1200px ) {
+    .Chance_container{
+        max-width: 100%;
+        padding: 30px 30px;
+        text-align: right;
+    }
+    
+}
+
+@media (max-width : 1024px ) {
+    .Employment_Head h1{
+        font-size: 34px;
+    }
+    .Employment_Head p{
+        font-size: 16px;
+    }
+    
+}
+
+@media (max-width : 768px ) {
+    .Employment_Head{
+        text-align: center;
+    }
+    .Employment_Head h1{
+        font-size: 20px;
+    }
+    .Employment_Head p{
+        font-size: 16px;
+
+    }
+    .Employment_Head{
+        padding: 32px 32px 64px 32px;
+
+    }
+    .OurValue{
+        padding: 64px 32px;
+    }
+    .OurValieIconHead{
+        justify-content: center;
+    }
+    
+    .OurValue_Detail h2{
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 56px;
+        color: var(--Neutral-90);
+        margin-bottom: 16px;
+
+    }
+    
+    .OurValue_Detail p {
+        color: var(--Neutral-70);
+        font-size: 14px;
+        margin-bottom: 49px;
+    }
+    .OurValue_Detail{
+        text-align: center;
+    }
+    .iconUnorderedList svg{
+    
+        width: 45px;
+        height: 45px;
+    }
+    .iconUnorderedList{
+        flex-wrap: wrap;
+    }
+    .Chance_container{
+     
+        padding: 23px 64px;
+        text-align: center;
+
+    }
+    .OurValieIconHead{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+    }
+    #textMB{
+        font-size: 32px;
+    }
+    .ChanceIcon{
+        text-align: center;
+        justify-content: center;
+        font-size: 14px;
+    }
+    .Chance_container > h2{
+        font-size: 32px;
+        margin-top: 15px;        
+    }
+    .Chance_container{
+        padding: 23px 64px;
+    }
+    
+    
+    .Chance_container > h2{
+        font-size: 32px;
+        margin-bottom: 48px;
+        
+    }
+    .JonsCardsContainer{
+        width: 100%;
+        max-height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    
+    }
+    .Chance_container{
+        max-width: 100%;
+        padding: 30px 0px;
+        text-align: right;
+        text-align: center;
+        background: var(--Gray-50);
+    }
+    .whyUs_container > h2 {
+        font-size: 32px;
+    }
+    .TeamContainer h1{
+        font-size: 32px
+    }
+  
+    
+    
+}
+
+@media (max-width : 425px ) {
+    .Employment_Head h1{
+        font-size: 16px;
+    }
+    .Employment_Head p{
+        font-size: 10px;
+    }
+    .Employment_Head{
+        padding: 32px 16px;
+    }
+    .OurValue{
+        padding: 32px 16px;
+    }
+    .iconUnorderedList svg{
+        width: 27px;
+        height: 27px;
+    }
+    .Chance_container{
+     
+        padding: 12px 32px;
+        text-align: center;
+
+    }
+    .OurValieIconHead{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+    }
+  
+    #textMB{
+        font-size: 21px;
+    }
+    .ChanceIcon{
+        font-size: 10px;
+    }
+    .Chance_container{
+        padding: 12px 0px;
+    }
+   
+    .Chance_container > h2{
+        font-size: 24px;
+        margin-bottom: 25px;
+        
+    }
+    .whyUs_container > h2 {
+        font-size: 16px;
+    }
+    .TeamContainer h1{
+        font-size: 16px
+    }
+}
+
