@@ -28,17 +28,11 @@ function ClassList() {
             })
             .then(response2 => {
                 setUsers(response2.data);
-                console.log(response2.data);
-    
                 // Fetch data from the third endpoint after the second one is resolved
                 return axios.get('https://backend.sadra-edu.com/classes/data');
             })
             .then(response3 => {
                 setData(response3.data);
-                console.log(response3.data);
-    
-                // Add more requests as needed
-    
             })
             .catch(firstError => {
                 console.error('Error:', firstError.response ? firstError.response.data : firstError.message);

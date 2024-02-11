@@ -73,7 +73,6 @@ function DashInfo() {
                 education: userEducation,
                 isStudent: userIsStudent
             });
-            console.log(response);
             navigate(response.data.path)
         }
     }

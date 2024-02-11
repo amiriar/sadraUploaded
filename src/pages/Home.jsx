@@ -139,7 +139,7 @@ const fetchData4 = async () => {
 
 
     <div className='Boxgraduate'>
-      <p>فارغ التحصیلان دوره‌های ما، در . بهترین شرکت‌های کشور مشغول به کارند</p>
+      <p>فارغ التحصیلان دوره‌های ما، در  بهترین شرکت‌های کشور مشغول به کارند</p>
       <div className='BoxgraduateIcon'>
       <Mokhaberat/>
       <Tapci/>
@@ -181,7 +181,7 @@ const fetchData4 = async () => {
       </div>
 
       <h1>استفاده از متدهای جدید آموزشی</h1>
-      <p>صدرا، از استانداردها و چارچوب‌های سفارشی جدید آموزشی استفاده می‌کنه ترکیبی از ترکیبی از CSTA ،ISTE ،PBLو ADIF است که در حال حاضر در آمریکا و کانادا در حال اجراست و باعث سهولت در یادگیری دانشجویان و دانش‌آموزان شده و پیشرفت آن‌ها به وضوح، قابل رویت است.</p>
+      <p dir='rtl'>صدرا، از استانداردها و چارچوب‌های سفارشی جدید آموزشی استفاده می‌کنه ترکیبی از ترکیبی از CSTA ،ISTE ،PBLو ADIF است که در حال حاضر در آمریکا و کانادا در حال اجراست و باعث سهولت در یادگیری دانشجویان و دانش‌آموزان شده و پیشرفت آن‌ها به وضوح، قابل رویت است.</p>
       <div className='Video_Container'>
         <VideoPlayer video={'../../assets/videoMain.mp4'} poster={'../../assets/videoBG.jpeg'} />
       </div>
@@ -197,8 +197,8 @@ const fetchData4 = async () => {
   <div className='Slider'>
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         {commentData.map((item)=> (
-          <SwiperSlide key={item.id} >
-            <p id='cardComment'>{item.comment}</p>
+          <SwiperSlide key={item.id}>
+            <p id='cardComment' style={{padding:"0rem 5rem", textAlign:"justify", textJustify:"inter-word"}}>{item.comment}</p>
             <img src={item.profile} />
             <p id='cardName'>{item.name}</p>
             <p id='cardJob'>{item.job}</p>

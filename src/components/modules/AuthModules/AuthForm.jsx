@@ -22,8 +22,7 @@ import bcrypt from 'bcryptjs';
 import axios from 'axios';
 
 import './AuthStyles.css'
-import { Logo } from '../../layouts/svg/Logo'
-import Logo2 from '../../layouts/svg/Logo2';
+
 
 const AuthForm = ({ isRegister }) => {
     const [userId, setUserId] = useState(null);
@@ -36,7 +35,7 @@ const AuthForm = ({ isRegister }) => {
             setUserId(id);
         })
         .catch(error => {
-            console.error('Error:', error.response ? error.response.data : error.message);
+            console.error('please login first !');
             setUserRole('error');
         });
     }, []); 
@@ -64,42 +63,49 @@ const AuthForm = ({ isRegister }) => {
         event.preventDefault();
     };
 
+    const [isREGUsernameOK, setIsREGUsernameOK] = useState(true);
+    const [isREGEmailOK, setIsREGEmailOK] = useState(true);
+    const [isREGPassOK, setIsREGPassOK] = useState(true);
+    const [isLOGEmailOK, setIsLOGEmailOK] = useState(true);
+    const [isPassOK, setIsPassOK] = useState(true);
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
         if(isRegister){
             const Register = async ({ values }) => {
-                let isemailOK = true;
-                let isPassOK = true;
+                
+
+                if(values.userName.length < 3 || values.userName === ''){
+                    showToast("نام کاربری نمیتواند کمتر از 3 حرف باشد!","error")
+                    setIsREGUsernameOK(false)
+                }
             
                 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
             
                 if (!(emailRegex.test(values.email))) {
-                    isemailOK = false;
+                    setIsREGEmailOK(false);
                     showToast('لطفا از درست بودن ایمیل خود اطمینان حاصل کنید.', 'error');
                 } else {
-                    isemailOK = true;
+                    setIsREGEmailOK(true);
                 }
                 if (values.password.length > 32 || values.password.length === 0 || values.password.length < 8) {
-                    isPassOK = false;
+                    setIsREGPassOK(false);
                     showToast('رمز عبور نمیتواند خالی، بیشتر از 32 نویسه و یا کمتر از 8 نویسه باشد.', 'error');
                 } else {
-                    isPassOK = true;
+                    setIsREGPassOK(true);
                 }
             
-                if (isemailOK === true && isPassOK === true) {
+                if (isREGEmailOK === true && isREGPassOK === true && isREGUsernameOK === true) {
                     try {
-                        const saltRounds = 10;
-                        const hashedPassword = await bcrypt.hash(values.password, saltRounds);
-            
                         const response = await axios.post('https://backend.sadra-edu.com/register', {
+                            userName: values.userName,
                             email: values.email,
-                            hashedPassword,
+                            password: values.password,
                         });
             
                         const result = response.data;
-                        console.log(result);
             
                         if (result.statusCode === 200) {
                             navigate('/auth/login');
@@ -120,31 +126,30 @@ const AuthForm = ({ isRegister }) => {
 
         }else{
             const Login = async ({ values }) => {
-                let isemailOK = true;
-                let isPassOK = true;
+                
             
-                const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+                const usermail = /^(?:[\w.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$|^[\w.-]{3,16}$/;
             
-                if (!(emailRegex.test(values.email))) {
-                    isemailOK = false;
+                if (!(usermail.test(values.userEmail))) {
+                    setIsLOGEmailOK(false);
                     showToast('لطفا از درست بودن ایمیل خود اطمینان حاصل کنید.', 'error');
                 } else {
-                    isemailOK = true;
+                    setIsLOGEmailOK(true);
                 }
                 if (values.password.length > 32 || values.password.length === 0 || values.password.length < 8) {
-                    isPassOK = false;
+                    setIsPassOK(false);
                     showToast('رمز عبور نمیتواند خالی، بیشتر از 32 نویسه و یا کمتر از 8 نویسه باشد.', 'error');
                 } else {
-                    isPassOK = true;
+                    setIsPassOK(true);
                 }
             
-                if (isemailOK === true && isPassOK === true) {
+                if (isLOGEmailOK === true && isPassOK === true) {
                     try {
                         let response = await axios({
                             method: 'post',
                             url: 'https://backend.sadra-edu.com/login', 
                             data: {
-                                email : values.email,
+                                emailOrUsername : values.userEmail,
                                 password: values.password,
                             },
                             withCredentials: true
@@ -329,7 +334,7 @@ const AuthForm = ({ isRegister }) => {
                     
                     <div className='AuthDiv'>
                         <div className='authSmallLogo'>
-                            <img src="../../../../public/logo.svg" height={100} alt="smallLogo" />
+                            <img src="../../../../logo.svg" height={100} alt="smallLogo" />
                             <h1 style={{fontSize:"3rem"}}>صدرا</h1>
                         </div>
                         <div className='authBigLogo'>
@@ -351,7 +356,20 @@ const AuthForm = ({ isRegister }) => {
                 <button style={{cursor:"pointer"}} onClick={dashboardLink} className='login_Btn_No_Hid'>داشبورد</button>
             </div>
         }
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </>
+        
     );
 };
 

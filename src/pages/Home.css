@@ -572,11 +572,14 @@
     margin: 2% 0px;
     max-width: 100%;
     padding-top: 5%;
-    height: 40vh;
+    /* height: 40vh; */
     display: flex;
     align-items: center;
     margin-bottom: 3%;
     align-items: center;
+    text-align: justify;
+    text-justify: inter-word;
+    direction: rtl;
 }
 .swiper {
     width: 100%;

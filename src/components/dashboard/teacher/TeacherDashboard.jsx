@@ -87,7 +87,6 @@ function TeacherDashbaord({ userRole, userId }) {
     useEffect(() => {
         userId && axios.get(`https://backend.sadra-edu.com/users/data/${userId}`)
             .then(response => {
-                console.log(response);
                 setUserName(response.data[0][0].name);
                 setUserLastName(response.data[0][0].lastName);
                 setUserEmail(response.data[0][0].email);

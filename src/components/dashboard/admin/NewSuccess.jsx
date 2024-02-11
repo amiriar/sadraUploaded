@@ -193,7 +193,6 @@ function NewSuccess() {
             })
             .then(response => {
                 showToast("بلاگ جدید با موفقیت ثبت شد !", "success")
-                console.log(response);
             })
             .catch(error => {
                 console.error('Error:', error.response ? error.response.data : error.message);
@@ -233,7 +232,6 @@ function NewSuccess() {
             })
             .then(response => {
                 showToast("پست جدید با موفقیت ثبت شد !", "success")
-                console.log(response);
             })
             .catch(error => {
                 console.error('Error:', error.response ? error.response.data : error.message);
@@ -278,7 +276,6 @@ function NewSuccess() {
             })
             .then(response => {
                 showToast("پست جدید با موفقیت ثبت شد !", "success")
-                console.log(response);
             })
             .catch(error => {
                 console.error('Error:', error.response ? error.response.data : error.message);
@@ -320,7 +317,6 @@ function NewSuccess() {
     //         })
     //         .then(response => {
     //             showToast("پست جدید با موفقیت ثبت شد !", "success")
-    //             console.log(response);
     //         })
     //         .catch(error => {
     //             console.error('Error:', error.response ? error.response.data : error.message);
@@ -363,7 +359,6 @@ function NewSuccess() {
     //         })
     //         .then(response => {
     //             showToast("پست جدید با موفقیت ثبت شد !", "success")
-    //             console.log(response);
     //         })
     //         .catch(error => {
     //             console.error('Error:', error.response ? error.response.data : error.message);
@@ -419,7 +414,6 @@ function NewSuccess() {
             })
             .then(response => {
                 showToast("پست جدید با موفقیت ثبت شد !", "success")
-                console.log(response);
             })
             .catch(error => {
                 console.error('Error:', error.response ? error.response.data : error.message);

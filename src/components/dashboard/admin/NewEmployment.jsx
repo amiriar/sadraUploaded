@@ -53,7 +53,6 @@ function NewEmployment() {
             jobTime: jobTime
         });
 
-        console.log(response2);
         showToast("اطلاعات شما ثبت شد! حالا، به صفحات دیگر دسترسی دارید.", "success");
     }
 

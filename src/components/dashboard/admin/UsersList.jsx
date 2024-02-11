@@ -23,13 +23,11 @@ function UsersList() {
             })
             .then(response2 => {
                 setUsers(response2.data[0]);
-                console.log(response2.data[0]);
     
                 return axios.get('https://backend.sadra-edu.com/users/data');
             })
             .then(response3 => {
                 setData(response3.data[0]);
-                console.log(response3.data[0]);
     
             })
             .catch(firstError => {

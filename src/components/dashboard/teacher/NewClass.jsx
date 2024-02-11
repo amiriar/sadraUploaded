@@ -155,9 +155,6 @@ function NewClass() {
             setImagePath(imagePath1);
             setImagePath2(imagePath2);
         
-            console.log(imagePath1);
-            console.log(imagePath2);
-        
           // Upload video
             const formData2 = new FormData();
             formData2.append('videoData', video);

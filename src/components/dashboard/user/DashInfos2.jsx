@@ -15,7 +15,6 @@ function DashInfo2() {
     }, []); 
 
 
-    console.log(users);
     return (
         <div dir='rtl' className='panelContainer' style={{padding:"1rem"}}>
             {

@@ -23,10 +23,8 @@ function NewBlog() {
 
                 const responseToken3 = await axios.get('https://backend.sadra-edu.com/blog/data');
                 setData(responseToken3.data);
-                console.log(responseToken3.data);
                 const responseToken2 = await axios.get('https://backend.sadra-edu.com/TeacherUsers/data');
                 setUsers(await responseToken2.data[0]);
-                console.log(responseToken2.data[0]);
             } catch (error) {
                 console.error('Error:', error.response ? error.response.data : error.message);
                 setUserRole('error');
@@ -142,7 +140,6 @@ function NewBlog() {
             })
             .then(response => {
                 showToast("بلاگ جدید با موفقیت ثبت شد !", "success")
-                console.log(response);
             })
             .catch(error => {
                 console.error('Error:', error.response ? error.response.data : error.message);

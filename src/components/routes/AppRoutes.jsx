@@ -34,7 +34,6 @@ const AppRoutes = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:id" element={<NewBlogDetails />} />
-                {/* <Route path="/blog/:id" element={<BlogDetails />} /> */}
                 <Route path="/events" element={<Events />} />
                 <Route path='/events/:id' element={<EventDetail/>} />
                 <Route path="/classes" element={<Classes />} />
@@ -51,7 +50,6 @@ const AppRoutes = () => {
                 <Route path="/dashboard/blogs" element={<BlogsList/>} />
                 <Route path="/dashboard/events" element={<EventsList/>} />
                 <Route path="/dashboard/classes" element={<ClassList/>} />
-
                 <Route path="/dashboard/users" element={<UsersList/>} />
                 <Route path="/dashboard/users/:id" element={<EditUser/>} />
                 <Route path="/dashboard/employment" element={<EmploymentList/>} />

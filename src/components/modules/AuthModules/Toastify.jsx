@@ -13,7 +13,7 @@ const showToast = (message, type) => {
         draggable: true,
         progress: undefined,
         theme: "light",
-        className: 'rtl-toast', // Add a custom class for RTL styling
+        className: 'rtl-toast',
     };
 
     switch (type) {

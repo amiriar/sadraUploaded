@@ -40,7 +40,6 @@ function BlogsList() {
             try {
                 const responseToken = await axios.get('https://backend.sadra-edu.com/blog/data');
                 setData(responseToken.data);
-                console.log(responseToken.data);
                 const responseToken2 = await axios.get('https://backend.sadra-edu.com/TeacherUsers/data');
                 setUsers(await responseToken2.data[0]);
             } catch (error) {

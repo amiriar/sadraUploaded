@@ -43,7 +43,6 @@ function SuccessList() {
                 setUserRole('error');
             });
     }, []);
-    console.log();
 
     const navigate = useNavigate()
     function clickHandler({ name }) {

@@ -11,7 +11,6 @@ function VideoComponent({ UrlAutorName, videoSrc, videoTitle, videoJob, videoThu
         if (videoRef.current.paused) {
             videoRef.current.play();
             setIsPlaying(true);
-            console.log(UrlAutorName);
         } else {
             videoRef.current.pause();
             setIsPlaying(false);

@@ -206,12 +206,17 @@ app.get('/HomeComment/data', async (req, res) => {
 });
 
 app.post('/register', async (req, res) => {
-    const { email, hashedPassword } = req.body;
+    const { userName, email, password } = req.body;
+    console.log(userName, email, password);
+
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
     const todaySolar = moment().locale('fa').format('YYYY-MM-DD');
     try {
         const insertQuery = db.query(`
-            INSERT INTO users (email, password, lastDateIn, role)
-            VALUES ('${email}', '${hashedPassword}', '${todaySolar}', 'user');
+            INSERT INTO users (email, password, lastDateIn, role, userName, linkedin, pinterest, twitterX, facebook)
+            VALUES ('${email}', '${hashedPassword}', '${todaySolar}', 'user', '${userName}', '#', '#', '#', '#');
         `);
         res.status(200).json({ statusCode: 200, message: 'User Created' });
     } catch (error) {
@@ -271,15 +276,14 @@ app.get('/ClassEventDataFuture/data', async (req, res) => {
 // Test
 
 app.post('/login', async (req, res) => {
-    const { email, password } = req.body;
+    const { emailOrUsername, password } = req.body;
     const todaySolar = moment().locale('fa').format('YYYY-MM-DD');
 
     try {
-        // Check if the email exists and the hashed password matches
         const checkUserQuery = `
             SELECT id, email, password, role
             FROM users
-            WHERE email = '${email}';
+            WHERE email = '${emailOrUsername}' OR userName = '${emailOrUsername}';
         `;
         const userResult = await db.query(checkUserQuery);
 
@@ -287,41 +291,39 @@ app.post('/login', async (req, res) => {
             res.json({ error: 'کاربری با این مشخصات پیدا نشد !' }).status(404);
             return;
         }
+
         const storedHashedPassword = userResult[0][0].password;
         const passwordMatch = await bcrypt.compare(password, storedHashedPassword);
 
         if (!passwordMatch) {
             res.json({ error: 'ایمیل یا رمز عبور معتبر نیست !' }).status(401);
             return;
-        } else if (userResult.length !== 0) {
-            // Update lastDateIn if everything is okay
-            const updateQuery = `
-                UPDATE users
-                SET lastDateIn = '${todaySolar}'
-                WHERE id = ${userResult[0][0].id};
-            `;
-            await db.query(updateQuery);
+        }
 
-                // Generate a random secret key for JWT
-            const secretKey = process.env.BLOGS_SECRET_KEY;
+        const updateQuery = `
+            UPDATE users
+            SET lastDateIn = '${todaySolar}'
+            WHERE id = ${userResult[0][0].id};
+        `;
+        await db.query(updateQuery);
 
-            const token = Jwt.sign(
-                { id: userResult[0][0].id, email: userResult[0][0].email, role: userResult[0][0].role },
-                secretKey,
-                { expiresIn: '24h' }
-            );
+        const secretKey = process.env.BLOGS_SECRET_KEY;
 
-            // Set the JWT token as a cookie using res.cookie
-            res.cookie('accessID', token, { httpOnly: true, maxAge: 86400000, sameSite: 'None', secure: true });
-            
-            // Send a success response
-            res.status(200).json({ statusCode: 200, message: 'User updated successfully'});
-            }
+        const token = Jwt.sign(
+            { id: userResult[0][0].id, email: userResult[0][0].email, role: userResult[0][0].role },
+            secretKey,
+            { expiresIn: '24h' }
+        );
+
+        res.cookie('accessID', token, { httpOnly: true, maxAge: 86400000, sameSite: 'None', secure: true });
+
+        res.status(200).json({ statusCode: 200, message: 'User updated successfully'});
     } catch (error) {
         console.error('Error updating user:', error);
         res.json({ error: 'مشکلی پیش آمد!' }).status(500);
     }
 });
+
 
 app.get('/signout', (req, res) => {
     res.clearCookie('accessID', { httpOnly: true, secure: true });

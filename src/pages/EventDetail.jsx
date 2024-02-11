@@ -51,12 +51,7 @@ fetchData2();
   fetchData();
 }, []);
 
-// const dataFetcher = async () => {
-//       const response = await axios.get('https://backend.sadra-edu.com/eventsDetail/data');
-//       return await response.data;
-// }
-// const data = useQuery(["cardDetail"] , fetchData )
-// console.log(data)
+
 
 
 const dataCard = eventDetailData?.length ? eventDetailData?.find((item) => item.id === eventdetailId) : [] ;
@@ -226,9 +221,6 @@ const newImage = image?.split('/').splice(1).join('/');
                           )}</span>
                       </div>
                       ) : <span id="price">{price} <span id="rial">هزارتومان</span></span>
-                    }
-                    {
-                      // console.log(typeof price)
                     }
                 </span>
                 </div>

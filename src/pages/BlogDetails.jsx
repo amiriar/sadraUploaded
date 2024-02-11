@@ -60,7 +60,6 @@ function BlogDetails() {
         };
     
         fetchData();
-        // console.log(data);
     }, [id, users]);
     
     const matchAuthorWithUser = (authorName, authorLastName) => {

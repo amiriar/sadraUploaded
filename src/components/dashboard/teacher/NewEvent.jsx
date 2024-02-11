@@ -144,8 +144,6 @@ function NewEvent() {
     //             setImagePath(imagePath1);
     //             setImagePath2(imagePath2);
 
-    //             console.log(imagePath1);
-    //             console.log(imagePath2);
     //         })
     //         .catch(error => {
     //             // Handle the error
@@ -195,7 +193,6 @@ function NewEvent() {
     //         })
     //         .then(response => {
     //             showToast("بلاگ جدید با موفقیت ثبت شد !", "success")
-    //             console.log(response);
     //         })
     //         .catch(error => {
     //             console.error('Error:', error.response ? error.response.data : error.message);
@@ -242,8 +239,6 @@ function NewEvent() {
             setImagePath(imagePath1);
             setImagePath2(imagePath2);
         
-            console.log(imagePath1);
-            console.log(imagePath2);
         
           // Upload video
             const formData2 = new FormData();
@@ -259,7 +254,6 @@ function NewEvent() {
         const videoPath3 = videoUploadResponse.data.path.split('\\').join('/');
         setVideoPath3(videoPath3);
 
-        console.log(videoPath3);
     
           // Make the final Axios call
         const response = await axios.post('https://backend.sadra-edu.com/dashboard/events/add', {

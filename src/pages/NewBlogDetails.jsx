@@ -37,7 +37,6 @@ function NewBlogDetails() {
             try {
                 const response = await axios.get(`https://backend.sadra-edu.com/blogdetail/${id}`);
                 const jsonData = response.data[0];
-                console.log(jsonData);
                 setData(jsonData);
     
                 const relevantItems = jsonData?.hashtags?.split(",") ? jsonData?.hashtags?.split(",").slice(0, 3) : [];
