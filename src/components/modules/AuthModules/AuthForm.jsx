@@ -281,7 +281,7 @@ const AuthForm = ({ isRegister }) => {
                                 {
                                     isRegister === true ? 
                                     <>
-                                        <div style={{display:"flex", justifyContent:"space-between"}}>
+                                        <div className='AuthBtns' style={{display:"flex", justifyContent:"space-between"}}>
                                             <FormControl sx={{ marginTop: '1rem', display: 'inline', alignItems: 'center' }}>
                                                 <Checkbox
                                                     checked={userIsAccepted === 1 ? true : false}
@@ -302,7 +302,7 @@ const AuthForm = ({ isRegister }) => {
                                     </>
                                     :
                                     <>
-                                        <div style={{display:"flex", justifyContent:"space-between"}}>
+                                        <div className='AuthBtns' style={{display:"flex", justifyContent:"space-between"}}>
                                             <FormControl sx={{ marginTop: '1rem', display: 'inline', alignItems: 'center' }}>
                                                 <Checkbox
                                                     checked={userIsAccepted === 1 ? true : false}

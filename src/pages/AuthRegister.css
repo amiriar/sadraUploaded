@@ -11,23 +11,3 @@
     padding: 6px 10px;
 }
 
-
-@media (max-width : 900px) {
-    .authDiv{
-        padding: 4rem 15%;
-    }
-}
-@media (max-width : 550px) {
-    .authDiv{
-        padding: 4rem 10%;
-    }
-    .buttonsClass{
-        font-size: 0.7rem !important;
-        padding: 6px;
-    }
-}
-@media (max-width : 400px) {
-    .authDiv{
-        padding: 4rem 5%;
-    }
-}

@@ -52,3 +52,49 @@
     text-align: justify;
     text-justify: inter-word;
 }
+
+@media (max-width : 1200px) {
+    .authSubtitle {
+        background-color: #00151aab;
+        padding: 0 1rem;
+        display: inline;
+        margin: 0 1rem;
+        border-radius: 0.4rem;
+        font-size: 17px;
+    }
+    .authHeader {
+        font-size: 1.5rem;
+    }
+}
+@media (max-width : 1100px) {
+    .AuthDiv{
+        display: none;
+    }
+    .authFrom{
+        width: 100%;
+        padding: 6rem; 
+    }
+    .authContainer {
+        height: 600px;
+    }
+}
+@media (max-width : 600px) {
+    .authFrom{
+        padding: 4rem; 
+    }
+    .buttonsClass{
+        font-size: 0.7rem !important;
+        padding: 6px;
+    }
+}
+@media (max-width : 500px) {
+    .authFrom{
+        padding: 2rem; 
+    }
+    .AuthBtns{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}
