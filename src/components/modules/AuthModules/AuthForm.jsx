@@ -47,7 +47,6 @@ const AuthForm = ({ isRegister }) => {
         showPassword: false,
         userIsAccepted: false
     });
-    console.log(values);
 
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
