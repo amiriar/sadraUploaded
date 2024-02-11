@@ -21,6 +21,10 @@ import { ToastContainer } from 'react-toastify';
 import bcrypt from 'bcryptjs';
 import axios from 'axios';
 
+import './AuthStyles.css'
+import { Logo } from '../../layouts/svg/Logo'
+import Logo2 from '../../layouts/svg/Logo2';
+
 const AuthForm = ({ isRegister }) => {
     const [userId, setUserId] = useState(null);
     const [userRole, setUserRole] = useState(null);
@@ -185,139 +189,161 @@ const AuthForm = ({ isRegister }) => {
         <>
         {
             !userId ? (
-                <form onSubmit={handleSubmit} dir='rtl'>
-                    <ThemeProvider theme={theme}>
-                        <div style={{display:"flex", flexDirection:"column", gap:"10px"}}>
-                            {
-                                isRegister === true ? 
-                                <>
-                                    <FormControl variant="outlined" sx={{ marginTop: "1rem", '&:focus-within': { borderColor: 'green !important' } }}>
-                                        <InputLabel htmlFor="username" sx={{ left: 'auto', right: 40, fontFamily: "Yekan, sans-serif" }}>
-                                            نام کاربری
-                                        </InputLabel>
-                                        <Input
-                                            id="username"
-                                            label="نام کاربری"
-                                            variant="outlined"
-                                            sx={{ position: 'relative',fontFamily: "Yekan, sans-serif" }}
-                                            value={values.userName}
-                                            onChange={handleChange('userName')}
-                                            required
-                                        />
-                                    </FormControl>
-        
-                                    <FormControl variant="outlined" sx={{ marginTop: "1rem", '&:focus-within': { borderColor: 'green !important' } }}>
-                                        <InputLabel htmlFor="email" sx={{ left: 'auto', right: 40, fontFamily: "Yekan, sans-serif" }}>
-                                            ایمیل
-                                        </InputLabel>
-                                        <Input
-                                            id="email"
-                                            label="ایمیل"
-                                            variant="outlined"
-                                            sx={{ position: 'relative',fontFamily: "Yekan, sans-serif" }}
-                                            value={values.email}
-                                            onChange={handleChange('email')}
-                                            required
-                                        />
-                                    </FormControl>
-                                </>
-                                :
-                                <>
-                                    <FormControl variant="outlined" sx={{ marginTop: "1rem", '&:focus-within': { borderColor: 'green !important' } }}>
-                                        <InputLabel htmlFor="userMail" sx={{ left: 'auto', right: 40, fontFamily: "Yekan, sans-serif" }}>
-                                            نام کاربری یا ایمیل
-                                        </InputLabel>
-                                        <Input
-                                            id="userMail"
-                                            label="نام کاربری یا ایمیل"
-                                            variant="outlined"
-                                            sx={{ position: 'relative',fontFamily: "Yekan, sans-serif" }}
-                                            value={values.userEmail}
-                                            onChange={handleChange('userEmail')}
-                                            required
-                                        />
-                                    </FormControl>
-                                </>
-                            }
-
-
-                            <FormControl variant="outlined" sx={{ marginTop: "1rem", '&:focus-within': { borderColor: 'green !important' } }}>
-                                <InputLabel htmlFor="password" sx={{ left: 'auto', right: 40, fontFamily: "Yekan, sans-serif" }}>
-                                    رمز عبور
-                                </InputLabel>
-                                <Input
-                                    id="password"
-                                    label="رمز عبور"
-                                    type={values.showPassword ? 'text' : 'password'}
-                                    variant="outlined"
-                                    sx={{ position: 'relative',fontFamily: "Yekan, sans-serif" }}
-                                    value={values.password}
-                                    onChange={handleChange('password')}
-                                    required
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="toggle password visibility"
-                                                onClick={handleClickShowPassword}
-                                                onMouseDown={handleMouseDownPassword}
-                                                edge="end"
-                                            >
-                                                {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    }
-                                    inputProps={{ maxLength: 32 }}
-                                />
-                            </FormControl>
-
-                            {
-                                isRegister === true ? 
-                                <>
-                                    <div style={{display:"flex", justifyContent:"space-between"}}>
-                                        <FormControl sx={{ marginTop: '1rem', display: 'inline', alignItems: 'center' }}>
-                                            <Checkbox
-                                                checked={userIsAccepted === 1 ? true : false}
-                                                onChange={handleCheckboxChange}
-                                                inputProps={{ 'aria-label': 'controlled' }}
-                                                sx={{ color: '#4ca773' }}
-                                                id='is-student'
+                <>
+                <div className='authContainer' dir='rtl'>
+                    <form onSubmit={handleSubmit} className='authFrom'>
+                        <ThemeProvider theme={theme}>
+                            <div style={{display:"flex", flexDirection:"column", gap:"10px"}}>
+                                {
+                                    isRegister === true ? 
+                                    <>
+                                        <h1 style={{textAlign:"center"}}>ایجاد حساب کاربری</h1>
+                                        <FormControl variant="outlined" sx={{ marginTop: "1rem", '&:focus-within': { borderColor: 'green !important' } }}>
+                                            <InputLabel htmlFor="username" sx={{ left: 'auto', right: 40, fontFamily: "Yekan, sans-serif" }}>
+                                                نام کاربری
+                                            </InputLabel>
+                                            <Input
+                                                id="username"
+                                                label="نام کاربری"
+                                                variant="outlined"
+                                                sx={{ position: 'relative',fontFamily: "Yekan, sans-serif" }}
+                                                value={values.userName}
+                                                onChange={handleChange('userName')}
+                                                required
                                             />
-                                            <label htmlFor="is-student" style={{ cursor:"pointer"}}>
-                                                قوانین و مقررات سایت را میپذیرم
-                                            </label>
                                         </FormControl>
-                                        <button className='login_Btn_No_Hid' style={{cursor:"pointer"}}>
-                                            ایجاد
-                                        </button>
-                                    </div>
-                                    <p style={{marginTop:"2rem"}}>از قبل حساب کاربری دارید؟ <Link to={'/auth/login'} style={{fontWeight:"900"}}>ورود</Link></p>
-                                </>
-                                :
-                                <>
-                                    <div style={{display:"flex", justifyContent:"space-between"}}>
-                                        <FormControl sx={{ marginTop: '1rem', display: 'inline', alignItems: 'center' }}>
-                                            <Checkbox
-                                                checked={userIsAccepted === 1 ? true : false}
-                                                onChange={handleCheckboxChange}
-                                                inputProps={{ 'aria-label': 'controlled' }}
-                                                sx={{ color: '#4ca773' }}
-                                                id='is-student'
+            
+                                        <FormControl variant="outlined" sx={{ marginTop: "1rem", '&:focus-within': { borderColor: 'green !important' } }}>
+                                            <InputLabel htmlFor="email" sx={{ left: 'auto', right: 40, fontFamily: "Yekan, sans-serif" }}>
+                                                ایمیل
+                                            </InputLabel>
+                                            <Input
+                                                id="email"
+                                                label="ایمیل"
+                                                variant="outlined"
+                                                sx={{ position: 'relative',fontFamily: "Yekan, sans-serif" }}
+                                                value={values.email}
+                                                onChange={handleChange('email')}
+                                                required
                                             />
-                                            <label htmlFor="is-student" style={{ cursor:"pointer"}}>
-                                                مرا به خاطر بسپار
-                                            </label>
                                         </FormControl>
-                                        <button className='login_Btn_No_Hid' style={{cursor:"pointer"}}>
-                                            ورود
-                                        </button>
-                                    </div>
-                                    <p style={{marginTop:"2rem"}}>حساب صدرا ندارید؟ <Link to={'/auth/register'} style={{fontWeight:"900"}}>ایجاد حساب کاربری</Link></p>
-                                </>
-                            }
+                                    </>
+                                    :
+                                    <>
+                                        <h1 style={{textAlign:"center"}}>ورود به حساب کاربری</h1>
+                                        <FormControl variant="outlined" sx={{ marginTop: "1rem", '&:focus-within': { borderColor: 'green !important' } }}>
+                                            <InputLabel htmlFor="userMail" sx={{ left: 'auto', right: 40, fontFamily: "Yekan, sans-serif" }}>
+                                                نام کاربری یا ایمیل
+                                            </InputLabel>
+                                            <Input
+                                                id="userMail"
+                                                label="نام کاربری یا ایمیل"
+                                                variant="outlined"
+                                                sx={{ position: 'relative',fontFamily: "Yekan, sans-serif" }}
+                                                value={values.userEmail}
+                                                onChange={handleChange('userEmail')}
+                                                required
+                                            />
+                                        </FormControl>
+                                    </>
+                                }
 
+
+                                <FormControl variant="outlined" sx={{ marginTop: "1rem", '&:focus-within': { borderColor: 'green !important' } }}>
+                                    <InputLabel htmlFor="password" sx={{ left: 'auto', right: 40, fontFamily: "Yekan, sans-serif" }}>
+                                        رمز عبور
+                                    </InputLabel>
+                                    <Input
+                                        id="password"
+                                        label="رمز عبور"
+                                        type={values.showPassword ? 'text' : 'password'}
+                                        variant="outlined"
+                                        sx={{ position: 'relative',fontFamily: "Yekan, sans-serif" }}
+                                        value={values.password}
+                                        onChange={handleChange('password')}
+                                        required
+                                        endAdornment={
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    aria-label="toggle password visibility"
+                                                    onClick={handleClickShowPassword}
+                                                    onMouseDown={handleMouseDownPassword}
+                                                    edge="end"
+                                                >
+                                                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        }
+                                        inputProps={{ maxLength: 32 }}
+                                    />
+                                </FormControl>
+
+                                {
+                                    isRegister === true ? 
+                                    <>
+                                        <div style={{display:"flex", justifyContent:"space-between"}}>
+                                            <FormControl sx={{ marginTop: '1rem', display: 'inline', alignItems: 'center' }}>
+                                                <Checkbox
+                                                    checked={userIsAccepted === 1 ? true : false}
+                                                    onChange={handleCheckboxChange}
+                                                    inputProps={{ 'aria-label': 'controlled' }}
+                                                    sx={{ color: '#4ca773' }}
+                                                    id='is-student'
+                                                />
+                                                <label htmlFor="is-student" style={{ cursor:"pointer"}}>
+                                                    قوانین و مقررات سایت را میپذیرم
+                                                </label>
+                                            </FormControl>
+                                            <button className='login_Btn_No_Hid' style={{cursor:"pointer"}}>
+                                                ایجاد
+                                            </button>
+                                        </div>
+                                        <p style={{marginTop:"2rem",textAlign:"center"}}>از قبل حساب کاربری دارید؟ <Link to={'/auth/login'} style={{fontWeight:"900"}}>ورود</Link></p>
+                                    </>
+                                    :
+                                    <>
+                                        <div style={{display:"flex", justifyContent:"space-between"}}>
+                                            <FormControl sx={{ marginTop: '1rem', display: 'inline', alignItems: 'center' }}>
+                                                <Checkbox
+                                                    checked={userIsAccepted === 1 ? true : false}
+                                                    onChange={handleCheckboxChange}
+                                                    inputProps={{ 'aria-label': 'controlled' }}
+                                                    sx={{ color: '#4ca773' }}
+                                                    id='is-student'
+                                                />
+                                                <label htmlFor="is-student" style={{ cursor:"pointer"}}>
+                                                    مرا به خاطر بسپار
+                                                </label>
+                                            </FormControl>
+                                            <button className='login_Btn_No_Hid' style={{cursor:"pointer"}}>
+                                                ورود
+                                            </button>
+                                        </div>
+                                        <p style={{marginTop:"2rem",textAlign:"center"}}>حساب صدرا ندارید؟ <Link to={'/auth/register'} style={{fontWeight:"900"}}>ایجاد حساب کاربری</Link></p>
+                                    </>
+                                }
+
+                            </div>
+                        </ThemeProvider>
+                    </form>
+                    
+                    <div className='AuthDiv'>
+                        <div className='authSmallLogo'>
+                            <img src="../../../../public/logo.svg" height={100} alt="smallLogo" />
+                            <h1 style={{fontSize:"3rem"}}>صدرا</h1>
                         </div>
-                    </ThemeProvider>
-                </form>
+                        <div className='authBigLogo'>
+                            <img src="../../../../assets/authIllustration.png" alt="biglogo" />
+                        </div>
+                        <div className='authHeader'>
+                            <h2>مؤسسه آموزشی و پژوهشی صدرا</h2>
+                        </div>
+                        <div className='authSubtitle'>
+                            <p>با شرکت در دوره‌های آموزشی صدرا، از صفر شروع کن و در مسیر یادگیری با بهترین متد‌های آموزشی ما همراه شو، تا ما پلی باشیم برای ورود تضمینی به بازار کار</p>
+                        </div>
+                    </div>
+                </div>
+                </>
             )
             : 
             <div style={{direction:"rtl"}}>

@@ -15,7 +15,6 @@ const AuthRegister = () => {
     
     return (
         <div className='authDiv'>
-            <h1>ایجاد حساب کاربری</h1>
             <AuthForm isRegister />
         </div>
     );
