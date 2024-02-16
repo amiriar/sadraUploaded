@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 // Styles
@@ -50,8 +50,20 @@ export default function ClassDetail() {
         console.error('Error fetching data:', error);
     }
   };
+  const fetchData3 = async () => {
+    try {
+      axios.get('https://backend.sadra-edu.com/dashboard/token', {withCredentials: true})
+        .then(response => {
+        const { id } = response.data;
+        setUserId(id);
+      })
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+};
 
 
+fetchData3();
   fetchData();
   fetchData2();
   } , [])
@@ -91,6 +103,7 @@ export default function ClassDetail() {
   const [timerMinuts , setTimerMinuts] = useState("00");
   const [timerSecounds , setTimerSecounds] = useState("00");
 
+  const [userId , setUserId] = useState(null)
 
 // console.log(test === undefined ? "help" :  test)
 //    let interval = useRef();
@@ -126,6 +139,16 @@ export default function ClassDetail() {
 //      clearInterval(interval.current)
 //     }
 //   } , [])
+
+const navigate = useNavigate()
+
+const sabtHandler = () => {
+  if(userId) {
+    // sabt nam logic here
+  } else{
+    navigate("/auth/login")
+  }
+}
 
 
   return (
@@ -222,7 +245,7 @@ export default function ClassDetail() {
 
               {/* test */}
             </div>
-              <Button variant={"outlined"}>همین حالا ثبت نام کن</Button>
+              <Button variant={"outlined"} onClick={sabtHandler}>همین حالا ثبت نام کن</Button>
             <div className='cadTitle'>
               <h3>توضیحات رویداد</h3>
               <h1>{detailSubtitle}</h1>

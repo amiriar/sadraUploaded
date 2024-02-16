@@ -1,5 +1,5 @@
 import React, { useState , useRef, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 // Styles
 import './EventDetailStyle.css';
 import axios from 'axios';
@@ -26,6 +26,8 @@ const eventdetailId = parseInt(id , 10);
 const [eventDetailData , setEventDetailData] = useState([]);
 const [teachersData , setTeachersData] = useState([])
 
+const [userId , setUserId] = useState(null)
+
 useEffect(() => {
   const fetchData = async () => {
       try {
@@ -44,11 +46,23 @@ useEffect(() => {
     } catch (error) {
         console.error('Error fetching data:', error);
     }
+  }
+    const fetchData3 = async () => {
+      try {
+        axios.get('https://backend.sadra-edu.com/dashboard/token', {withCredentials: true})
+          .then(response => {
+          const { id } = response.data;
+          setUserId(id);
+        })
+      } catch (error) {
+          console.error('Error fetching data:', error);
+      }
 };
 
 
+fetchData3();
 fetchData2();
-  fetchData();
+fetchData();
 }, []);
 
 
@@ -58,7 +72,8 @@ const dataCard = eventDetailData?.length ? eventDetailData?.find((item) => item.
 const {
   category ,
   title , 
-  teacher ,
+  teacherFirstName ,
+  teacherLastName ,
   image ,
   price ,
   discount ,
@@ -139,7 +154,15 @@ const newImage = image?.split('/').splice(1).join('/');
     }
   } , [startTimer])
 
+  const navigate = useNavigate()
 
+const sabtHandler = () => {
+  if(userId) {
+    // sabt nam logic here
+  } else{
+    navigate("/auth/login")
+  }
+}
 
   return (
     <>
@@ -198,10 +221,7 @@ const newImage = image?.split('/').splice(1).join('/');
             <div className='CardDetail'>
                 <img src={`/${newImage}`} alt={title} />
               <div className='topCard'>
-                <p>{teacher}</p>
-                {/* <span id='price'><span>{price}</span><span>هزار تومان</span></span> */}
-                {/* test */}
-        
+                <p>مدرس استاد {teacherFirstName} {teacherLastName}</p>
                 <div>
                 <span style={{display : "flex"}}>
                     {
@@ -227,7 +247,7 @@ const newImage = image?.split('/').splice(1).join('/');
 
                 {/* test */}
               </div>
-                <Button variant={"outlined"}>همین حالا ثبت نام کن</Button>
+                <Button variant={"outlined"} onClick={sabtHandler}>همین حالا ثبت نام کن</Button>
               <div className='cadTitle'>
                 <h3>توضیحات رویداد</h3>
                 <h1>{detailSubtitle}</h1>

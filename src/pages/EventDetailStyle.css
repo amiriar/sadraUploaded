@@ -93,7 +93,7 @@
     margin-bottom: 1.5rem;
     text-align: justify;
     text-justify: inter-word;
-
+    margin-top: 1rem;
 }
 .topCard p{
     color: var(--Gray-500);
