@@ -23,13 +23,14 @@
 
 .select_options{
     direction: rtl;
-    font-size: 16px;
+    font-size: 15px;
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
     color: var(--primary-black);
     cursor: pointer;
     width: 100%;
+    font-family: 'Yekan', sans-serif !important;
 }
 
 .search_input{
@@ -40,6 +41,7 @@
     font-weight: 400;
     line-height: 24px;
     text-align: right;
+    font-family: 'Yekan', sans-serif !important;
 }
 
 .search_input::placeholder {

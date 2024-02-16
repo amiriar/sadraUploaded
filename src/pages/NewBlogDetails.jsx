@@ -152,7 +152,7 @@ function NewBlogDetails() {
                                     <span id="dissapear" style={{marginRight:"4rem"}}>پایان</span>
                                 </div>
                             </div>
-                            <div className='BlogRelatablePosts'>
+                            {/* <div className='BlogRelatablePosts'>
                             <h3 dir='rtl' style={{marginBottom:"2rem", marginRight:"1.5rem", fontSize:"1.125rem"}}>پست های مرتبط</h3>
 
                             <div className='blogCardsContainer' style={{ marginTop: "5rem", marginBottom: "2rem" }}>
@@ -179,7 +179,7 @@ function NewBlogDetails() {
                                     })}
                                 </Grid>
                             </div>
-                            </div>
+                            </div> */}
                         </React.Fragment>
                 }
         </div>

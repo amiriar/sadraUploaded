@@ -8,7 +8,7 @@ const EventCard = ({ image, title, price, teacherFirstName, teacherLastName, dat
 
   return (
     <div className="CardEvent" >
-      <Card sx={{ width: 300 , borderRadius : 3}}>
+      <Card sx={{ width: '100%' , borderRadius : 3}}>
         <CardMedia
           component="img"
           maxheight = {60}

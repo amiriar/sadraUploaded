@@ -26,6 +26,7 @@ import EditUser from '../dashboard/admin/EditUser';
 import EmploymentList from '../dashboard/admin/EmploymentList';
 import SuccessList from '../dashboard/admin/SuccessList';
 import PageNotFound from '../../pages/404';
+import Search from '../../pages/Search';
 const AppRoutes = () => {
     return (
         <>
@@ -54,6 +55,7 @@ const AppRoutes = () => {
                 <Route path="/dashboard/users/:id" element={<EditUser/>} />
                 <Route path="/dashboard/employment" element={<EmploymentList/>} />
                 <Route path="/dashboard/student-success" element={<SuccessList/>} />
+                <Route path="/search" element={<Search/>} />
                 <Route path='/*' element={<PageNotFound/>} />
             </Routes> 
         </>

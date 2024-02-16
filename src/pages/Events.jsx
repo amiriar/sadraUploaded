@@ -254,7 +254,7 @@ const categories = [
         </AccordionDetails>
       </Accordion>
           </Box>
-       </Drawer>
+    </Drawer>
     </div>
 
 
