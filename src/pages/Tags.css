@@ -1,0 +1,8 @@
+.headerTags{
+    margin: 2rem 1rem 1rem 1rem;
+}
+@media (max-width : 740px) {
+    .headerTags{
+        font-size: 1.5rem;
+    }
+}

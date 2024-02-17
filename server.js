@@ -353,7 +353,6 @@ app.post('/employment/add', async (req, res) => {
 
 app.post('/fullInfo', async (req, res) => {
     const { id, name, lastName, email, age, phoneNumber, education, profile, description, linkedin, pinterest, twitterX, facebook } = req.body;
-    console.log(id, name, lastName, email, age, phoneNumber, education, profile, description, linkedin, pinterest, twitterX, facebook);
     try {
         await db.query(`UPDATE users 
         SET 
@@ -835,6 +834,17 @@ app.post('/upload/video', uploadVideo.single('videoData'), (req, res) => {
         res.status(400).json({ success: false, message: 'No video file provided' });
     }
 });
+
+app.post('/searchTags', async (req, res) => {
+    try {
+        const { tag } = req.body
+        const getQuery = await db.query(`SELECT * FROM blog WHERE hashtags LIKE "%${tag}%";`)
+        res.json(getQuery).status(200)
+    } catch (error) {
+        res.json({error: "data was not found !", statusCode: 401}).status(401)
+    }
+});
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {
