@@ -2,8 +2,12 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import SignOutButton from '../SignOutButton';
-import { Divider } from '@mui/material';
+import { Box, Divider } from '@mui/material';
 import { userCategories } from '../Categories';
+import { CiSettings } from 'react-icons/ci';
+import "../Dashboard.css";
+import { IoPerson } from "react-icons/io5";
+import Drawer from '@mui/material/Drawer';
 
 function UserDashboard() {
 
@@ -53,20 +57,48 @@ function UserDashboard() {
         });
     }, [userId])
 
+    const [setting , setSetting] = useState(false)
+    const mobileSetting = ()=>{
+        setSetting(e => !e);
+        console.log(setting)
+      }
+
     return (
         <div className='userPanel'>
             <div className='sideBarPanel'>
                 <div>
                     {
                         userCategories.map((item) => (
-                            <Link key={item.title} to={item.link}>{item.title}</Link>
+                            <li><Link key={item.title} to={item.link}>{item.title}</Link></li>
                         ))
                     }
                 </div>
+            
                 <div>
                     <SignOutButton/>
                 </div>
             </div>
+
+             {/* Responsive */}
+
+                <div className='MobileDrawerDash'>
+                    <button onClick={mobileSetting} className='drawerButton'> <IoPerson style={{width : 20 , height : 20}} /></button>
+                </div>
+
+                <Drawer anchor='left' open={setting} onClose={()=> setSetting(false)}>
+                    <Box>
+                        <ul className='dashboardList'>
+                        {
+                            userCategories.map((item) => (
+                                <li><Link key={item.title} to={item.link}>{item.title}</Link></li>
+                            ))
+                        }
+                        </ul>
+                    </Box>
+                </Drawer>
+
+                {/* Responsive */}
+
             <div className='mainPanel'>
                 <h1>با مراجعه به صفحه ی <span className='linkPanel' onClick={linkHandler}>اطلاعات</span> مشخصات خود را تکمیل کنید .</h1>
                 <br />

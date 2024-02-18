@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Layout from './components/layouts/Layout';
 import AppRoutes from './components/routes/AppRoutes';
@@ -8,23 +8,21 @@ import Loading from './helper/Loading';
 
 const App = () => {
 
-  const [loading , setLoading] = useState(true);
+  // const [loading , setLoading] = useState(true);
 
 
-  useEffect(()=> {
-      setLoading(false)
-  } , [])
+
 
 
   return (
     <>
-  {loading && <Loading/>}
-
+    <Suspense fallback={<Loading/>}>
     <Router>
       <Layout>
         <AppRoutes />
       </Layout>
     </Router>
+    </Suspense>
     </>
   );
 };

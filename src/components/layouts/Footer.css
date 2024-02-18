@@ -182,6 +182,13 @@
         align-items: center;
     }
 
+    .lists{
+        display: inline-flex;
+        align-content: center;
+        justify-content: center;
+        max-width: 10rem;
+    
+    }
     .More_Detail .detail_right{
         width: 80%;
         align-items: center;

@@ -6,7 +6,9 @@ import { Checkbox, Divider, FormControl, Input, InputLabel, MenuItem, Select, Te
 import { showToast } from '../../modules/AuthModules/Toastify';
 import { ToastContainer } from 'react-toastify';
 import { userCategories } from '../Categories';
-
+import Drawer from '@mui/material/Drawer';
+import { IoPerson } from "react-icons/io5";
+import Box from '@mui/material/Box';
 
 function DashInfo() {
     const [userId, setUserId] = useState(null);
@@ -86,6 +88,11 @@ function DashInfo() {
         setUserEducation(event.target.value);
     };
 
+    const [setting , setSetting] = useState(false)
+    const mobileSetting = ()=>{
+        setSetting(e => !e);
+      }
+
     return (
         <div dir='rtl' className='panelContainer'>
             {
@@ -103,6 +110,27 @@ function DashInfo() {
                                 <SignOutButton/>
                             </div>
                         </div>
+
+                {/* Responsive */}
+
+                <div className='MobileDrawerDash'>
+                    <button onClick={mobileSetting} className='drawerButton'> <IoPerson style={{width : 20 , height : 20}} /></button>
+                </div>
+
+                <Drawer anchor='left' open={setting} onClose={()=> setSetting(false)}>
+                    <Box>
+                        <ul className='dashboardList'>
+                        {
+                            userCategories.map((item) => (
+                                <li><Link key={item.title} to={item.link}>{item.title}</Link></li>
+                            ))
+                        }
+                        </ul>
+                    </Box>
+                </Drawer>
+
+                {/* Responsive */}
+
                         <div className='mainPanel'>
                             <form>
 
