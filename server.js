@@ -380,6 +380,29 @@ app.post('/fullInfo', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+app.post('/fullInfoWithOutPic', async (req, res) => {
+    const { id, name, lastName, email, age, phoneNumber, education, description, linkedin, pinterest, twitterX, facebook } = req.body;
+    try {
+        await db.query(`UPDATE users 
+        SET 
+        name = "${name}", 
+        lastName= "${lastName}", 
+        email = "${email}", 
+        age = ${age}, 
+        phoneNumber = '${phoneNumber}', 
+        education= "${education}", 
+        description= "${description}",
+        linkedin= "${linkedin}",
+        pinterest= "${pinterest}",
+        twitterX= "${twitterX}",
+        facebook= "${facebook}"
+        WHERE id = ${id};`)
+        res.json({ statusCode: 200, message: 'اطلاعات شما بروزرسانی شد !'}).status(200);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 app.post('/fullInfoRole', async (req, res) => {
     const { role,id, name, lastName, email, age, phoneNumber, education, profile, description, linkedin, pinterest, twitterX, facebook } = req.body;
@@ -413,8 +436,13 @@ app.post('/fullInfoRole', async (req, res) => {
 });
 
 app.get('/users/data', async (req, res) => {
+    const accessToken = req.cookies.accessID;
+    const secretKey = process.env.BLOGS_SECRET_KEY;
+    const decodedToken = Jwt.verify(accessToken, secretKey);
+    console.log(decodedToken);
     const selectQuery = await db.query('SELECT * FROM users ORDER BY `id` DESC')
-    res.json(selectQuery).status(200)
+    // res.json(selectQuery).status(200)
+    res.json(decodedToken).status(200)
 });
 
 app.get('/users/data/:id', async (req, res) => {

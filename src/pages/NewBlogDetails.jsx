@@ -65,6 +65,16 @@ function NewBlogDetails() {
         const matchedUser = users.find(user => user.name === authorName && user.lastName === authorLastName);
         return matchedUser;
     };
+    
+
+    const imagePath = data && data?.imageData?.split('/').splice(1).join('/');
+    const imagePath2 = imagePath && imagePath?.split("/").splice(1).join('/');
+
+    const imagePathDetail1 = data && data?.descriptionImage1?.split('/').splice(1).join('/');
+    const imagePath2Detail1 = imagePathDetail1 && imagePathDetail1?.split("/").splice(1).join('/');
+
+    const imagePathDetail2 = data && data?.descriptionImage2?.split('/').splice(1).join('/');
+    const imagePath2Detail2 = imagePathDetail2 && imagePathDetail2?.split("/").splice(1).join('/');
 
     return (
         <div style={{ maxWidth:"1920px" ,margin:"0 auto"}}>
@@ -86,7 +96,7 @@ function NewBlogDetails() {
                                 </div>
 
                                 <div className='BoxImage'>
-                                    <img src={data.imageData} alt={data.imageData} />
+                                    <img src={`/${imagePath2}`} alt={imagePath2} />
                                 </div>
                             </div>
                             <div className='mainContentBlogDetails'>
@@ -97,8 +107,8 @@ function NewBlogDetails() {
                                         <p style={{color: "#475467"}} dir='rtl'>{data.detailsDescription3}</p><br />
                                     </div>
                                     <div className='BlogDetailsPictures'>
-                                        <img src={data.descriptionImage1} alt={data.descriptionImage1} className='BlogDetailsPicture' />
-                                        <img src={data.descriptionImage2} alt={data.descriptionImage2} className='BlogDetailsPicture' />
+                                        <img src={`/${imagePath2Detail1}`} alt={imagePath2Detail1} className='BlogDetailsPicture' />
+                                        <img src={`/${imagePath2Detail2}`} alt={imagePath2Detail2} className='BlogDetailsPicture' />
                                     </div>
                                     <div className='BlogDetailsSummery'>
                                         <p dir='rtl' style={{color: "#475467"}}>{data.detailsDescription4}</p>

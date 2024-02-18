@@ -37,6 +37,9 @@ function TeacherDashbaord({ userRole, userId }) {
     const [authorFacebook, setAuthorFacebook] = useState('');
 
     const [imagePath, setImagePath] = useState('');
+
+    const [userProf, setUserProf] = useState('');
+
     
     const handleSelectChange = (event) => {
         setUserEducation(event.target.value);
@@ -45,7 +48,7 @@ function TeacherDashbaord({ userRole, userId }) {
         if(userEmail === '' || userName === '' || userLastName === '' || userAge === '' || userPhone === '' || userEducation === ''){
             showToast('لطفا تمامی فیلد هارا پرکنید.', 'error');
         } else{
-            if (!imageData) { 
+            if (!imageData && userProf === '') { 
                 showToast('لطفاً یک تصویر را انتخاب کنید.', 'error');
                 return;
             }
@@ -54,7 +57,7 @@ function TeacherDashbaord({ userRole, userId }) {
             formData.append('imageData', imageData);
     
             try {
-                const response = await axios.post('https://backend.sadra-edu.com/upload/single', formData, {
+                const response = await axios.post('https://backend.sadra-edu.com/upload/single/img', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -62,25 +65,43 @@ function TeacherDashbaord({ userRole, userId }) {
                 // Handle the response as needed
                 setImagePath(await response.data.path)
                 const newImagePath = imagePath.split(`\\`).join("/")
-                const response2 = await axios.post('https://backend.sadra-edu.com/fullInfo', {
-                    id: userId,
-                    name: userName,
-                    lastName: userLastName,
-                    email: userEmail,
-                    age: userAge,
-                    phoneNumber: userPhone,
-                    education: userEducation,
-                    profile: newImagePath,
-                    description: authorDescription,
-                    linkedin: authorLinkedin,
-                    pinterest: authorPinterest,
-                    twitterX : authorTwitterX,
-                    facebook: authorFacebook
-                });
+                if(userProf !== '' && !imageData){
+                    const response2 = await axios.post('https://backend.sadra-edu.com/fullInfoWithOutPic', {
+                        id: userId,
+                        name: userName,
+                        lastName: userLastName,
+                        email: userEmail,
+                        age: userAge,
+                        phoneNumber: userPhone,
+                        education: userEducation,
+                        description: authorDescription,
+                        linkedin: authorLinkedin,
+                        pinterest: authorPinterest,
+                        twitterX : authorTwitterX,
+                        facebook: authorFacebook
+                    });
+                } else {
+                    const response2 = await axios.post('https://backend.sadra-edu.com/fullInfo', {
+                        id: userId,
+                        name: userName,
+                        lastName: userLastName,
+                        email: userEmail,
+                        age: userAge,
+                        phoneNumber: userPhone,
+                        education: userEducation,
+                        profile: newImagePath,
+                        description: authorDescription,
+                        linkedin: authorLinkedin,
+                        pinterest: authorPinterest,
+                        twitterX : authorTwitterX,
+                        facebook: authorFacebook
+                    });
+                }
+
                 showToast("اطلاعات شما ثبت شد! حالا، به صفحات دیگر دسترسی دارید.","success")
             } catch (error) {
                 console.error('Error:', error.response ? error.response.data : error.message);
-                showToast(`خطا در آپلود تصویر: ${error.response ? error.response.data.error : error.message}`, 'error');
+                showToast(`خطا در آپلود : ${error.response ? error.response.data.error : error.message}`, 'error');
             }
         }
     }
@@ -98,6 +119,7 @@ function TeacherDashbaord({ userRole, userId }) {
                 setAuthorFacebook(response.data[0][0].facebook)
                 setAuthorTwitterX(response.data[0][0].twitterX)
                 setAuthorPinterest(response.data[0][0].pinterest)
+                setUserProf(response.data[0][0].profile)
             })
         .catch(error => {
             console.error('Error:', error.response ? error.response.data : error.message);
@@ -189,6 +211,11 @@ function TeacherDashbaord({ userRole, userId }) {
                                                 نام فایل انتخابی: {fileName}
                                                 </p>
                                             )}
+                                            {userProf && (
+                                                    <p style={{ marginTop: '10px' }}>
+                                                        عکس از قبل ثبت شده است.
+                                                    </p>
+                                                )}
                                         </div>
                                     </div>
 

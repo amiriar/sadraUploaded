@@ -16,6 +16,7 @@ const BlogCard = ({ id, imageData, date, title, description, authorName, authorL
     }
     
     const imagePath = imageData?.split('/').splice(1).join('/');
+    const imagePath2 = imagePath?.split("/").splice(1).join('/');
     const AvatarPath = matchedUser?.profile.split('/').splice(1).join('/');
 
     return (
@@ -28,7 +29,7 @@ const BlogCard = ({ id, imageData, date, title, description, authorName, authorL
                     <CardContent style={{ padding: 0 }}>
                         {/* Image */}
                         <div style={{ overflow: 'hidden', borderRadius: '0.5rem' }}>
-                            <img id="blogImage" src={`/${imagePath}`} alt="Card Image" style={{ aspectRatio: '2/1', width: '100%', height: 'auto', borderRadius: '0.5rem' }} />
+                            <img id="blogImage" src={`/${imagePath2}`} alt="Card Image" style={{ aspectRatio: '2/1', width: '100%', height: 'auto', borderRadius: '0.5rem' }} />
                         </div>
 
                         {/* Date */}

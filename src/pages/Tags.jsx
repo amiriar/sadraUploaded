@@ -19,7 +19,7 @@ function Tags() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await axios.post(`http://localhost:3001/searchTags`,{tag})
+                const result = await axios.post(`https://backend.sadra-edu.com/searchTags`,{tag})
                 setData(await result.data[0])
                 const responseToken2 = await axios.get('https://backend.sadra-edu.com/TeacherUsers/data');
                 setUsers(await responseToken2.data[0]);
