@@ -16,6 +16,32 @@
     background-color: #1c1c1c;
     color: var(--Gray-300);
 }
+/* Responsive */
+.MobileDrawerDash{
+    
+}
+.drawerButton{
+    background-color: var(--prime-green);
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0px 15px 15px 0px;
+    left: 0;
+    top: 4.5rem;
+    display: none;
+}
+.dashboardList{
+    width: 10rem;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1.3rem;
+}
+.dashboardList li {
+    margin: 1rem;
+}
 .sideBarPanel div{
     display: flex;
     padding: 0.5rem 1rem;
@@ -94,6 +120,10 @@
     }
     .newBlogForm{
         width: 100% !important;
+    }
+    
+    .drawerButton{
+        display: inline-block;
     }
 }
 

@@ -7,6 +7,13 @@ import { useDropzone } from 'react-dropzone';
 import { Divider } from '@mui/material';
 import moment from 'jalali-moment';
 
+import Drawer from '@mui/material/Drawer';
+import { IoPerson } from "react-icons/io5";
+import Box from '@mui/material/Box';
+import { categories } from '../Categories';
+import { Link } from 'react-router-dom'
+
+
 function NewBlog() {
 
     useEffect(() => {
@@ -34,6 +41,11 @@ function NewBlog() {
         fetchData(); // Call the function
     
     }, []); 
+
+    const [setting , setSetting] = useState(false)
+    const mobileSetting = ()=>{
+        setSetting(e => !e);
+      }
     
     const [data, setData] = useState([]);
     const [users, setUsers] = useState([]);
@@ -279,6 +291,25 @@ function NewBlog() {
                 pauseOnHover
                 theme="light"
             />
+            {/* Responsive */}
+
+            <div className='MobileDrawerDash'>
+                    <button onClick={mobileSetting} className='drawerButton'> <IoPerson style={{width : 20 , height : 20}} /></button>
+                </div>
+
+                <Drawer anchor='left' open={setting} onClose={()=> setSetting(false)}>
+                    <Box>
+                        <ul className='dashboardList'>
+                        {
+                            categories.map((item) => (
+                                <li><Link key={item.title} to={item.link}>{item.title}</Link></li>
+                            ))
+                        }
+                        </ul>
+                    </Box>
+                </Drawer>
+
+                {/* Responsive */}
         </form>
     )
 }

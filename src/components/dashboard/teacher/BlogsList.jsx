@@ -7,6 +7,11 @@ import BlogCard from '../../modules/Blog-modules/BlogCard'
 import NewBlog from './NewBlog';
 import { adminCategories, categories } from '../Categories';
 
+import Drawer from '@mui/material/Drawer';
+import { IoPerson } from "react-icons/io5";
+import Box from '@mui/material/Box';
+
+
 function BlogsList() {
     const [userRole, setUserRole] = useState(null);
     const [userId, setUserId] = useState(null);
@@ -49,6 +54,11 @@ function BlogsList() {
     
         fetchData();
     }, []);
+
+    const [setting , setSetting] = useState(false)
+    const mobileSetting = ()=>{
+        setSetting(e => !e);
+      }
 
     const matchAuthorWithUser = (authorName, authorLastName) => {
         const matchedUser = users.find(user => user.name === authorName && user.lastName === authorLastName);
@@ -126,6 +136,25 @@ function BlogsList() {
             :
             <h3>یک بار از حساب کاربری خود خارج شوید و دوباره وارد شوید.</h3>
         }
+        {/* Responsive */}
+
+                <div className='MobileDrawerDash'>
+                    <button onClick={mobileSetting} className='drawerButton'> <IoPerson style={{width : 20 , height : 20}} /></button>
+                </div>
+
+                <Drawer anchor='left' open={setting} onClose={()=> setSetting(false)}>
+                    <Box>
+                        <ul className='dashboardList'>
+                        {
+                            categories.map((item) => (
+                                <li><Link key={item.title} to={item.link}>{item.title}</Link></li>
+                            ))
+                        }
+                        </ul>
+                    </Box>
+                </Drawer>
+
+                {/* Responsive */}
         </>
     )
 }
