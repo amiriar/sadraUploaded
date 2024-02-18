@@ -6,6 +6,13 @@ import { ToastContainer } from 'react-toastify';
 import { showToast } from '../../modules/AuthModules/Toastify';
 import { Divider } from '@mui/material';
 
+import Drawer from '@mui/material/Drawer';
+import { IoPerson } from "react-icons/io5";
+import Box from '@mui/material/Box';
+import { categories } from '../Categories';
+import { Link } from 'react-router-dom'
+
+
 function NewClass() {
 
     
@@ -57,6 +64,11 @@ function NewClass() {
     
     const [authorName, setAuthorName] = useState('');
     const [authorLastName, setAuthorLastName] = useState('');
+
+    const [setting , setSetting] = useState(false)
+    const mobileSetting = ()=>{
+        setSetting(e => !e);
+      }
     
     useEffect(() => {
         const fetchData = async () => {
@@ -361,6 +373,25 @@ function NewClass() {
                 pauseOnHover
                 theme="light"
             />
+            {/* Responsive */}
+
+            <div className='MobileDrawerDash'>
+                    <button onClick={mobileSetting} className='drawerButton'> <IoPerson style={{width : 20 , height : 20}} /></button>
+                </div>
+
+                <Drawer anchor='left' open={setting} onClose={()=> setSetting(false)}>
+                    <Box>
+                        <ul className='dashboardList'>
+                        {
+                            categories.map((item) => (
+                                <li><Link key={item.title} to={item.link}>{item.title}</Link></li>
+                            ))
+                        }
+                        </ul>
+                    </Box>
+                </Drawer>
+
+                {/* Responsive */}
         </form>
     )
 }

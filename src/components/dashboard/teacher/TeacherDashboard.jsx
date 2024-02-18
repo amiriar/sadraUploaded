@@ -5,6 +5,10 @@ import SignOutButton from '../SignOutButton'
 import DashboardCard from '../DashboardCard';
 import { categories } from '../Categories';
 
+import Drawer from '@mui/material/Drawer';
+import { IoPerson } from "react-icons/io5";
+import Box from '@mui/material/Box';
+
 //icons
 import { FaMicroblog } from "react-icons/fa";
 import { MdEvent } from "react-icons/md";
@@ -121,6 +125,11 @@ function TeacherDashbaord({ userRole, userId }) {
         marginTop: '10px',
     };
 
+    const [setting , setSetting] = useState(false)
+    const mobileSetting = ()=>{
+        setSetting(e => !e);
+      }
+
 
     return (
         <>
@@ -140,6 +149,25 @@ function TeacherDashbaord({ userRole, userId }) {
                         <SignOutButton/>
                     </div>
                 </div>
+                 {/* Responsive */}
+
+                 <div className='MobileDrawerDash'>
+                    <button onClick={mobileSetting} className='drawerButton'> <IoPerson style={{width : 20 , height : 20}} /></button>
+                </div>
+
+                <Drawer anchor='left' open={setting} onClose={()=> setSetting(false)}>
+                    <Box>
+                        <ul className='dashboardList'>
+                        {
+                            categories.map((item) => (
+                                <li><Link key={item.title} to={item.link}>{item.title}</Link></li>
+                            ))
+                        }
+                        </ul>
+                    </Box>
+                </Drawer>
+
+                {/* Responsive */}
                 <div className='mainPanel'>
                     <div className="cards-container">
                         <DashboardCard icon={<FaMicroblog size={40} />} title={'بلاگ ها'} link={'/dashboard/blogs'} />
