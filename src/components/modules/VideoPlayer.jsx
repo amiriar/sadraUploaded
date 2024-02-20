@@ -11,6 +11,7 @@ const VideoPlayer = (props) => {
         controls
         poster={`/${newPoster}`}
         src={`/${newSrc}`} 
+        style={{height:"400px"}}
       />
     </div>
   )

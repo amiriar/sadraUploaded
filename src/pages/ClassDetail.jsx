@@ -31,42 +31,40 @@ export default function ClassDetail() {
   const [data , setData] = useState([]);
   const [teachersData , setTeachersData] = useState([])
 
-  useEffect(()=> {
+  useEffect(() => {
     const fetchData = async () => {
       try {
-          const response = await fetch('https://backend.sadra-edu.com/ClassEventData/data');
-          const jsonData = await response.json();
-          setData(jsonData);
+        const response = await axios.get('https://backend.sadra-edu.com/ClassEventData/data');
+        setData(response.data);
       } catch (error) {
-          console.error('Error fetching data:', error);
-      }
-  };
-  const fetchData2 = async () => {
-    try {
-        const response = await axios.get('https://backend.sadra-edu.com/evetnDetailTeachersData/data');
-        const jsonData = response.data;
-        setTeachersData(jsonData);
-    } catch (error) {
         console.error('Error fetching data:', error);
-    }
-  };
-  const fetchData3 = async () => {
-    try {
-      axios.get('https://backend.sadra-edu.com/dashboard/token', {withCredentials: true})
-        .then(response => {
+      }
+    };
+  
+    const fetchData2 = async () => {
+      try {
+        const response = await axios.get('https://backend.sadra-edu.com/evetnDetailTeachersData/data');
+        setTeachersData(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+  
+    const fetchData3 = async () => {
+      try {
+        const response = await axios.get('https://backend.sadra-edu.com/dashboard/token', { withCredentials: true });
         const { id } = response.data;
         setUserId(id);
-      })
-    } catch (error) {
+      } catch (error) {
         console.error('Error fetching data:', error);
-    }
-};
-
-
-fetchData3();
-  fetchData();
-  fetchData2();
-  } , [])
+      }
+    };
+  
+    fetchData3();
+    fetchData();
+    fetchData2();
+  }, []);
+  
 
 
   const dataCard = data.length ? data?.find((item)=> item.id == classCardId) : []
@@ -85,6 +83,42 @@ fetchData3();
     title_description3 ,
     description3 ,
     title_description4 ,
+    title_description5 ,
+    title_description6 ,
+    title_description7 ,
+    title_description8 ,
+    title_description9 ,
+    title_description10 ,
+    title_description11,
+    title_description12 ,
+    title_description13 ,
+    title_description14 ,
+    title_description15 ,
+    title_description16 ,
+    title_description17 ,
+    title_description18 ,
+    title_description19 ,
+    title_description20 ,
+    title_description21 ,
+    title_description22,
+    title_description23,
+    title_description24,
+    title_description25,
+    title_description26,
+    title_description27,
+    title_description28,
+    title_description29,
+    title_description30,
+    title_description31,
+    title_description32,
+    title_description33,
+    title_description34,
+    title_description35,
+    title_description36,
+    title_description37,
+    title_description38,
+    title_description39,
+    title_description40,
     description4 ,
     videoSrc ,
     thumbnail ,
@@ -95,6 +129,44 @@ fetchData3();
     level ,
     language
   } = dataCard;
+
+  console.log(    title_description4 ,
+    title_description5 ,
+    title_description6 ,
+    title_description7 ,
+    title_description8 ,
+    title_description9 ,
+    title_description10 ,
+    title_description11,
+    title_description12 ,
+    title_description13 ,
+    title_description14 ,
+    title_description15 ,
+    title_description16 ,
+    title_description17 ,
+    title_description18 ,
+    title_description19 ,
+    title_description20 ,
+    title_description21 ,
+    title_description22,
+    title_description23,
+    title_description24,
+    title_description25,
+    title_description26,
+    title_description27,
+    title_description28,
+    title_description29,
+    title_description30,
+    title_description31,
+    title_description32,
+    title_description33,
+    title_description34,
+    title_description35,
+    title_description36,
+    title_description37,
+    title_description38,
+    title_description39,
+    title_description40,);
 
   const newImage = image?.split('/').splice(1).join('/');
 
@@ -192,9 +264,45 @@ const sabtHandler = () => {
           <div className='overViewBox2'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description2}</div>
           <div className='overViewBox3'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description3}</div>
           <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description4}</div>
+          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description5}</div> */}
+          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description6}</div> */}
+          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description7}</div> */}
+          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description8}</div> */}
+          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description9}</div> */}
+          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description10}</div> */}
+          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description11}</div> */}
+          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description12}</div> */}
+          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description13}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description14}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description15}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description16}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description17}</div> */}
+          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description18}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description19}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description20}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description21}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description22}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description23}</div> */}
+          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description24}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description25}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description26}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description27}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description28}</div> */}
+          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description29}</div> */}
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description30}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description31}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description32}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description33}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description34}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description35}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description36}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description37}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description38}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description39}</div>
+          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description40}</div>
           </div>
 
-          <div className='info1'>
+          {/* <div className='info1'>
             <h3>{title_description1}</h3>
             <p>{description1}</p>
           </div>
@@ -209,7 +317,13 @@ const sabtHandler = () => {
           <div className='info4'>
             <h3>{title_description4}</h3>
             <p>{description4}</p>
+          </div> */}
+          <div className='info'>
+            <h3>توضیحات</h3>
+            <br />
+            <p>{description1}</p>
           </div>
+          
       </div>
         {/* Card */}
         <div className='CardContainer'>
@@ -221,7 +335,7 @@ const sabtHandler = () => {
               {/* test */}
       
               <div>
-              <span style={{display : "flex"}}>
+              {/* <span style={{display : "flex"}}>
                   {
                     Number(discount) ? (
                     <div>
@@ -229,7 +343,6 @@ const sabtHandler = () => {
                       <div style={{display : "flex" , flexDirection : "column" , position : "relative" , alignItems : "center" , justifyContent : "center"}}>
                         <span>{price * (100 - Number(discount)) / 100}</span><span style={{fontSize : 12}} >هزارتومان</span>
                         <span style={{ opacity : 0.5 , fontSize : 16 ,position : "absolute" ,top : -38 , textDecoration : "line-through" , display : "flex" , flexDirection : "column" , alignItems : "center" , justifyContent : "center"}} >{price} <span style={{position : "absolute" , top : 13}} >هزارتومان</span> </span>
-                        {/* <span style={{position : "absolute" , top : -270 , left : -14 , color : "white" , backgroundColor : "#F04438" , fontSize : 17 , padding : 5 , borderRadius : 1000 , display : "flex" , alignItems : "center"}} >{discount}%</span> */}
                       </div>
                       ) : (
                             <div style={{position : "relative"}}>
@@ -240,23 +353,23 @@ const sabtHandler = () => {
                     </div>
                     ) : <span id="price">{price} <span id="rial">هزارتومان</span></span>
                   }
-              </span>
+              </span> */}
               </div>
 
               {/* test */}
             </div>
-              <Button variant={"outlined"} onClick={sabtHandler}>همین حالا ثبت نام کن</Button>
+              {/* <Button variant={"outlined"} onClick={sabtHandler}>همین حالا ثبت نام کن</Button> */}
             <div className='cadTitle'>
-              <h3>توضیحات رویداد</h3>
+              <h3>توضیحات دوره</h3>
               <h1>{detailSubtitle}</h1>
             </div>
             <div className='CardFooter'>
-              <h2>جزئیات رویداد</h2>
+              <h2>جزئیات دوره</h2>
             <div className='time'>
-              <span style={{display : "flex" , alignItems : "center" , justifyContent : "flex-start" , marginBottom : 10 }} >
+              {/* <span style={{display : "flex" , alignItems : "center" , justifyContent : "flex-start" , marginBottom : 10 }} >
                 <CiCalendarDate style={{width : 23 , height : 23 , marginLeft : 5 , marginBottom : 4}} />
                 {usePersianNumber(date?.split(" ")[0])}<span style={{padding : 3}} >/</span>{usePersianNumber(date?.split(" ")[1])}<span  style={{padding : 3}} >/</span>{usePersianNumber(date?.split(" ")[2])}
-              </span>
+              </span> */}
               <span style={{display : "flex" , alignItems : "center" , justifyContent : "flex-start" , marginBottom : 10 }} >
                 <FaRegClock style={{width : 20 , height : 20 , marginLeft : 7 , marginBottom : 7}} />
                   طول زمان دوره {usePersianNumber(time?.split(" ")[0])} ساعت
@@ -278,7 +391,7 @@ const sabtHandler = () => {
           </div>
         </div>
     </div>
-    <div className='detailFooter' dir='rtl'>
+    {/* <div className='detailFooter' dir='rtl'>
       <div className='detailFooterTitle'>
         <h2>مروری بر دوره‌های پیشین</h2>
       </div>
@@ -288,7 +401,7 @@ const sabtHandler = () => {
         teachersData.map(item =><EventDetailTeacherCard key={item.id} data={item} />)
       }
       </div>
-    </div>
+    </div> */}
   </>
   )
 }

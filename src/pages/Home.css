@@ -18,6 +18,12 @@
     flex-direction: column;
 
 }
+
+.logoMainPage{
+    width: 230px;
+    height: 85px;
+}
+
 .BoxData h1{
     color: var(--Neutral-20);
     text-align: right;
@@ -514,6 +520,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    max-height: 500px;
 }
 
 /* Part Three media Responsive  */
@@ -647,6 +654,7 @@
         font-size: 10px;
         color: var(--Gray-400);
     }
+
 }
 
 
@@ -670,6 +678,16 @@
         width: 5rem;
     }
 }
+
+@media (max-width : 740px) {
+    .contact_corporates{
+        flex-direction: column;
+        margin-top: 3rem;
+        gap: 10px;
+        margin-bottom: 1rem;
+    }
+}
+
 
 /* Part Five */
 

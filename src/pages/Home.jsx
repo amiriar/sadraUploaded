@@ -138,14 +138,14 @@ const fetchData4 = async () => {
     </div>
 
 
-    <div className='Boxgraduate'>
+    {/* <div className='Boxgraduate'>
       <p>فارغ التحصیلان دوره‌های ما، در  بهترین شرکت‌های کشور مشغول به کارند</p>
       <div className='BoxgraduateIcon'>
-      <Mokhaberat/>
-      <Tapci/>
-      <Mokhaberat/>
+        <img src="../../assets/logos/بانک مسکن سیاه.png" alt="aa" className='logoMainPage' />
+        <img src="../../assets/logos/بانک پارسیان سیاه.png" alt="aa" className='logoMainPage' />
+        <img src="../../assets/logos/بیمه ایران سیاه.png" alt="aa" className='logoMainPage' />
       </div>
-    </div>
+    </div> */}
 
     {/* Why US */}
 
@@ -183,7 +183,7 @@ const fetchData4 = async () => {
       <h1>استفاده از متدهای جدید آموزشی</h1>
       <p dir='rtl'>صدرا، از استانداردها و چارچوب‌های سفارشی جدید آموزشی استفاده می‌کنه ترکیبی از ترکیبی از CSTA ،ISTE ،PBLو ADIF است که در حال حاضر در آمریکا و کانادا در حال اجراست و باعث سهولت در یادگیری دانشجویان و دانش‌آموزان شده و پیشرفت آن‌ها به وضوح، قابل رویت است.</p>
       <div className='Video_Container'>
-        <VideoPlayer video={'../../assets/videoMain.mp4'} poster={'../../assets/videoBG.jpeg'} />
+        <VideoPlayer video={'../../assets/videoMain.mp4'} poster={'../../assets/videoThumb.jpg'} />
       </div>
     </div>
 
@@ -208,9 +208,9 @@ const fetchData4 = async () => {
   </div>
 
       <div className='contact_corporates'>
-        <Tapci className="icons_contact"/>
-        <Tapci className="icons_contact"/>
-        <Tapci className="icons_contact"/>
+        <img src="../../assets/logos/آب و فاضلاب استان تهران  سفید.png" alt="aa" className='logoMainPage' style={{height:"85px", width:"230px"}} />
+        <img src="../../assets/logos/موج پردازان البرز سفید.png" alt="aa" className='logoMainPage' style={{height:"85px", width:"230px"}} />
+        <img src="../../assets/logos/بیمه میهن سفید.png" alt="aa" className='logoMainPage' style={{height:"85px", width:"230px"}} />
       </div>
     </div>
     {/* Part Five */}
@@ -264,15 +264,15 @@ const fetchData4 = async () => {
             <div className='about_image_con'>
               <div className='about_data'>
               <div>
-                <h2>54M</h2>
+                <h2>1100+</h2>
                 <p>دانش‌آموز در حال استفاده از این سامانه</p>
               </div>
               <div>
-                  <h2>3.2K+</h2>
+                  <h2>100+</h2>
                   <p>دوره موجود در دسته‌بندی‌های مختلف</p>
               </div>
               <div>
-                <h2>600</h2>
+                <h2>150+</h2>
                 <p>مربی مجرب که به شما آموزش می‌دهند</p>
               </div>
               </div>
@@ -287,7 +287,7 @@ const fetchData4 = async () => {
             </div>
             <h1 dir='rtl'>افزایش رشد فردی و تقویت استعداد شما</h1>
             <p dir='rtl'>با بیش از یک دهه فعالیت زیرا همیشه می خواهیم خدمات آموزشی ارائه دهیم که در مدارس آموزش داده نمی شود.</p>
-            <Button variant="outlined" sx={{ width : 150 , height : 45 , color : "#4CA773" , borderColor : "#4CA773" , borderRadius : 15}} >بیشتر بدانیم</Button>
+            {/* <Button variant="outlined" sx={{ width : 150 , height : 45 , color : "#4CA773" , borderColor : "#4CA773" , borderRadius : 15}} >بیشتر بدانیم</Button> */}
           </div>
         </div>
     {/* part Seven  */}
@@ -320,20 +320,19 @@ const fetchData4 = async () => {
 
 <div className='test'>
     <div className='comment_card_container'>
-      {CommentData.map((item)=> <CommentCard key={item.id} {...item} />)}
+        {CommentData.slice(0, 3).map((item)=> <CommentCard key={item.id} {...item} />)}
       <div className='comment_card_container2'>
-      {CommentData.map((item)=> <CommentCard key={item.id} {...item} />)}
+        {CommentData.slice(0, 3).map((item)=> <CommentCard key={item.id} {...item} />)}
       </div>
-</div>
+    </div>
 
     
     <hr/>
 
     <div className='comment_card_container3'>
-      {CommentData.map((item)=> <CommentCard key={item.id} {...item} />)}
+        {CommentData.slice(4, 7).map((item)=> <CommentCard key={item.id} {...item} />)}
       <div className='comment_card_container4'>
-      {CommentData.map((item)=> <CommentCard key={item.id} {...item} />)}
-      
+        {CommentData.slice(4, 7).map((item)=> <CommentCard key={item.id} {...item} />)}
       </div>
     </div>
 

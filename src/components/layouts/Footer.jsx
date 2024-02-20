@@ -25,20 +25,30 @@ const Footer = () => {
         <h1 className='Footer_text_1'>در دوره‌هایی که علاقه داری شرکت کن و رشد شغلی خودت رو ببین</h1>
         <p className='Footer_text_2'>مربیان ما همه چیز را به راحتی به شما آموزش می دهند. امروز با ثبت نام در دوره های عالی با قیمت های مقرون به صرفه، مسیر شغلی خود را بهبود ببخشید.</p>
 
-      <div>
+      {/* <div>
         <button className='start_Btn' style={{cursor:"pointer"}} onClick={linkHandler}>همین حالا شروع کن</button>
-      </div>
+      </div> */}
 
       </div>
       
 
       <div className='corporations'>      
         <ul>
-          <li><Corporations1/></li>
-          <li><Corporations2/></li>
-          <li><Corporations3/></li>
-          <li><Corporations4/></li>
-          <li><Corporations5/></li>
+          <li>
+            <img src="../../../assets/logos/سازمان آموزش فنی و حرفه ای کشور سفید.png" alt="aa" className='logoMainPage' />
+          </li>
+          <li>
+            <img src="../../../assets/logos/شرکت فرآورده‌های لبنی میهن سفید.png" alt="aa" className='logoMainPage' />
+          </li>
+          <li>
+            <img src="../../../assets/logos/مجتمع فنی تهران سفید.png" alt="aa" className='logoMainPage' />
+          </li>
+          <li>
+            <img src="../../../assets/logos/مکتب شریف سفید.png" alt="aa" className='logoMainPage' />
+          </li>
+          {/* <li>
+            <img src="../../../public/assets/logos/" alt="aa" className='logoMainPage' />
+          </li> */}
         </ul>
       </div>
 
