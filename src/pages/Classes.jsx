@@ -101,6 +101,11 @@ function Classes() {
     };
     fetchData();
     } , [])
+
+    const ListSearcher = (e)=> {
+        console.log(e.target.innerText)
+    }
+
     return (
         <div className='classContainer' dir='rtl'>
             <div className='TopClassContainer'>
@@ -138,7 +143,7 @@ function Classes() {
                         </AccordionSummary>
                         <AccordionDetails sx={{backgroundColor : "#393939" , color : "white"}}>
                             <div className='BoxItems'>
-                                <ul className='unorderList'>
+                                <ul className='unorderList' onClick={ListSearcher}>
                                     <li>انگلیسی <span class="fi fi-sh"></span></li> 
                                     <li>عربی <span class="fi fi-ae"></span></li> 
                                     <li>ترکی <span class="fi fi-tr"></span></li> 
@@ -167,7 +172,7 @@ function Classes() {
                         </AccordionSummary>
                         <AccordionDetails sx={{backgroundColor : "#393939" , color : "white"}}>
                             <div className='BoxItems'>
-                                <ul className='unorderList'>
+                                <ul className='unorderList' onClick={ListSearcher}>
                                     <li>شبکه <FaNetworkWired/></li>
                                     <li>امنیت <MdOutlineSecurity/></li>
                                     <li>برنامه نویسی <MdDeveloperMode/></li>
@@ -192,7 +197,7 @@ function Classes() {
                         </AccordionSummary>
                         <AccordionDetails sx={{backgroundColor : "#393939" , color : "white"}}>
                             <div className='BoxItems'>
-                                <ul className='unorderList'>
+                                <ul className='unorderList' onClick={ListSearcher}>
                                     <li>طرحی و تدوین <SiAdobephotoshop/></li>
                                     <li>سواد رسانه <TbSocial/></li>
                                     <li>تولید محتوا <MdContentCopy/></li>
@@ -209,9 +214,7 @@ function Classes() {
 
 
 
-
                 </div>
-
             </div>
 
             <div className='classBody'>
