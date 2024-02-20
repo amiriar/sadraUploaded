@@ -17,7 +17,9 @@ const BlogCard = ({ id, imageData, date, title, description, authorName, authorL
     
     const imagePath = imageData?.split('/').splice(1).join('/');
     const imagePath2 = imagePath?.split("/").splice(1).join('/');
-    const AvatarPath = matchedUser?.profile.split('/').splice(1).join('/');
+
+    const AvatarPath2 = matchedUser?.profile.split('/').splice(1).join('/');
+    const AvatarPath = AvatarPath2?.split('/').splice(1).join('/');
 
     return (
         <>

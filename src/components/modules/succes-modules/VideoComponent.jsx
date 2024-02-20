@@ -4,6 +4,8 @@ import { IoPlayOutline } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 
 function VideoComponent({ UrlAutorName, videoSrc, videoTitle, videoJob, videoThumbnail }) {
+    const video = videoSrc?.split("/").splice(1).splice(1).join("/");
+    const newThumbnail = videoThumbnail?.split("/").splice(1).splice(1).join("/");
     const videoRef = useRef();
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -34,11 +36,11 @@ function VideoComponent({ UrlAutorName, videoSrc, videoTitle, videoJob, videoThu
                 className='successVideo'
                 ref={videoRef}
                 width='100%'
-                poster={videoThumbnail ? videoThumbnail : ''}
+                poster={newThumbnail ? newThumbnail : ''}
                 controls={isPlaying}
                 onEnded={handleVideoEnded}
             >
-                <source src={videoSrc} type='video/mp4' />
+                <source src={video} type='video/mp4' />
                 Your browser does not support the video tag.
             </video>
             <div

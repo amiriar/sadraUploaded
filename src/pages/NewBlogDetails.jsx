@@ -29,7 +29,7 @@ function NewBlogDetails() {
     const [users, setUsers] = useState([]);
     const [relevent, setRelevent] = useState([]);
     const [tags, setTags] = useState([]);
-    const [targetUser, setTargetUser] = useState('');
+    const [targetUser, setTargetUser] = useState();
     const [usersLoaded, setUsersLoaded] = useState(false);  
     
     useEffect(() => {
@@ -76,6 +76,9 @@ function NewBlogDetails() {
     const imagePathDetail2 = data && data?.descriptionImage2?.split('/').splice(1).join('/');
     const imagePath2Detail2 = imagePathDetail2 && imagePathDetail2?.split("/").splice(1).join('/');
 
+    const AvatarPath2 = targetUser ? targetUser?.profile?.split('/').splice(1).join('/') : '';
+    const AvatarPath = AvatarPath2 ? AvatarPath2?.split('/').splice(1).join('/') : '';
+
     return (
         <div style={{ maxWidth:"1920px" ,margin:"0 auto"}}>
                 {
@@ -84,12 +87,12 @@ function NewBlogDetails() {
                             <div className='Home'>
                                 <div className='BoxData'>
                                     <div className='tags' id='hashtagsDetails' dir='rtl'>
-                                            {
-                                                tags && tags.map((tag)=> (
-                                                    <Link className='link' key={tag} to={`/blog/${tag}`} style={{background: 'rgba(255, 255, 255, 0.65)',color:"black"}}>#{tag}</Link>
-                                                ))
-                                            }
-                                        </div>
+                                        {
+                                            tags && tags.map((tag)=> (
+                                                <Link className='link' key={tag} to={`/blog/${tag}`} style={{background: 'rgba(255, 255, 255, 0.65)',color:"black"}}>#{tag}</Link>
+                                            ))
+                                        }
+                                    </div>
                                     <h1 dir='rtl'>{data.title}</h1>
                                     <h2 dir='rtl' style={{color:"#D0D5DD", fontWeight:"400"}}>{data.description}</h2>
                                     <p dir='rtl' style={{color:"#FFF", fontWeight:"700"}}>نوشته شده توسط {data.authorName} {data.authorLastName}</p>
@@ -130,7 +133,7 @@ function NewBlogDetails() {
 
                                         <div className='authorInfo'>
                                             <CardContent style={{ direction: "rtl", display: 'flex', justifyContent: 'flex-start', alignItems: 'center', textAlign: 'right' }}>
-                                                <Avatar src={`/${targetUser?.profile}`} alt={'authorName'} style={{ marginLeft: 10, objectFit:'cover' }} />
+                                                <Avatar src={`/${AvatarPath}`} alt={'authorName'} style={{ marginLeft: 10, objectFit:'cover' }} />
                                                 <div>
                                                     <div>
                                                         <Typography fontFamily={'Yekan, sans-serif'} variant="subtitle1" color={'#475467'}>
