@@ -7,11 +7,23 @@ import { MdPhoneMissed } from "react-icons/md";
 
 import usePersianNumber from '../../../helper/PersianNumbers'
 
+import { IoPerson } from "react-icons/io5";
+import Drawer from '@mui/material/Drawer';
+import { Box } from '@mui/material';
+import { adminCategories } from '../Categories';
+
 function UserCard({user}) {
     const navigate = useNavigate()
     const editHandler = () => {
         navigate(`/dashboard/users/${user.id}`)
     }
+
+    const [setting , setSetting] = useState(false)
+    const mobileSetting = ()=>{
+        setSetting(e => !e);
+        console.log(setting)
+      }
+
     return (
         <div className='CardBox' dir='rtl'>
             <div className='imgContainer'>
@@ -31,6 +43,25 @@ function UserCard({user}) {
             <button className='login_Btn_No_Hid_2' style={{marginLeft:"1rem", cursor:"pointer"}} onClick={editHandler}>
                 ویرایش
             </button>
+            {/* Responsive */}
+
+            <div className='MobileDrawerDash'>
+                    <button onClick={mobileSetting} className='drawerButton'> <IoPerson style={{width : 20 , height : 20}} /></button>
+                </div>
+
+                <Drawer anchor='left' open={setting} onClose={()=> setSetting(false)}>
+                    <Box>
+                        <ul className='dashboardList'>
+                        {
+                            adminCategories.map((item) => (
+                                <li><Link key={item.title} to={item.link}>{item.title}</Link></li>
+                            ))
+                        }
+                        </ul>
+                    </Box>
+                </Drawer>
+
+        {/* Responsive */}
         </div>
     )
 }

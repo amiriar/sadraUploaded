@@ -5,12 +5,22 @@ import SignOutButton from '../SignOutButton'
 import axios from 'axios';
 import UserCard from './UserCard';
 
+import { IoPerson } from "react-icons/io5";
+import Drawer from '@mui/material/Drawer';
+import { Box } from '@mui/material';
+
 function UsersList() {
 
     const [userRole, setUserRole] = useState(null);
     const [userId, setUserId] = useState(null);
     const [users, setUsers] = useState(null);
     const [data, setData] = useState(null);
+
+    const [setting , setSetting] = useState(false)
+    const mobileSetting = ()=>{
+        setSetting(e => !e);
+        console.log(setting)
+      }
 
     useEffect(() => {
         axios.get('https://backend.sadra-edu.com/dashboard/token', { withCredentials: true })
@@ -72,6 +82,25 @@ function UsersList() {
             :
             <h3>یک بار از حساب کاربری خود خارج شوید و دوباره وارد شوید.</h3>
         }
+        {/* Responsive */}
+
+                <div className='MobileDrawerDash'>
+                    <button onClick={mobileSetting} className='drawerButton'> <IoPerson style={{width : 20 , height : 20}} /></button>
+                </div>
+
+                <Drawer anchor='left' open={setting} onClose={()=> setSetting(false)}>
+                    <Box>
+                        <ul className='dashboardList'>
+                        {
+                            adminCategories.map((item) => (
+                                <li><Link key={item.title} to={item.link}>{item.title}</Link></li>
+                            ))
+                        }
+                        </ul>
+                    </Box>
+                </Drawer>
+
+        {/* Responsive */}
         </>
     )
 }

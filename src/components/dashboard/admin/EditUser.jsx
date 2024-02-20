@@ -10,6 +10,10 @@ import { showToast } from '../../modules/AuthModules/Toastify'
 import { adminCategories, categories } from '../Categories'
 import SignOutButton from '../SignOutButton'
 
+import { IoPerson } from "react-icons/io5";
+import Drawer from '@mui/material/Drawer';
+import { Box } from '@mui/material';
+
 function EditUser() {
     const [adminId, setAdminId] = useState()
     const [adminRole, setAdminRole] = useState()
@@ -18,6 +22,12 @@ function EditUser() {
     const [loading, setLoading] = useState(true)
 
     const [imageData, setImageData] = useState('')
+
+    const [setting , setSetting] = useState(false)
+    const mobileSetting = ()=>{
+        setSetting(e => !e);
+        console.log(setting)
+      }
     
     const [userId, setUserId] = useState()
     const [userName, setUserName] = useState('')
@@ -277,6 +287,25 @@ function EditUser() {
                     </div>
                 </div>
             </div>
+            {/* Responsive */}
+
+            <div className='MobileDrawerDash'>
+                    <button onClick={mobileSetting} className='drawerButton'> <IoPerson style={{width : 20 , height : 20}} /></button>
+                </div>
+
+                <Drawer anchor='left' open={setting} onClose={()=> setSetting(false)}>
+                    <Box>
+                        <ul className='dashboardList'>
+                        {
+                            adminCategories.map((item) => (
+                                <li><Link key={item.title} to={item.link}>{item.title}</Link></li>
+                            ))
+                        }
+                        </ul>
+                    </Box>
+                </Drawer>
+
+        {/* Responsive */}
         </>
     )
 }

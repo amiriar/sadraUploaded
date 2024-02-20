@@ -7,6 +7,10 @@ import NewEmployment from './NewEmployment';
 import EmploymentDetailCard from '../../modules/EventDetailModule/EmploymentDetailCard';
 import { Divider } from '@mui/material';
 
+import { IoPerson } from "react-icons/io5";
+import Drawer from '@mui/material/Drawer';
+import { Box } from '@mui/material';
+
 function EmploymentList() {
 
     const [userRole, setUserRole] = useState(null);
@@ -40,6 +44,12 @@ function EmploymentList() {
                 setUserRole('error');
             });
     }, []);
+
+    const [setting , setSetting] = useState(false)
+    const mobileSetting = ()=>{
+        setSetting(e => !e);
+        console.log(setting)
+      }
 
     return (
         <>
@@ -90,6 +100,25 @@ function EmploymentList() {
             :
             <h3>یک بار از حساب کاربری خود خارج شوید و دوباره وارد شوید.</h3>
         }
+        {/* Responsive */}
+
+        <div className='MobileDrawerDash'>
+                    <button onClick={mobileSetting} className='drawerButton'> <IoPerson style={{width : 20 , height : 20}} /></button>
+                </div>
+
+                <Drawer anchor='left' open={setting} onClose={()=> setSetting(false)}>
+                    <Box>
+                        <ul className='dashboardList'>
+                        {
+                            adminCategories.map((item) => (
+                                <li><Link key={item.title} to={item.link}>{item.title}</Link></li>
+                            ))
+                        }
+                        </ul>
+                    </Box>
+                </Drawer>
+
+        {/* Responsive */}
         </>
     )
 }
