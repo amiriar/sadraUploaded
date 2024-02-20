@@ -4,7 +4,8 @@ import { BiCalendar, BiTime } from "react-icons/bi";
 import './EventCard.css'
 import usePersianNumber from "../../../helper/PersianNumbers";
 const EventCard = ({ image, title, price, teacherFirstName, teacherLastName, date, time , discount }) => {
-  const newImage = image?.split('/').splice(1).splice(1).join('/');
+  // const newImage = image?.split('/').splice(1).splice(1).join('/');
+  const newImage = image?.split('/').splice(1).join('/');
 
   return (
     <div className="CardEvent" >

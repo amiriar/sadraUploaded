@@ -223,7 +223,7 @@ const sabtHandler = () => {
               <div className='topCard'>
                 <p>مدرس استاد {teacherFirstName} {teacherLastName}</p>
                 <div>
-                <span style={{display : "flex"}}>
+                {/* <span style={{display : "flex"}}>
                     {
                       Number(discount) ? (
                       <div>
@@ -231,7 +231,6 @@ const sabtHandler = () => {
                       <div style={{display : "flex" , flexDirection : "column" , position : "relative" , alignItems : "center" , justifyContent : "center"}}>
                       <span>{price * (100 - Number(discount)) / 100}</span><span style={{fontSize : 12}} >هزارتومان</span>
                       <span style={{ opacity : 0.5 , fontSize : 16 ,position : "absolute" ,top : -38 , textDecoration : "line-through" , display : "flex" , flexDirection : "column" , alignItems : "center" , justifyContent : "center"}} >{price}<span style={{position : "absolute" , top : 13}} >هزارتومان</span> </span>
-                      {/* <span style={{position : "absolute" , top : -270 , left : -14 , color : "white" , backgroundColor : "#F04438" , fontSize : 17 , padding : 5 , borderRadius : 1000 , display : "flex" , alignItems : "center"}} >{discount}%</span> */}
                       </div>
                       ) : (
                           <div style={{position : "relative"}}>
@@ -242,12 +241,12 @@ const sabtHandler = () => {
                       </div>
                       ) : <span id="price">{price} <span id="rial">هزارتومان</span></span>
                     }
-                </span>
+                </span> */}
                 </div>
 
                 {/* test */}
               </div>
-                <Button variant={"outlined"} onClick={sabtHandler}>همین حالا ثبت نام کن</Button>
+                {/* <Button variant={"outlined"} onClick={sabtHandler}>همین حالا ثبت نام کن</Button>*/}
               <div className='cadTitle'>
                 <h3>توضیحات رویداد</h3>
                 <h1>{detailSubtitle}</h1>
@@ -268,7 +267,7 @@ const sabtHandler = () => {
             </div>
           </div>
       </div>
-      <div className='detailFooter' dir='rtl'>
+      {/* <div className='detailFooter' dir='rtl'>
         <div className='detailFooterTitle'>
           <h2>مروری بر دوره‌های پیشین</h2>
         </div>
@@ -278,7 +277,7 @@ const sabtHandler = () => {
           teachersData.map(item =><EventDetailTeacherCard key={item.id} data={item} />)
         }
         </div>
-      </div>
+      </div> */}
     </>
   )
 }

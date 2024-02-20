@@ -18,6 +18,7 @@ if (!fs.existsSync(uploadDir)) {
 }
 
 const app = express();
+app.use(cors());
 
 app.use(express.json())
 app.use(cookieParser());
@@ -547,8 +548,6 @@ app.post('/dashboard/events/add', async (req, res) => {
         description3,
         title_description4,
         description4,
-        videoSrc,
-        thumbnail,
         place,
         date,
         detailSubtitle,
@@ -571,8 +570,6 @@ app.post('/dashboard/events/add', async (req, res) => {
         description3,
         title_description4,
         description4,
-        videoSrc,
-        thumbnail,
         place,
         date,
         detailSubtitle,
@@ -594,8 +591,6 @@ app.post('/dashboard/events/add', async (req, res) => {
         '${description3}', 
         '${title_description4}', 
         '${description4}', 
-        '${videoSrc}',
-        '${thumbnail}',
         '${place}', 
         '${date}', 
         '${detailSubtitle}', 

@@ -6,7 +6,8 @@ import { RiStackFill } from "react-icons/ri";
 import { MdOutlineStackedBarChart } from "react-icons/md";
 
 export default function ClassCard({id, title , teacherFirstName, teacherLastName , level , lessons , time , price , image}) {
-  const newImage = image?.split('/').splice(1).splice(1).join('/');
+  // const newImage = image?.split('/').splice(1).splice(1).join('/');
+  const newImage = image?.split('/').splice(1).join('/');
   return (
     <div className='CardBox'>
     <div className='imgContainer'>
