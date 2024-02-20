@@ -9,6 +9,10 @@ import { Masonry } from '@mui/lab'
 import VideoComponent from '../../modules/succes-modules/VideoComponent'
 import SuccessCard from '../../modules/successModuels/SuccessCard'
 
+import { IoPerson } from "react-icons/io5";
+import Drawer from '@mui/material/Drawer';
+import { Box } from '@mui/material';
+
 function SuccessList() {
 
     const [userRole, setUserRole] = useState(null);
@@ -48,6 +52,13 @@ function SuccessList() {
     function clickHandler({ name }) {
         navigate(`/student/${name}`)
     }
+
+    const [setting , setSetting] = useState(false)
+    const mobileSetting = ()=>{
+        setSetting(e => !e);
+        console.log(setting)
+      }
+
     return (
         <>
         {
@@ -135,6 +146,25 @@ function SuccessList() {
             :
             <h3>یک بار از حساب کاربری خود خارج شوید و دوباره وارد شوید.</h3>
         }
+        {/* Responsive */}
+
+        <div className='MobileDrawerDash'>
+                    <button onClick={mobileSetting} className='drawerButton'> <IoPerson style={{width : 20 , height : 20}} /></button>
+                </div>
+
+                <Drawer anchor='left' open={setting} onClose={()=> setSetting(false)}>
+                    <Box>
+                        <ul className='dashboardList'>
+                        {
+                            adminCategories.map((item) => (
+                                <li><Link key={item.title} to={item.link}>{item.title}</Link></li>
+                            ))
+                        }
+                        </ul>
+                    </Box>
+                </Drawer>
+
+        {/* Responsive */}
         </>
     )
 }

@@ -49,23 +49,40 @@
 
 }
 .Box{
-  padding: 1.5rem;
+  padding: 1.5rem 0rem 1.5rem 0rem ;
   border-radius: 15px;
   border-radius: 16px;
   border: 1px solid var(--Neutral-80);
   background: var(--Neutral-90);
   color: var(--Neutral-20);
-  min-width: 15rem;
-  max-width: 15rem;
-  height: 4.5rem;
+  min-width: 17rem;
+  max-width: 17rem;
+  height: 4.8rem;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   border-radius: 16px;
   border: 1px solid var(--Neutral-80);
   background: var(--Neutral-90);
+  font-size: 1.4rem;
 
 }
 
+.unorderList{
+
+}
+.unorderList li{
+  margin: 1rem;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#boxIdContainer{
+  padding-right: 1rem;
+  padding-top: 0.2rem;
+
+}
 
 /* Body */
 .classBody{
@@ -112,7 +129,6 @@
   }
   .BoxContainer{
     margin: 2.5rem 0rem;
-
   }
 }
 

@@ -15,10 +15,32 @@ import { CiPen } from "react-icons/ci";
 import { FiLayout } from "react-icons/fi";
 import { LuGitFork } from "react-icons/lu";
 import { FiPieChart } from "react-icons/fi";
-import { GoDatabase } from "react-icons/go";
-import { BsCpu } from "react-icons/bs";
+import { SiAdobephotoshop } from "react-icons/si";
+import { FaDatabase } from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
+import { IoLanguage } from "react-icons/io5";
+import { IoIosApps } from "react-icons/io";
+import { FaNetworkWired } from "react-icons/fa";
+import { MdOutlineSecurity } from "react-icons/md";
+import { MdDeveloperMode } from "react-icons/md";
+import { GrVirtualStorage } from "react-icons/gr";
+import { GiNetworkBars } from "react-icons/gi";
+import { IoShareSocial } from "react-icons/io5";
+import { TbSocial } from "react-icons/tb";
+import { IoIosCreate } from "react-icons/io";
+import { MdContentCopy } from "react-icons/md";
+import { MdOutlineSocialDistance } from "react-icons/md";
 
+// Flags
+import "/node_modules/flag-icons/css/flag-icons.min.css";
+
+// Mui
+import Accordion from '@mui/material/Accordion';
+import AccordionActions from '@mui/material/AccordionActions';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Button from '@mui/material/Button';
 
 
 function Classes() {
@@ -42,43 +64,18 @@ function Classes() {
     const categories = [
         {
             id : 1 ,
-            categorie : "Game Design" ,
-            iconName : IoGameControllerOutline , 
+            categorie : "زبان" ,
+            iconName : IoLanguage , 
         } ,
         {
             id : 2 ,
-            categorie : "3D & Animation" ,
-            iconName : LuBox , 
+            categorie : "فناوری اطلاعات" ,
+            iconName : FaDatabase  , 
         } ,
         {
             id : 3 ,
-            categorie : "Graphic Design" ,
-            iconName : CiPen , 
-        } ,
-        {
-            id : 4 ,
-            categorie : "UI/UX Design" ,
-            iconName : FiLayout , 
-        } ,
-        {
-            id : 5 ,
-            categorie : "IOT" ,
-            iconName : LuGitFork , 
-        } ,
-        {
-            id : 6 ,
-            categorie : "Data Science" ,
-            iconName : FiPieChart , 
-        } ,
-        {
-            id : 7 ,
-            categorie : "Back-End " ,
-            iconName : GoDatabase , 
-        } ,
-        {
-            id : 8 ,
-            categorie : "Front-End " ,
-            iconName : BsCpu , 
+            categorie : "رسانه" ,
+            iconName : FaNetworkWired  , 
         } ,
     ]
 
@@ -116,17 +113,102 @@ function Classes() {
                 </div>
 
                 <div className='Categories'>
-                    <h2>دسته بندی</h2>
+                    <h2>دپارتمان ها</h2>
                     <div className='BoxContainer'>
-                        {
+                        {/* {
                             categories.map((item)=>(
                                 <div key={item.id} className='Box'  >
+
                                     <span>{item.categorie}</span>
-                                    <span><item.iconName style={{width : 25 , height : 25}} /></span>
+                                    <span id='boxIdContainer'><item.iconName style={{width : 25 , height : 25}} /></span>
                                 </div>
                             ))
-                        }
+                        } */}
+
+                        <Accordion sx={{width : 250 , paddingTop :  0 , backgroundColor : "#252525" , }}>
+                        <AccordionSummary
+                        expandIcon={<IoLanguage style={{color : "white" , width : 40}} />}
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                        sx={{fontSize : 19 , backgroundColor : "#393939" , paddingLeft : 10 , paddingRight : 10 , color : "white" ,  display : "flex" , alignItems : "center" , justifyContent : "center"}}
+                        >
+                        
+                        {categories[0].categorie}
+                        
+                        </AccordionSummary>
+                        <AccordionDetails sx={{backgroundColor : "#393939" , color : "white"}}>
+                            <div className='BoxItems'>
+                                <ul className='unorderList'>
+                                    <li>انگلیسی <span class="fi fi-sh"></span></li> 
+                                    <li>عربی <span class="fi fi-ae"></span></li> 
+                                    <li>ترکی <span class="fi fi-tr"></span></li> 
+                                    <li>روسی <span class="fi fi-ru"></span></li> 
+                                    <li>فرانسه <span class="fi fi-fr"></span></li>
+                                    <li>اسپانیا <span class="fi fi-es"></span></li>
+                                    <li>المانی<span class="fi fi-de"></span></li>
+                                    
+                                </ul>
+                            </div>
+                        </AccordionDetails>
+                        </Accordion>
+                        
+
+
+                        <Accordion sx={{width : 250 , paddingTop :  0 , backgroundColor : "#252525" , }}>
+                        <AccordionSummary
+                        expandIcon={<FaDatabase style={{color : "white" , width : 30}} />}
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                        sx={{fontSize : 19 , backgroundColor : "#393939" , paddingLeft : 5 , paddingRight : 5 , color : "white" ,  display : "flex" , alignItems : "center" , justifyContent : "center"}}
+                        >
+                        
+                        {categories[1].categorie}
+                        
+                        </AccordionSummary>
+                        <AccordionDetails sx={{backgroundColor : "#393939" , color : "white"}}>
+                            <div className='BoxItems'>
+                                <ul className='unorderList'>
+                                    <li>شبکه <FaNetworkWired/></li>
+                                    <li>امنیت <MdOutlineSecurity/></li>
+                                    <li>برنامه نویسی <MdDeveloperMode/></li>
+                                    <li>مجازی سازی <GrVirtualStorage/></li>
+                                    <li>زیرساخت <GiNetworkBars/></li>
+                                </ul>
+                            </div>
+                        </AccordionDetails>
+                        </Accordion>
+
+
+                        <Accordion sx={{width : 250 , paddingTop :  0 , backgroundColor : "#252525" , }}>
+                        <AccordionSummary
+                        expandIcon={<IoShareSocial style={{color : "white" , width : 30}} />}
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                        sx={{fontSize : 19 , backgroundColor : "#393939" , paddingLeft : 5 , paddingRight : 5 , color : "white" ,  display : "flex" , alignItems : "center" , justifyContent : "center"}}
+                        >
+                        
+                        {categories[2].categorie}
+                        
+                        </AccordionSummary>
+                        <AccordionDetails sx={{backgroundColor : "#393939" , color : "white"}}>
+                            <div className='BoxItems'>
+                                <ul className='unorderList'>
+                                    <li>طرحی و تدوین <SiAdobephotoshop/></li>
+                                    <li>سواد رسانه <TbSocial/></li>
+                                    <li>تولید محتوا <MdContentCopy/></li>
+                                    <li>نویسندگی <IoIosCreate/></li>
+                                    <li>شبکه اجتماعی <MdOutlineSocialDistance/></li>
+                                </ul>
+                            </div>
+                        </AccordionDetails>
+                        </Accordion>
+                        
+                        
+
                     </div>
+
+
+
 
                 </div>
 
