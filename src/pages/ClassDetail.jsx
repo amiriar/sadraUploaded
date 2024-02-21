@@ -11,7 +11,7 @@ import usePersianNumber from '../helper/PersianNumbers';
 import EventDetailTeacherCard from '../components/modules/EventDetailModule/EventDetailTeacherCard';
 // Icons
 import { FaChevronLeft } from "react-icons/fa";
-import { Button } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Button, Typography } from '@mui/material';
 import { color } from '@mui/system';
 import { CiCalendarDate } from "react-icons/ci";
 import { FaRegClock } from "react-icons/fa6";
@@ -24,8 +24,10 @@ import { FaEarthAmericas } from "react-icons/fa6";
 import { FaCheck } from "react-icons/fa6";
 // react-query
 import { useQuery } from '@tanstack/react-query';
+import QuestionIcon from '../components/layouts/svg/QuestionIcon';
 
 export default function ClassDetail() {
+
   const classCardId = useParams().id;
 
   const [data , setData] = useState([]);
@@ -83,42 +85,6 @@ export default function ClassDetail() {
     title_description3 ,
     description3 ,
     title_description4 ,
-    title_description5 ,
-    title_description6 ,
-    title_description7 ,
-    title_description8 ,
-    title_description9 ,
-    title_description10 ,
-    title_description11,
-    title_description12 ,
-    title_description13 ,
-    title_description14 ,
-    title_description15 ,
-    title_description16 ,
-    title_description17 ,
-    title_description18 ,
-    title_description19 ,
-    title_description20 ,
-    title_description21 ,
-    title_description22,
-    title_description23,
-    title_description24,
-    title_description25,
-    title_description26,
-    title_description27,
-    title_description28,
-    title_description29,
-    title_description30,
-    title_description31,
-    title_description32,
-    title_description33,
-    title_description34,
-    title_description35,
-    title_description36,
-    title_description37,
-    title_description38,
-    title_description39,
-    title_description40,
     description4 ,
     videoSrc ,
     thumbnail ,
@@ -127,8 +93,10 @@ export default function ClassDetail() {
     detailSubtitle ,
     lessons ,
     level ,
-    language
+    language,
+    headers
   } = dataCard;
+
 
   const newImage = image?.split('/').splice(1).join('/');
 
@@ -222,46 +190,33 @@ const sabtHandler = () => {
         <h2 style={{fontSize : 34 , marginBottom : 24 }} >چه چیزی یاد می‌گیریم؟</h2>
 
           <div className='overView'>
-          <div className='overViewBox1'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description1}</div>
-          <div className='overViewBox2'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description2}</div>
-          <div className='overViewBox3'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description3}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description4}</div>
-          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description5}</div> */}
-          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description6}</div> */}
-          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description7}</div> */}
-          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description8}</div> */}
-          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description9}</div> */}
-          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description10}</div> */}
-          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description11}</div> */}
-          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description12}</div> */}
-          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description13}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description14}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description15}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description16}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description17}</div> */}
-          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description18}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description19}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description20}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description21}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description22}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description23}</div> */}
-          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description24}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description25}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description26}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description27}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description28}</div> */}
-          {/* <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description29}</div> */}
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description30}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description31}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description32}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description33}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description34}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description35}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description36}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description37}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description38}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description39}</div>
-          <div className='overViewBox4'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description40}</div>
+            <div className='overViewBox1'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description1}</div>
+            <div className='overViewBox1'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description2}</div>
+            <div className='overViewBox1'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description3}</div>
+            <div className='overViewBox1'><FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} /> {title_description4}</div>
+          </div>
+          <div className='Questions'>
+              <Accordion>
+                <AccordionSummary
+                expandIcon={<QuestionIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+                >
+                <Typography fontFamily={"Yekan , sans-serif"} >سرفصل های این دوره :</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography fontFamily={"Yekan , sans-serif"} >
+                    {
+                      headers?.split(",").map((item) => (
+                        <div className='overViewBox1'>
+                        <FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} />
+                        <li>{item}</li>
+                        </div>
+                      ))
+                    }
+                  </Typography>
+                </AccordionDetails>
+            </Accordion>
           </div>
 
           {/* <div className='info1'>
@@ -280,12 +235,16 @@ const sabtHandler = () => {
             <h3>{title_description4}</h3>
             <p>{description4}</p>
           </div> */}
-          <div className='info'>
-            <h3>توضیحات</h3>
-            <br />
-            <p>{description1}</p>
-            <br /><br />
-          </div>
+          {
+            description1 !== "" ?
+              <div className='info1'>
+                <h3>توضیحات تکمیلی</h3>
+                <br />
+                <p>{description1}</p>
+              </div>
+              :
+              ""
+          }
           
       </div>
         {/* Card */}
@@ -297,8 +256,8 @@ const sabtHandler = () => {
               {/* <span id='price'><span>{price}</span><span>هزار تومان</span></span> */}
               {/* test */}
       
-              <div>
-              {/* <span style={{display : "flex"}}>
+              {/* <div>
+              <span style={{display : "flex"}}>
                   {
                     Number(discount) ? (
                     <div>
@@ -316,8 +275,8 @@ const sabtHandler = () => {
                     </div>
                     ) : <span id="price">{price} <span id="rial">هزارتومان</span></span>
                   }
-              </span> */}
-              </div>
+              </span>
+              </div> */}
 
               {/* test */}
             </div>

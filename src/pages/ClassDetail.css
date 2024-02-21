@@ -44,6 +44,7 @@
   padding-left: 4%;
   text-align: justify;
   text-justify: inter-word;
+  margin-bottom: 2rem;
 }
 .info1 h3 , .info2 h3, .info3 h3, .info4 h3 {
   color: var(--Gray-800);
