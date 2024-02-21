@@ -23,10 +23,10 @@ export default function ClassCard({id, title , teacherFirstName, teacherLastName
         </div>
     </div>
     
-    <div className='priceContainer'>
+    {/* <div className='priceContainer'>
         <span>{usePersianNumber(price)}</span>
         <span>هزارتومان</span>
-    </div>
+    </div> */}
     </div>
   )
 }

@@ -130,44 +130,6 @@ export default function ClassDetail() {
     language
   } = dataCard;
 
-  console.log(    title_description4 ,
-    title_description5 ,
-    title_description6 ,
-    title_description7 ,
-    title_description8 ,
-    title_description9 ,
-    title_description10 ,
-    title_description11,
-    title_description12 ,
-    title_description13 ,
-    title_description14 ,
-    title_description15 ,
-    title_description16 ,
-    title_description17 ,
-    title_description18 ,
-    title_description19 ,
-    title_description20 ,
-    title_description21 ,
-    title_description22,
-    title_description23,
-    title_description24,
-    title_description25,
-    title_description26,
-    title_description27,
-    title_description28,
-    title_description29,
-    title_description30,
-    title_description31,
-    title_description32,
-    title_description33,
-    title_description34,
-    title_description35,
-    title_description36,
-    title_description37,
-    title_description38,
-    title_description39,
-    title_description40,);
-
   const newImage = image?.split('/').splice(1).join('/');
 
   const [timerDays , setTimerDays] = useState("00");
@@ -322,6 +284,7 @@ const sabtHandler = () => {
             <h3>توضیحات</h3>
             <br />
             <p>{description1}</p>
+            <br /><br />
           </div>
           
       </div>
