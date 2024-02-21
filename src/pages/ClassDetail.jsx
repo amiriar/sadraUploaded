@@ -10,7 +10,7 @@ import VideoPlayer from '../components/modules/VideoPlayer';
 import usePersianNumber from '../helper/PersianNumbers';
 import EventDetailTeacherCard from '../components/modules/EventDetailModule/EventDetailTeacherCard';
 // Icons
-import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronLeft, FaEllipsisH } from "react-icons/fa";
 import { Accordion, AccordionDetails, AccordionSummary, Button, Typography } from '@mui/material';
 import { color } from '@mui/system';
 import { CiCalendarDate } from "react-icons/ci";
@@ -206,45 +206,61 @@ const sabtHandler = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography fontFamily={"Yekan , sans-serif"} >
-                    {
-                      headers?.split(",").map((item) => (
-                        <div className='overViewBox1'>
-                        <FaCheck style={{width : 20 , height : 20 , marginLeft : 5}} />
+                  {
+                    headers?.split(",").slice(0, 100).map((item, index) => (
+                      <div className='overViewBox1' key={index}>
+                        <FaCheck style={{ width: 20, height: 20, marginLeft: 5 }} />
                         <li>{item}</li>
-                        </div>
-                      ))
-                    }
+                      </div>
+                    ))
+                  }
+                  {
+                    headers?.split(",").length > 100 && (
+                      <div className='overViewBox1'>
+                        <h3 style={{marginRight:"25px"}}>و ده ها سرفصل دیگر...</h3>
+                      </div>
+                    )
+                  }
                   </Typography>
                 </AccordionDetails>
             </Accordion>
           </div>
 
-          {/* <div className='info1'>
-            <h3>{title_description1}</h3>
-            <p>{description1}</p>
-          </div>
-          <div className='info2'>
-            <h3>{title_description2}</h3>
-            <p>{description2}</p>
-          </div>
-          <div className='info3'>
-            <h3>{title_description3}</h3>
-            <p>{description3}</p>
-          </div>
-          <div className='info4'>
-            <h3>{title_description4}</h3>
-            <p>{description4}</p>
-          </div> */}
           {
-            description1 !== "" ?
-              <div className='info1'>
-                <h3>توضیحات تکمیلی</h3>
-                <br />
-                <p>{description1}</p>
-              </div>
-              :
-              ""
+            description1 !== "" &&
+            <div className='info1'>
+              <h3>توضیحات تکمیلی</h3>
+              <br />
+              {description1?.split('^').map((item, index) => (
+                <p key={index}>{item}</p>
+              ))}
+            </div>
           }
+          {
+            description2 !== "" &&
+            <div className='info2'>
+              {description2?.split('^').map((item, index) => (
+                <p key={index}>{item}</p>
+              ))}
+            </div>
+          }
+          {
+            description3 !== "" &&
+            <div className='info3'>
+              {description3?.split('^').map((item, index) => (
+                <p key={index}>{item}</p>
+              ))}
+            </div>
+          }
+          {
+            description4 !== "" &&
+            <div className='info4'>
+              {description4?.split('^').map((item, index) => (
+                <p key={index}>{item}</p>
+              ))}
+            </div>
+          }
+
           
       </div>
         {/* Card */}
