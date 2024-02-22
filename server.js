@@ -818,8 +818,19 @@ app.post('/upload/multiple/3', upload.array('files', 3), (req, res) => {
 app.post('/search', async (req, res) => {
     const { value21 ,option21 } = req.body;
     try {
+        const query = await db.query(`SELECT * FROM ${option21} WHERE title LIKE '%${value21}%';`)
+        res.json({ statusCode: 200, data: query}).status(200);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        res.status(500).json({ error: 'Internal Server Error ' });
+    }
+});
+
+app.post('/search/categories', async (req, res) => {
+    const { text } = req.body;
+    try {
         // const query = await db.query(`SELECT * FROM ${option21} WHERE title LIKE '%${value21}%';`)
-        const query = await db.query(`SELECT * FROM events WHERE title LIKE '%طراحی%';`)
+        const query = await db.query(`SELECT * FROM classes WHERE category = '';`)
         res.json({ statusCode: 200, data: query}).status(200);
     } catch (error) {
         console.error('Error fetching data:', error);

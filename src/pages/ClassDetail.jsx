@@ -268,9 +268,8 @@ const sabtHandler = () => {
           <div className='CardDetail'>
               <img src={`/${newImage}`} alt={title} />
             <div className='topCard'>
-              <p>{teacherFirstName} {teacherLastName}</p>
+              <p>استاد دوره: آقا/خانم {teacherFirstName} {teacherLastName}</p>
               {/* <span id='price'><span>{price}</span><span>هزار تومان</span></span> */}
-              {/* test */}
       
               {/* <div>
               <span style={{display : "flex"}}>

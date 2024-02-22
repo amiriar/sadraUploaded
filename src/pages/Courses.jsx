@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState , useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // Components
 import SearchBox from '../components/modules/SearchBox'
 import ClassCard from '../components/modules/classes/ClassCard';
@@ -44,7 +44,7 @@ import Button from '@mui/material/Button';
 import axios from 'axios';
 
 
-function Classes() {
+function Courses() {
 
     const [popularEvent , setPopularEvent] = useState([
         {
@@ -117,11 +117,6 @@ function Classes() {
         };
         
         fetchData3();
-    }
-
-    const navigate = useNavigate()
-    const allHandler = () => {
-        navigate("/courses")
     }
 
     return (
@@ -237,38 +232,22 @@ function Classes() {
 
             <div className='classBody'>
                 <div className='classBodyTitle'>
-                    <h2>دوره های پیشنهادی</h2>
-                    <span onClick={allHandler} style={{cursor:"pointer"}}>نمایش همه <FaLongArrowAltLeft/> </span>
+                    <h2>دوره های اخیر..</h2>
+                    <span> </span>
                 </div>
 
                 <div className='CardBoxContainer'>
                     {
-                    data.slice(0 , 7).map((item)=> (
-                        <Link key={item.id} to={`/classes/${item.id}`}><ClassCard key={item.id} {...item} /></Link>
-                    ))
+                        data.map((item)=> (
+                            <Link key={item.id} to={`/classes/${item.id}`}><ClassCard key={item.id} {...item} /></Link>
+                        ))
                     }
                 </div>
 
-            </div>
-
-            <div className='event_container' dir='ltr'>
-                <div className='event_icons'>
-                <button><p><FaLongArrowAltLeft style={{margin : 12}} /><Link to="/events" style={{fontFamily:"Yekan, sans-serif"}}>رویدادهای بیشتر</Link></p></button>
-                <h2>رویدادهای آینده</h2>
-                </div>
-                <div className='event_card_data' dir='rtl'>
-                {
-                window.innerWidth >= 1920 ? future.slice(0 , 4).map((item) => (
-                <Link key={item.id} to={`/events/${item.id}`} ><EventCard key={item.id} {...item} /></Link>
-                )) : window.innerWidth <= 1440 && future.slice(0 , 3).map((item) => (
-                <Link key={item.id} to={`/events/${item.id}`} ><EventCard key={item.id} {...item} /></Link>
-                ))
-                }
-                </div>
             </div>
 
         </div>
     )
 }
 
-export default Classes
+export default Courses

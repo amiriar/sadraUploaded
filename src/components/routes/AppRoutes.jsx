@@ -28,6 +28,7 @@ import SuccessList from '../dashboard/admin/SuccessList';
 import PageNotFound from '../../pages/404';
 import Search from '../../pages/Search';
 import Tags from '../../pages/Tags';
+import Courses from '../../pages/Courses';
 const AppRoutes = () => {
     return (
         <>
@@ -40,6 +41,7 @@ const AppRoutes = () => {
                 <Route path='/events/:id' element={<EventDetail/>} />
                 <Route path="/classes" element={<Classes />} />
                 <Route path="/classes/:id" element={<ClassDetail />} />
+                <Route path="/courses" element={<Courses />} />
                 <Route path="/success" element={<StudentSuccess />} />
                 <Route path="/student/:name" element={<StudentDetail />} />
                 <Route path="/employment" element={<Employment/>} />
