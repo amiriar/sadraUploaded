@@ -152,7 +152,7 @@ function Classes() {
                             ))
                         } */}
 
-                        <Accordion sx={{width : 300 , paddingTop :  0 , backgroundColor : "#252525" , }}>
+                        <Accordion sx={{width : 300 , paddingTop :  0 , backgroundColor : "#2e2e2e" , }}>
                         <AccordionSummary
                         expandIcon={<IoLanguage style={{color : "white" , width : 40}} />}
                         aria-controls="panel1-content"
@@ -181,7 +181,7 @@ function Classes() {
                         
 
 
-                        <Accordion sx={{width : 300 , paddingTop :  0 , backgroundColor : "#252525" , }}>
+                        <Accordion sx={{width : 300 , paddingTop :  0 ,  backgroundColor : "#2e2e2e" , }}>
                         <AccordionSummary
                         expandIcon={<FaDatabase style={{color : "white" , width : 30}} />}
                         aria-controls="panel1-content"
@@ -206,7 +206,7 @@ function Classes() {
                         </Accordion>
 
 
-                        <Accordion sx={{width : 300 , paddingTop :  0 , backgroundColor : "#252525" , }}>
+                        <Accordion sx={{width : 300 , paddingTop :  0 , backgroundColor : "#2e2e2e" , }}>
                         <AccordionSummary
                         expandIcon={<IoShareSocial style={{color : "white" , width : 30}} />}
                         aria-controls="panel1-content"
