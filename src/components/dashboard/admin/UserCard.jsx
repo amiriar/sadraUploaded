@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { MdOutlineStackedBarChart } from 'react-icons/md'
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { Link, useNavigate } from 'react-router-dom'
@@ -22,13 +22,14 @@ function UserCard({user}) {
     const mobileSetting = ()=>{
         setSetting(e => !e);
         console.log(setting)
-      }
+    }
+    const newProf = user?.profile.split("/").splice(1).splice(1).join("/")
 
     return (
         <div className='CardBox' dir='rtl'>
             <div className='imgContainer'>
                 {
-                    user.role === "teacher" ? <img src={`/${user.profile}`} alt={'title'} /> : <img src={'../../../../assets/userPlaceHolder/userPlaceholder.jpg'} alt={user.id} />
+                    user.role === "teacher" ? <img src={`/${newProf}`} alt={'title'} /> : <img src={'../../../../assets/userPlaceHolder/userPlaceholder.jpg'} alt={user.id} />
                 }
                 <div className='cardInfo'>
                     <h2>{user.name} {user.lastName}</h2>
@@ -54,7 +55,7 @@ function UserCard({user}) {
                         <ul className='dashboardList'>
                         {
                             adminCategories.map((item) => (
-                                <li><Link key={item.title} to={item.link}>{item.title}</Link></li>
+                                <li key={item.title}><Link to={item.link}>{item.title}</Link></li>
                             ))
                         }
                         </ul>

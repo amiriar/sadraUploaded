@@ -93,7 +93,7 @@ function UsersList() {
                         <ul className='dashboardList'>
                         {
                             adminCategories.map((item) => (
-                                <li><Link key={item.title} to={item.link}>{item.title}</Link></li>
+                                <li key={item.title}><Link to={item.link}>{item.title}</Link></li>
                             ))
                         }
                         </ul>

@@ -98,7 +98,7 @@ export default function ClassDetail() {
   } = dataCard;
 
 
-  const newImage = image?.split('/').splice(1).join('/');
+  const newImage = image?.split('/').splice(1).splice(1).join('/');
 
   const [timerDays , setTimerDays] = useState("00");
   const [timerHours , settimerHours] = useState("00");

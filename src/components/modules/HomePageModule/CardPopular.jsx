@@ -59,13 +59,13 @@ const CardPopular = ({ thumbnail, teacher, rate, price, time, level , lessons , 
     <Divider />
     <CardActions>
       <IconButton aria-label="time">
-        <CiClock2 /> <Typography fontFamily={'Yekan,sans-serif'} sx={{fontSize : 14}}> <p>{usePersianNumber(time)} دقیقه </p></Typography>
+        <CiClock2 /> <Typography fontFamily={'Yekan,sans-serif'}  sx={{fontSize : 14}}> {usePersianNumber(time)} دقیقه</Typography>
       </IconButton>
       <IconButton aria-label="lessons">
-        <GoStack style={{padding : 1}} /> <Typography fontFamily={'Yekan,sans-serif'} sx={{fontSize : 14}} ><p> <span>درس</span> {usePersianNumber(lessons)}</p></Typography>
+        <GoStack style={{padding : 1}} /> <Typography fontFamily={'Yekan,sans-serif'} sx={{fontSize : 14}} > <span>درس</span> {usePersianNumber(lessons)}</Typography>
       </IconButton>
       <IconButton aria-label="level">
-        <MdOutlineStackedBarChart  /> <Typography fontFamily={'Yekan,sans-serif'} sx={{fontSize : 14}} ><p> <span>سطح</span> {level}</p></Typography>
+        <MdOutlineStackedBarChart  /> <Typography fontFamily={'Yekan,sans-serif'} sx={{fontSize : 14}} > <span>سطح</span> {level}</Typography>
       </IconButton>
     </CardActions>
   </Card>

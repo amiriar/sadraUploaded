@@ -4,7 +4,7 @@ import { useDropzone } from 'react-dropzone';
 import InputContact from '../../modules/input/InputContact';
 import { ToastContainer } from 'react-toastify';
 import { showToast } from '../../modules/AuthModules/Toastify';
-import { Divider } from '@mui/material';
+import { Divider, FormControl, MenuItem, Select } from '@mui/material';
 
 import Drawer from '@mui/material/Drawer';
 import { IoPerson } from "react-icons/io5";
@@ -26,7 +26,7 @@ function NewClass() {
     
     const [title, setTitle] = useState(''); //1
     const [teacher, setTeacher] = useState(''); //2
-    const [level, setLevel] = useState(''); //3
+    const [level, setLevel] = useState('آسان'); //3
     const [lessons, setLessons] = useState(''); //4
     const [time, setTime] = useState(''); //5
     const [price, setPrice] = useState(''); //6
@@ -65,10 +65,12 @@ function NewClass() {
     const [authorName, setAuthorName] = useState('');
     const [authorLastName, setAuthorLastName] = useState('');
 
+    const [headers, setHeaders] = useState('');
+
     const [setting , setSetting] = useState(false)
     const mobileSetting = ()=>{
         setSetting(e => !e);
-      }
+    }
     
     useEffect(() => {
         const fetchData = async () => {
@@ -106,114 +108,88 @@ function NewClass() {
         setFileName(file.name);
     };
     
-    const onDropImage2 = (acceptedFiles) => {
-        const file = acceptedFiles[0];
-        setImageData2(file);
-        setFileName2(file.name);
-    };
+    // const onDropImage2 = (acceptedFiles) => {
+    //     const file = acceptedFiles[0];
+    //     setImageData2(file);
+    //     setFileName2(file.name);
+    // };
     
     
     const { getRootProps: getRootPropsImage1, getInputProps: getInputPropsImage1 } = useDropzone({ onDrop: onDropImage1 });
-    const { getRootProps: getRootPropsImage2, getInputProps: getInputPropsImage2 } = useDropzone({ onDrop: onDropImage2 });
-    const { getRootProps: getRootPropsImage3, getInputProps: getInputPropsImage3 } = useDropzone({
-        accept: 'video/*',
-        maxFiles: 1,
-        maxSize: 10485760, // 10MB in bytes
-        onDrop: (acceptedFiles) => {
-            if (acceptedFiles && acceptedFiles.length > 0) {
-                const selectedVideo = acceptedFiles[0];
-                setVideo(selectedVideo);
-                setFileName3(selectedVideo.name || 'Untitled Video');
-            } else {
-                console.error('No video file selected');
-            }
-        }
-    });
+    // const { getRootProps: getRootPropsImage2, getInputProps: getInputPropsImage2 } = useDropzone({ onDrop: onDropImage2 });
+    // const { getRootProps: getRootPropsImage3, getInputProps: getInputPropsImage3 } = useDropzone({
+    //     accept: 'video/*',
+    //     maxFiles: 1,
+    //     maxSize: 10485760, // 10MB in bytes
+    //     onDrop: (acceptedFiles) => {
+    //         if (acceptedFiles && acceptedFiles.length > 0) {
+    //             const selectedVideo = acceptedFiles[0];
+    //             setVideo(selectedVideo);
+    //             setFileName3(selectedVideo.name || 'Untitled Video');
+    //         } else {
+    //             console.error('No video file selected');
+    //         }
+    //     }
+    // });
     
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         
             try {
-            // Check if images and video are selected
-            if (!imageData || !imageData2) {
+            if (!imageData) {
                 showToast('لطفاً یک تصویر را انتخاب کنید.', 'error');
                 return;
             }
-            if (!video) {
-                showToast('ویدیویی انتخاب نشده است!', 'error');
-                return;
-            }
-        
-          // Create an array of promises for image uploads
-            const imageUploadPromises = [imageData, imageData2].map((imageData) => {
             const formData = new FormData();
-            formData.append('files', imageData);
-            return axios.post('https://backend.sadra-edu.com/upload/multiple/2', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
+            formData.append('imageData', imageData);
+            
+            try {
+                const response2 = await axios.post('https://backend.sadra-edu.com/upload/single/img', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
                 });
-            });
-        
-            // Wait for all image uploads to complete
-            const imageUploadResponses = await Promise.all(imageUploadPromises);
-        
-            // Process image upload responses
-            const imagePath1 = imageUploadResponses[0].data.paths[0].split('\\').join('/');
-            const imagePath2 = imageUploadResponses[1].data.paths[0].split('\\').join('/');
-        
-            // Set image paths in state
-            setImagePath(imagePath1);
-            setImagePath2(imagePath2);
-        
-          // Upload video
-            const formData2 = new FormData();
-            formData2.append('videoData', video);
+                setImagePath(response2.data.path);
+                const response = await axios.post('https://backend.sadra-edu.com/dashboard/classes/add', {
+                    title: title,
+                    teacherFirstName: authorName,
+                    teacherLastName: authorLastName,
+                    level: level,
+                    lessons: lessons,
+                    price: price,
+                    image: imagePath,
+                    time: time,
+                    discount: discount,
+                    Detail_Head_Title: shortName,
+                    detailSubtitle: subtitle,
+                    date: date,
+                    place: place,
+                    quantity: quantity,
+                    language: language,
+                    title_description1: qeustion1,
+                    description1: answer1,
+                    title_description2: qeustion2,
+                    description2: answer2,
+                    title_description3: qeustion3,
+                    description3: answer3,
+                    title_description4: qeustion4,
+                    description4: answer4,
+                    headers: headers,
+                    // videoSrc: videoPath3,
+                    // thumbnail: imagePath2,
+                });
+                console.log(response);
+            } catch (error) {
+                // Handle errors that occur during the request
+                console.error('Error occurred during request:', error);
+                // Optionally, you can also handle specific error responses from the server
+                if (error.response) {
+                    console.error('Server responded with status:', error.response.status);
+                    console.error('Response data:', error.response.data);
+                }
+            }
 
-        const videoUploadResponse = await axios.post('https://backend.sadra-edu.com/upload/video', formData2, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
-        });
-    
-          // Set video path in state
-        const videoPath3 = videoUploadResponse.data.path.split('\\').join('/');
-        setVideoPath3(videoPath3);
-
-        console.log(videoPath3);
-        console.log('all:'+
-        title, teacher, level, lessons, time, price, discount, shortName, subtitle, date, place, quantity, language, qeustion1, answer1, qeustion2, answer2, qeustion3, answer3, qeustion4, answer4, fileName2, authorName, authorLastName
-);
-    
-        //   Make the final Axios call
-        const response = await axios.post('https://backend.sadra-edu.com/dashboard/classes/add', {
-            title: title,
-            teacherFirstName: authorName,
-            teacherLastName: authorLastName,
-            level: level,
-            lessons: lessons,
-            price: price,
-            image: imagePath,
-            time: time,
-            discount: discount,
-            Detail_Head_Title: shortName,
-            detailSubtitle: subtitle,
-            date: date,
-            place: place,
-            quantity: quantity,
-            language: language,
-            title_description1: qeustion1,
-            description1: answer1,
-            title_description2: qeustion2,
-            description2: answer2,
-            title_description3: qeustion3,
-            description3: answer3,
-            title_description4: qeustion4,
-            description4: answer4,
-            videoSrc: videoPath3,
-            thumbnail: imagePath2,
-        });
             showToast('اطلاعات با موفقیت آپلود شد.', 'success');
             showToast('بلاگ جدید با موفقیت ثبت شد!', 'success');
         } catch (error) {
@@ -222,9 +198,17 @@ function NewClass() {
         }
     }
 
+    const handleSelectChange = (event) => {
+        setLevel(event.target.value);
+    };
+
+    const handleSelectChangeLang = (event) => {
+        setLanguage(event.target.value);
+    };
+
     return (
         <form onSubmit={handleSubmit} encType='multipart/form-data' className='newBlogForm'>
-            <InputContact id={'title'} setVariable={setTitle} variable={title} title={'عنوان رویداد'} type={'text'} width={'100%'} />
+            <InputContact id={'title'} setVariable={setTitle} variable={title} title={'عنوان کلاس یا دوره'} type={'text'} width={'100%'} />
             {
                 userRole === 'admin' ?
                 <>
@@ -234,7 +218,22 @@ function NewClass() {
                 :
                 <InputContact id={'teacher'} disabled={userRole === 'teacher' ? true : false} setVariable={setTeacher} subtitle={"درصورت نداشتن دسترسی در تغییر، به این معنا است که نام از قبل وارد شده است."}  variable={teacher} title={'استاد دوره'} type={'text'} width={'100%'} />
             }
-            <InputContact id={'level'} setVariable={setLevel} variable={level} subTitle={"سخت، متوسط، آسان"} title={'سطح دشواری'} type={'text'} width={'100%'} />
+            <FormControl variant="outlined">
+                <p>سطح دشواری</p>
+                <Select
+                    id="education"
+                    sx={{ position: 'relative', fontFamily: 'Yekan, sans-serif', marginTop:"0.6rem" }}
+                    onChange={handleSelectChange}
+                    required
+                >
+                    <MenuItem value="آسان" 
+                    sx={{fontFamily:"Yekan,sans-serif"}}>
+                    آسان
+                    </MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="متوسط">متوسط</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="سخت">سخت</MenuItem>
+                </Select>
+            </FormControl>
             <InputContact id={'lessons'} setVariable={setLessons} variable={lessons} title={'تعداد دروس'} type={'number'} width={'100%'} />
             <InputContact id={'time'} setVariable={setTime} variable={time} subTitle={"واحد ساعت، مانند 40"} title={'مدت زمان دوره'} type={'number'} width={'100%'} />
             <InputContact id={'price'} setVariable={setPrice} variable={price} subTitle={"براساس واحد تومان، مانند 150000"} title={'قیمت'} type={'number'} width={'100%'} />
@@ -252,19 +251,37 @@ function NewClass() {
 
             <InputContact id={'discount'} setVariable={setDiscount} variable={discount} subTitle={"بر اساس درصد"} title={'تخفیف'} type={'text'} width={'100%'} />
             <InputContact id={'headSubTitle'} setVariable={setShortName} variable={shortName} subTitle={"مانند طراحی قالب یا..."} title={'نام کوتاه رویداد'} type={'text'} width={'100%'} />
-            <InputContact id={'detailSubtitle'} setVariable={setSubTitle} variable={subtitle} title={'اطلاعات کوتاه رویداد'} type={'text'} width={'100%'} />
+            <InputContact id={'detailSubtitle'} setVariable={setSubTitle} variable={subtitle} title={'اطلاعات کوتاه رویداد'} subTitle={"مانند: دوره ی طراحی وب دوره ای مهم در ..."} type={'text'} width={'100%'} />
             <InputContact id={'date'} setVariable={setDate} variable={date} subTitle={"سال ماه روز برای مثال : 2024 10 5"} title={'تاریخ'} type={'text'} width={'100%'} />
             <InputContact id={'place'} setVariable={setPlace} variable={place} subTitle={"تهران یا.."} title={'محل برگزاری'} type={'text'} width={'100%'} />
             {/* <InputContact id={'quantity'} setVariable={setQuantity} variable={quantity} title={'تعداد دروس'} type={'number'} width={'100%'} /> */}
-            <InputContact id={'language'} setVariable={setLanguage} variable={language} subTitle={"فارسی، انگلیسی و..."} title={'زبان'} type={'text'} width={'100%'} />
+            {/* <InputContact id={'language'} setVariable={setLanguage} variable={language} subTitle={"فارسی، انگلیسی و..."} title={'زبان'} type={'text'} width={'100%'} /> */}
+            <FormControl variant="outlined">
+                <p>زبان</p>
+                <Select
+                    id="education"
+                    sx={{ position: 'relative', fontFamily: 'Yekan, sans-serif', marginTop:"0.6rem" }}
+                    onChange={handleSelectChangeLang}
+                    required
+                >
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="فارسی">فارسی</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="عربی">عربی</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="انگلیسی">انگلیسی</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="ترکی">ترکی</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="روسی">روسی</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="المانی">المانی</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="اسپانیا">اسپانیا</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="فرانسه">فرانسه</MenuItem>
+                </Select>
+            </FormControl>
 
             <Divider/>
-            <h3>سوال ها</h3>
+            <h3>چه چیز هایی یاد میگیریم؟</h3>
             <div style={{display:"flex", flexDirection:"column", gap:"0.6rem"}}>
                 <label htmlFor='question1' style={{cursor:"pointer"}}>عنوان شماره 1 <span style={{color:"#667085", cursor:"text"}}>( مانند تحقیقات مبانی و طراحی UX )</span></label>
                 <InputContact id={'question1'} setVariable={setQeustion1} variable={qeustion1} type={'text'} width={'100%'} />
             </div>
-            <div style={{display:"flex", flexDirection:"column", gap:"0.6rem"}}>
+            {/* <div style={{display:"flex", flexDirection:"column", gap:"0.6rem"}}>
                 <label htmlFor='answer1' style={{cursor:"pointer"}}>توضیحات شماره 1</label>
                 <textarea cols="30" rows="5" 
                     id='answer1'
@@ -273,13 +290,13 @@ function NewClass() {
                     onChange={(e) => setAnswer1(e.target.value)}
                 >
                 </textarea>
-            </div>
+            </div> */}
 
             <div style={{display:"flex", flexDirection:"column", gap:"0.6rem"}}>
                 <label htmlFor='question2' style={{cursor:"pointer"}}>عنوان شماره 2 <span style={{color:"#667085", cursor:"text"}}>( مانند مفهوم نمونه سازی Low-Fidelity )</span></label>
                 <InputContact id={'question2'} setVariable={setQeustion2} variable={qeustion2} type={'text'} width={'100%'} />
             </div>
-            <div style={{display:"flex", flexDirection:"column", gap:"0.6rem"}}>
+            {/* <div style={{display:"flex", flexDirection:"column", gap:"0.6rem"}}>
                 <label htmlFor='answer2' style={{cursor:"pointer"}}>توضیحات شماره 2</label>
                 <textarea cols="30" rows="5" 
                     id='answer2'
@@ -288,13 +305,13 @@ function NewClass() {
                     onChange={(e) => setAnswer2(e.target.value)}
                 >
                 </textarea>
-            </div>
+            </div> */}
 
             <div style={{display:"flex", flexDirection:"column", gap:"0.6rem"}}>
                 <label htmlFor='question3' style={{cursor:"pointer"}}>عنوان شماره 3 <span style={{color:"#667085", cursor:"text"}}>( مانند نمونه سازی High-Fidelity تا تجزیه و تحلیل Post-Launch )</span></label>
                 <InputContact id={'question3'} setVariable={setQeustion3} variable={qeustion3} type={'text'} width={'100%'} />
             </div>
-            <div style={{display:"flex", flexDirection:"column", gap:"0.6rem"}}>
+            {/* <div style={{display:"flex", flexDirection:"column", gap:"0.6rem"}}>
                 <label htmlFor='answer3' style={{cursor:"pointer"}}>توضیحات شماره 3</label>
                 <textarea cols="30" rows="5" 
                     id='answer3'
@@ -303,13 +320,13 @@ function NewClass() {
                     onChange={(e) => setAnswer3(e.target.value)}
                 >
                 </textarea>
-            </div>
+            </div> */}
 
             <div style={{display:"flex", flexDirection:"column", gap:"0.6rem"}}>
                 <label htmlFor='question4' style={{cursor:"pointer"}}>عنوان شماره 4 <span style={{color:"#667085", cursor:"text"}}>( مانند CAPSTONE - طراحی نمونه کاره )</span></label>
                 <InputContact id={'question4'} setVariable={setQeustion4} variable={qeustion4} type={'text'} width={'100%'} />
             </div>
-            <div style={{display:"flex", flexDirection:"column", gap:"0.6rem"}}>
+            {/* <div style={{display:"flex", flexDirection:"column", gap:"0.6rem"}}>
                 <label htmlFor='answer4' style={{cursor:"pointer"}}>توضیحات شماره 4</label>
                 <textarea cols="30" rows="5" 
                     id='answer4'
@@ -318,10 +335,10 @@ function NewClass() {
                     onChange={(e) => setAnswer4(e.target.value)}
                 >
                 </textarea>
-            </div>
-            <Divider/>
+            </div> */}
+            {/* <Divider/> */}
             {/* pic */}
-            <div>
+            {/* <div>
                 <p>فیلم معرفی</p>
                 <div {...getRootPropsImage3()} style={dropzoneStyle}>
                     <input {...getInputPropsImage3()} accept='video/*' />
@@ -352,8 +369,19 @@ function NewClass() {
                         </p>
                     )}
                 </div>
-            </div>
+            </div> */}
             {/* pic */}
+
+            <div style={{display:"flex", flexDirection:"column", gap:"0.6rem"}}>
+                <label htmlFor='headers' style={{cursor:"pointer"}}>سرفصل های دوره  <span style={{color:"#667085", cursor:"text"}}>( بعد از نوشتن هر سرفصل آن را با <span style={{fontSize:"2rem"}}>,</span> از هم جدا کنید )</span></label>
+                <textarea cols="30" rows="5" 
+                    id='headers'
+                    className='textArea'
+                    value={headers}
+                    onChange={(e) => setHeaders(e.target.value)}
+                >
+                </textarea>
+            </div>
 
             <button
                 className='login_Btn_No_Hid'
@@ -384,7 +412,7 @@ function NewClass() {
                         <ul className='dashboardList'>
                         {
                             categories.map((item) => (
-                                <li><Link key={item.title} to={item.link}>{item.title}</Link></li>
+                                <li key={item.title}><Link to={item.link}>{item.title}</Link></li>
                             ))
                         }
                         </ul>

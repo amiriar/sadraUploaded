@@ -26,7 +26,7 @@ function ClassList() {
     const [setting , setSetting] = useState(false)
     const mobileSetting = ()=>{
         setSetting(e => !e);
-      }
+    }
 
     useEffect(() => {
         axios.get('https://backend.sadra-edu.com/dashboard/token', { withCredentials: true })
@@ -107,7 +107,7 @@ function ClassList() {
                         <ul className='dashboardList'>
                         {
                             categories.map((item) => (
-                                <li><Link key={item.title} to={item.link}>{item.title}</Link></li>
+                                <li key={item.title}><Link to={item.link}>{item.title}</Link></li>
                             ))
                         }
                         </ul>

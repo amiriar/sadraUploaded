@@ -18,7 +18,6 @@ if (!fs.existsSync(uploadDir)) {
 }
 
 const app = express();
-app.use(cors());
 
 app.use(express.json())
 app.use(cookieParser());
@@ -624,8 +623,7 @@ app.post('/dashboard/classes/add', async (req, res) => {
         description3,
         title_description4,
         description4,
-        videoSrc,
-        thumbnail,
+        headers
     } = req.body;
 
     await db.query(`
@@ -654,8 +652,7 @@ app.post('/dashboard/classes/add', async (req, res) => {
         description3,
         title_description4,
         description4,
-        videoSrc,
-        thumbnail
+        headers
     )
     VALUES 
     (
@@ -682,8 +679,7 @@ app.post('/dashboard/classes/add', async (req, res) => {
         '${description3}', 
         '${title_description4}',
         '${description4}', 
-        '${videoSrc}', 
-        '${thumbnail}'
+        '${headers}'
     );    
     `);
     res.json({ statusCode: 200, message: 'کلاس جدید با موفقیت ثبت شد !'}).status(200);

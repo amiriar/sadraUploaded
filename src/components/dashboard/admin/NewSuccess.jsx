@@ -554,7 +554,7 @@ function NewSuccess() {
             <div style={{display:"flex",flexDirection:"column", gap:"1rem"}}>
                 <h2>حالت سوم، فقط ویدیو:</h2>
 
-                <InputContact id={'videoname'} setVariable={setVideoAuthorName} variable={videoAuthorName} title={'نام نویسنده'} type={'text'} width={'100%'} />
+                {/* <InputContact id={'videoname'} setVariable={setVideoAuthorName} variable={videoAuthorName} title={'نام نویسنده'} type={'text'} width={'100%'} />
                 <InputContact id={'videojob'} setVariable={setVideoJobTitle} variable={videoJobTitle} title={'شغل نویسنده'} type={'text'} width={'100%'} />
 
                 <p>فیلم معرفی</p>
@@ -592,7 +592,8 @@ function NewSuccess() {
                     style={{ width: 'fit-content', marginTop: '2rem', cursor: 'pointer' }}
                     type="button">
                         ثبت
-                </button>
+                </button> */}
+                <h2>این قسمت در حال ساخت میباشد.</h2>
             </div>
 
 

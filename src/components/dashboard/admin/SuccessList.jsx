@@ -90,7 +90,7 @@ function SuccessList() {
                                 {data?.map((item) => (
                                 <div key={item.id}>
                                     {item?.videoSrc ? (
-                                        <VideoComponent UrlAutorName={item.authorName} videoSrc={`/${item.videoSrc.split("/").splice(1).join('/')}`} videoTitle={item.videoTitle} videoJob={item.videoJob} videoThumbnail={`/${item.videoThumbnail.split("/").splice(1).join('/')}`} />
+                                        <VideoComponent UrlAutorName={item.authorName} videoSrc={`/${item.videoSrc.split("/").splice(1).splice(1).join('/')}`} videoTitle={item.videoTitle} videoJob={item.videoJob} videoThumbnail={`/${item.videoThumbnail.split("/").splice(1).join('/')}`} />
                                     ) : (
                                     <Paper
                                         spacing={2}
@@ -106,7 +106,7 @@ function SuccessList() {
                                         }}
                                     >
                                         <div style={{display:"flex", justifyContent:"right", marginBottom:"1rem",marginTop:"1rem", boxSizing:'border-box', cursor:"pointer"}} onClick={() => clickHandler({name: item.authorName})}>
-                                            <Avatar src={`/${item?.authorPicture?.split("/").splice(1).join('/')}`} alt={item.authorName} style={{ marginLeft: 15, objectFit:'cover',marginTop:5, height:"3.125rem",width:"3.125rem"}} />
+                                            <Avatar src={`/${item?.authorPicture?.split("/").splice(1).splice(1).join('/')}`} alt={item.authorName} style={{ marginLeft: 15, objectFit:'cover',marginTop:5, height:"3.125rem",width:"3.125rem"}} />
                                             <div style={{display:'flex', flexDirection:"column"}}>
                                                 <Typography fontFamily={'Yekan,sans-serif'} variant="h6">{item.authorName}</Typography>
                                                 <Typography fontFamily={'Yekan,sans-serif'} variant="subtitle1">{item.authorJob}</Typography>
@@ -115,7 +115,7 @@ function SuccessList() {
                                         <div style={{display:'flex', justifyContent:"center"}}>
                                             {
                                                 item.additionalPicture ? 
-                                                <img className='successMainImage' src={`/${item?.additionalPicture?.split("/").splice(1).join('/')}`} alt={item.additionalPicture.split("/").splice(1).join('/')} style={{borderRadius:"0.5rem",height:"500px", width:"95%", objectFit:"cover", objectPosition:"100% 50%", marginBottom:"1rem"}} />
+                                                <img className='successMainImage' src={`/${item?.additionalPicture?.split("/").splice(1).splice(1).join('/')}`} alt={item.additionalPicture.split("/").splice(1).join('/')} style={{borderRadius:"0.5rem",height:"500px", width:"95%", objectFit:"cover", objectPosition:"100% 50%", marginBottom:"1rem"}} />
                                                 : null
                                             }
                                         </div>

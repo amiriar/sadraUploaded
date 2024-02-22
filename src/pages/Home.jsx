@@ -198,7 +198,7 @@ const fetchData4 = async () => {
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         {commentData.map((item)=> (
           <SwiperSlide key={item.id}>
-            <p id='cardComment' style={{padding:"0rem 5rem", textAlign:"justify", textJustify:"inter-word"}}>{item.comment}</p>
+            <p id='cardComment' style={{padding:"0rem 3rem", textAlign:"justify", textJustify:"inter-word"}}>{item.comment}</p>
             <img src={item.profile} />
             <p id='cardName'>{item.name}</p>
             <p id='cardJob'>{item.job}</p>
@@ -293,7 +293,14 @@ const fetchData4 = async () => {
     {/* part Seven  */}
         <div className='event_container'>
               <div className='event_icons'>
-                <button><p><FaLongArrowAltLeft style={{margin : 12}} /><Link to="/events" style={{fontFamily:"Yekan, sans-serif"}}>رویدادهای بیشتر</Link></p></button>
+                <button>
+                  <p>
+                    <FaLongArrowAltLeft style={{margin : 12}} />
+                    <Link to="/events" style={{fontFamily:"Yekan, sans-serif"}}>
+                      رویدادهای بیشتر
+                    </Link>
+                  </p>
+                </button>
                 <h2>رویدادهای آینده</h2>
               </div>
               <div className='event_card_data' dir='rtl'>

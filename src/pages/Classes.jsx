@@ -106,7 +106,6 @@ function Classes() {
 
     const ListSearcher = async (e) => {
         let text = e.target.innerText;
-        console.log(text);
     
         try {
             let response;
@@ -230,12 +229,8 @@ function Classes() {
                             </div>
                         </AccordionDetails>
                         </Accordion>
-                        
-                        
 
                     </div>
-
-
 
                 </div>
             </div>

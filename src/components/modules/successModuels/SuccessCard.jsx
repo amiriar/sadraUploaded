@@ -2,6 +2,7 @@ import { Masonry } from '@mui/lab'
 import React from 'react'
 import VideoComponent from '../succes-modules/VideoComponent'
 import { Avatar, Divider, Paper, Typography } from '@mui/material'
+import usePersianNumber from '../../../helper/PersianNumbers'
 
 function SuccessCard({ data }) {
     return (
@@ -18,7 +19,7 @@ function SuccessCard({ data }) {
                 {data.map((item) => (
                 <div key={item.id}>
                     {item.videoSrc ? (
-                        <VideoComponent UrlAutorName={item.authorName} videoSrc={item.videoSrc.split("/").splice(1).join('/')} videoTitle={item.videoTitle} videoJob={item.videoJob} videoThumbnail={item.videoThumbnail} />
+                        <VideoComponent UrlAutorName={item.authorName} videoSrc={item.videoSrc.split("/").splice(1).splice(1).join('/')} videoTitle={item.videoTitle} videoJob={item.videoJob} videoThumbnail={item.videoThumbnail} />
                     ) : (
                     <Paper
                         spacing={2}
@@ -43,13 +44,13 @@ function SuccessCard({ data }) {
                         <div style={{display:'flex', justifyContent:"center"}}>
                             {
                                 item.additionalPicture ? 
-                                <img className='successMainImage' src={item.additionalPicture.split("/").splice(1).join('/')} alt={item.additionalPicture} style={{borderRadius:"0.5rem",height:"500px", width:"95%", objectFit:"cover", objectPosition:"100% 50%", marginBottom:"1rem"}} />
+                                <img className='successMainImage' src={item.additionalPicture.split("/").splice(1).splice(1).join('/')} alt={item.additionalPicture} style={{borderRadius:"0.5rem",height:"500px", width:"95%", objectFit:"cover", objectPosition:"100% 50%", marginBottom:"1rem"}} />
                                 : null
                             }
                         </div>
                         <Typography sx={{fontSize:"1rem", lineHeight:"1.4rem", marginBottom:"0.5rem"}} className='successPostDesc' variant="body2" fontFamily={'Yekan,sans-serif'}>{item.description}</Typography>
                         <Divider/>
-                        <Typography sx={{fontSize:"1rem", textalign:"left",marginTop:"0.75rem"}} className='successPostDesc' variant="body2" fontFamily={'Yekan,sans-serif'}>{item.date}</Typography>
+                        <Typography sx={{fontSize:"1rem", textalign:"left",marginTop:"0.75rem"}} className='successPostDesc' variant="body2" fontFamily={'Yekan,sans-serif'}>{usePersianNumber(item.date.split("-").join("/"))}</Typography>
                     </Paper>
                     )}
                 </div>
