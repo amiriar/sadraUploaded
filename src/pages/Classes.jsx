@@ -104,20 +104,25 @@ function Classes() {
     } , [])
 
 
-    const ListSearcher = (e)=> {
+    const ListSearcher = async (e) => {
         let text = e.target.innerText;
-
-        const fetchData3 = async () => {
-            try {
-                const response = await axios.post(`https://backend.sadra-edu.com/search/categories`, {text});
-                console.log(response.data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
+        console.log(text);
+    
+        try {
+            let response;
+            if (text === "انگلیسی" || text === "عربی" || text === "ترکی" || text === "روسی" || text === "فرانسه" || text === "اسپانیا" || text === "المانی" || text === "فارسی") {
+                response = await axios.post(`https://backend.sadra-edu.com/search/categories/lang`, { text });
+            } else {
+                response = await axios.post(`https://backend.sadra-edu.com/search/categories`, { text });
             }
-        };
-        
-        fetchData3();
-    }
+    
+            console.log(response.data.data[0]);
+            setData(response.data.data[0]);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+    
 
     const navigate = useNavigate()
     const allHandler = () => {
@@ -169,7 +174,7 @@ function Classes() {
                                     <li>فرانسه <span class="fi fi-fr"></span></li>
                                     <li>اسپانیا <span class="fi fi-es"></span></li>
                                     <li>المانی<span class="fi fi-de"></span></li>
-                                    
+                                    <li>فارسی<span class="fi fi-ir"></span></li>
                                 </ul>
                             </div>
                         </AccordionDetails>
@@ -243,7 +248,7 @@ function Classes() {
 
                 <div className='CardBoxContainer'>
                     {
-                    data.slice(0 , 7).map((item)=> (
+                    data?.slice(0 , 7).map((item)=> (
                         <Link key={item.id} to={`/classes/${item.id}`}><ClassCard key={item.id} {...item} /></Link>
                     ))
                     }
