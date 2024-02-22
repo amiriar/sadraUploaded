@@ -152,18 +152,18 @@ function Classes() {
                             ))
                         } */}
 
-                        <Accordion sx={{width : 250 , paddingTop :  0 , backgroundColor : "#252525" , }}>
+                        <Accordion sx={{width : 300 , paddingTop :  0 , backgroundColor : "#252525" , }}>
                         <AccordionSummary
                         expandIcon={<IoLanguage style={{color : "white" , width : 40}} />}
                         aria-controls="panel1-content"
                         id="panel1-header"
-                        sx={{fontSize : 19 , backgroundColor : "#393939" , paddingLeft : 10 , paddingRight : 10 , color : "white" ,  display : "flex" , alignItems : "center" , justifyContent : "center"}}
+                        sx={{fontSize : 19 , height : 70 , borderRadius : 2 , backgroundColor : "#2e2e2e" , paddingLeft : 10 , paddingRight : 10 , color : "white" ,  display : "flex" , alignItems : "center" , justifyContent : "center"}}
                         >
                         
                         {categories[0].categorie}
                         
                         </AccordionSummary>
-                        <AccordionDetails sx={{backgroundColor : "#393939" , color : "white"}}>
+                        <AccordionDetails sx={{backgroundColor : "#2e2e2e" , color : "white"}}>
                             <div className='BoxItems'>
                                 <ul className='unorderList' onClick={ListSearcher}>
                                     <li>انگلیسی <span class="fi fi-sh"></span></li> 
@@ -181,18 +181,18 @@ function Classes() {
                         
 
 
-                        <Accordion sx={{width : 250 , paddingTop :  0 , backgroundColor : "#252525" , }}>
+                        <Accordion sx={{width : 300 , paddingTop :  0 , backgroundColor : "#252525" , }}>
                         <AccordionSummary
                         expandIcon={<FaDatabase style={{color : "white" , width : 30}} />}
                         aria-controls="panel1-content"
                         id="panel1-header"
-                        sx={{fontSize : 19 , backgroundColor : "#393939" , paddingLeft : 5 , paddingRight : 5 , color : "white" ,  display : "flex" , alignItems : "center" , justifyContent : "center"}}
+                        sx={{fontSize : 19 , height : 70 , borderRadius : 2 , backgroundColor : "#2e2e2e" , paddingLeft : 5 , paddingRight : 5 , color : "white" ,  display : "flex" , alignItems : "center" , justifyContent : "center"}}
                         >
                         
                         {categories[1].categorie}
                         
                         </AccordionSummary>
-                        <AccordionDetails sx={{backgroundColor : "#393939" , color : "white"}}>
+                        <AccordionDetails sx={{backgroundColor : "#2e2e2e" , color : "white"}}>
                             <div className='BoxItems'>
                                 <ul className='unorderList' onClick={ListSearcher}>
                                     <li>شبکه <FaNetworkWired/></li>
@@ -206,18 +206,18 @@ function Classes() {
                         </Accordion>
 
 
-                        <Accordion sx={{width : 250 , paddingTop :  0 , backgroundColor : "#252525" , }}>
+                        <Accordion sx={{width : 300 , paddingTop :  0 , backgroundColor : "#252525" , }}>
                         <AccordionSummary
                         expandIcon={<IoShareSocial style={{color : "white" , width : 30}} />}
                         aria-controls="panel1-content"
                         id="panel1-header"
-                        sx={{fontSize : 19 , backgroundColor : "#393939" , paddingLeft : 5 , paddingRight : 5 , color : "white" ,  display : "flex" , alignItems : "center" , justifyContent : "center"}}
+                        sx={{fontSize : 19 , height : 70 , borderRadius : 2 , backgroundColor : "#2e2e2e" , paddingLeft : 5 , paddingRight : 5 , color : "white" ,  display : "flex" , alignItems : "center" , justifyContent : "center"}}
                         >
                         
                         {categories[2].categorie}
                         
                         </AccordionSummary>
-                        <AccordionDetails sx={{backgroundColor : "#393939" , color : "white"}}>
+                        <AccordionDetails sx={{backgroundColor : "#2e2e2e" , color : "white"}}>
                             <div className='BoxItems'>
                                 <ul className='unorderList' onClick={ListSearcher}>
                                     <li>طرحی و تدوین <SiAdobephotoshop/></li>
