@@ -383,6 +383,50 @@ function NewClass() {
                 </textarea>
             </div>
 
+            <div style={{display:"flex", flexDirection:"column", gap:"0.6rem"}}>
+                <label htmlFor='answer1' style={{cursor:"pointer"}}>توضیحات تکمیلی <span style={{color:"#667085", cursor:"text"}}>( برای رفتن به خط بعد از کارکتر ^ استفاده کنید. )</span></label>
+                <textarea cols="30" rows="5" 
+                    id='answer1'
+                    className='textArea'
+                    value={answer1}
+                    onChange={(e) => setAnswer1(e.target.value)}
+                >
+                </textarea>
+            </div>
+
+            <div style={{display:"flex", flexDirection:"column", gap:"0.6rem"}}>
+                <label htmlFor='answer2' style={{cursor:"pointer"}}>توضیحات اضافی <span style={{color:"#667085", cursor:"text"}}>( برای رفتن به خط بعد از کارکتر ^ استفاده کنید. )</span></label>
+                <textarea cols="30" rows="5" 
+                    id='answer2'
+                    className='textArea'
+                    value={answer2}
+                    onChange={(e) => setAnswer2(e.target.value)}
+                >
+                </textarea>
+            </div>
+
+            <div style={{display:"flex", flexDirection:"column", gap:"0.6rem"}}>
+                <label htmlFor='answer3' style={{cursor:"pointer"}}>توضیحات اضافی <span style={{color:"#667085", cursor:"text"}}>( برای رفتن به خط بعد از کارکتر ^ استفاده کنید. )</span></label>
+                <textarea cols="30" rows="5" 
+                    id='answer3'
+                    className='textArea'
+                    value={answer3}
+                    onChange={(e) => setAnswer3(e.target.value)}
+                >
+                </textarea>
+            </div>
+
+            <div style={{display:"flex", flexDirection:"column", gap:"0.6rem"}}>
+                <label htmlFor='answer4' style={{cursor:"pointer"}}>توضیحات اضافی <span style={{color:"#667085", cursor:"text"}}>( برای رفتن به خط بعد از کارکتر ^ استفاده کنید. )</span></label>
+                <textarea cols="30" rows="5" 
+                    id='answer4'
+                    className='textArea'
+                    value={answer4}
+                    onChange={(e) => setAnswer4(e.target.value)}
+                >
+                </textarea>
+            </div>
+
             <button
                 className='login_Btn_No_Hid'
                 onClick={handleSubmit}

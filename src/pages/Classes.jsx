@@ -229,9 +229,7 @@ function Classes() {
                             </div>
                         </AccordionDetails>
                         </Accordion>
-
                     </div>
-
                 </div>
             </div>
 
