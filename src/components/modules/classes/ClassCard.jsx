@@ -23,10 +23,22 @@ export default function ClassCard({id, title , teacherFirstName, teacherLastName
         </div>
     </div>
     
-    {/* <div className='priceContainer'>
-        <span>{usePersianNumber(price)}</span>
-        <span>هزارتومان</span>
-    </div> */}
+    <div className='priceContainer'>
+       
+        {
+          price === "0" || !price ? (
+            <span id='freePrice'>رایگان</span>
+          ) : (
+            <>
+            <span>{usePersianNumber(price)}</span>
+            <span>هزارتومان</span>
+            </>
+          )
+        }
+        {
+          console.log(price === "0")
+        }
+    </div>
     </div>
   )
 }
