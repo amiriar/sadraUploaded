@@ -245,6 +245,10 @@ function Classes() {
                         <Link key={item.id} to={`/classes/${item.id}`}><ClassCard key={item.id} {...item} /></Link>
                     ))
                     }
+                    
+                    {
+                        data.map((item)=> console.log(item.price))
+                    }
                 </div>
 
             </div>
