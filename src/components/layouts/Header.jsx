@@ -66,7 +66,7 @@ const Header = () => {
 
       <div className='logo_Container'>
           <Logo2 className="logo2" />
-          <Logo/>
+          <img className='logo' src={"/assets/logosadra.png"} />
       </div>
       </div>
     <SideBar setIsopen={setIsopen} isOpen={isOpen} />
