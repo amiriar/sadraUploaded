@@ -623,7 +623,8 @@ app.post('/dashboard/classes/add', async (req, res) => {
         description3,
         title_description4,
         description4,
-        headers
+        headers,
+        category
     } = req.body;
 
     await db.query(`
@@ -652,7 +653,8 @@ app.post('/dashboard/classes/add', async (req, res) => {
         description3,
         title_description4,
         description4,
-        headers
+        headers,
+        category
     )
     VALUES 
     (
@@ -679,7 +681,8 @@ app.post('/dashboard/classes/add', async (req, res) => {
         '${description3}', 
         '${title_description4}',
         '${description4}', 
-        '${headers}'
+        '${headers}',
+        '${category}'
     );    
     `);
     res.json({ statusCode: 200, message: 'کلاس جدید با موفقیت ثبت شد !'}).status(200);

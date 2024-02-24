@@ -67,6 +67,9 @@ function NewClass() {
 
     const [headers, setHeaders] = useState('');
 
+    const [category, setCategory] = useState('شبکه');
+
+
     const [setting , setSetting] = useState(false)
     const mobileSetting = ()=>{
         setSetting(e => !e);
@@ -176,6 +179,7 @@ function NewClass() {
                     title_description4: qeustion4,
                     description4: answer4,
                     headers: headers,
+                    category: category
                     // videoSrc: videoPath3,
                     // thumbnail: imagePath2,
                 });
@@ -204,6 +208,10 @@ function NewClass() {
 
     const handleSelectChangeLang = (event) => {
         setLanguage(event.target.value);
+    };
+
+    const handleSelectChangecategory = (event) => {
+        setCategory(event.target.value);
     };
 
     return (
@@ -252,6 +260,36 @@ function NewClass() {
             <InputContact id={'discount'} setVariable={setDiscount} variable={discount} subTitle={"بر اساس درصد"} title={'تخفیف'} type={'text'} width={'100%'} />
             <InputContact id={'headSubTitle'} setVariable={setShortName} variable={shortName} subTitle={"مانند طراحی قالب یا..."} title={'نام کوتاه رویداد'} type={'text'} width={'100%'} />
             <InputContact id={'detailSubtitle'} setVariable={setSubTitle} variable={subtitle} title={'اطلاعات کوتاه رویداد'} subTitle={"مانند: دوره ی طراحی وب دوره ای مهم در ..."} type={'text'} width={'100%'} />
+            <FormControl variant="outlined">
+                <p>دسته بندی</p>
+                <Select
+                    id="education"
+                    sx={{ position: 'relative', fontFamily: 'Yekan, sans-serif', marginTop:"0.6rem" }}
+                    onChange={handleSelectChangecategory}
+                    required
+                >
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="" disabled>زبان</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="فارسی">فارسی</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="عربی">عربی</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="انگلیسی">انگلیسی</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="ترکی">ترکی</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="روسی">روسی</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="المانی">المانی</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="اسپانیا">اسپانیا</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="فرانسه">فرانسه</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="" disabled>فناوری اطلاعات</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="امنیت">امنیت</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="برنامه نویسی">برنامه نویسی</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="مجازی سازی">مجازی سازی</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="زیرساخت">زیرساخت</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="" disabled>رسانه</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="طراحی و تدوین">طراحی و تدوین</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="سواد رسانه">سواد رسانه</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="تولید محتوی">تولید محتوی</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="نویسندگی">نویسندگی</MenuItem>
+                    <MenuItem sx={{fontFamily:"Yekan,sans-serif"}} value="شبکه اجتماعی">شبکه اجتماعی</MenuItem>
+                </Select>
+            </FormControl>
             <InputContact id={'date'} setVariable={setDate} variable={date} subTitle={"سال ماه روز برای مثال : 2024 10 5"} title={'تاریخ'} type={'text'} width={'100%'} />
             <InputContact id={'place'} setVariable={setPlace} variable={place} subTitle={"تهران یا.."} title={'محل برگزاری'} type={'text'} width={'100%'} />
             {/* <InputContact id={'quantity'} setVariable={setQuantity} variable={quantity} title={'تعداد دروس'} type={'number'} width={'100%'} /> */}

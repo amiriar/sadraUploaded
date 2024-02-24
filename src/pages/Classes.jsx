@@ -166,7 +166,7 @@ function Classes() {
                         <AccordionDetails sx={{backgroundColor : "#2e2e2e" , color : "white"}}>
                             <div className='BoxItems'>
                                 <ul className='unorderList' onClick={ListSearcher}>
-                                    <li>انگلیسی <span class="fi fi-sh"></span></li> 
+                                    <li>انگلیسی <span class="fi fi-gb"></span></li> 
                                     <li>عربی <span class="fi fi-ae"></span></li> 
                                     <li>ترکی <span class="fi fi-tr"></span></li> 
                                     <li>روسی <span class="fi fi-ru"></span></li> 
