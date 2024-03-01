@@ -40,34 +40,12 @@ const Home = () => {
 const [TabHeaders , setTabHeaders] = useState([
   {
     id : 1 ,
-    title : "طراحی UI/UX"
-  }
-  ,
+    title : "شبکه"
+  },
   {
     id : 2 ,
-    title : "طراحی گرافیک"
-  }
-  ,
-  {
-    id : 3 ,
-    title : "انیمیشن و 3D"
-  }
-  ,
-  {
-    id : 4 ,
-    title : "فرانت‌اند"
-  }
-  ,
-  {
-    id : 5 ,
-    title : "بک‌اند"
-  }
-  ,
-  {
-    id : 6 ,
-    title : "IOT"
-  }
-  
+    title : "برنامه نویسی"
+  }  
 ])
 
   const [value, setValue] = React.useState('1');
@@ -100,7 +78,7 @@ const [TabHeaders , setTabHeaders] = useState([
   };
   const fetchData3 = async () => {
     try {
-        const response = await fetch('https://backend.sadra-edu.com/HomePopularData/data');
+        const response = await fetch('https://backend.sadra-edu.com/classes/data');
         const jsonData = await response.json();
         setPopularEvents(jsonData);
     } catch (error) {
@@ -133,7 +111,7 @@ const fetchData4 = async () => {
       </div>
 
       <div className='BoxImage'>
-        <img src={"/assets/manLaptop.png"} />
+        <img src={"/assets/manLaptop.png"} alt='manlaptop' />
       </div>
     </div>
 
@@ -141,9 +119,9 @@ const fetchData4 = async () => {
     {/* <div className='Boxgraduate'>
       <p>فارغ التحصیلان دوره‌های ما، در  بهترین شرکت‌های کشور مشغول به کارند</p>
       <div className='BoxgraduateIcon'>
-        <img src="../../assets/logos/بانک مسکن سیاه.png" alt="aa" className='logoMainPage' />
-        <img src="../../assets/logos/بانک پارسیان سیاه.png" alt="aa" className='logoMainPage' />
-        <img src="../../assets/logos/بیمه ایران سیاه.png" alt="aa" className='logoMainPage' />
+        <img src="../../assets/logos/بانک مسکن سیاه.png" alt="a4" className='logoMainPage' />
+        <img src="../../assets/logos/بانک پارسیان سیاه.png" alt="a5" className='logoMainPage' />
+        <img src="../../assets/logos/بیمه ایران سیاه.png" alt="a6" className='logoMainPage' />
       </div>
     </div> */}
 
@@ -199,7 +177,7 @@ const fetchData4 = async () => {
         {commentData.map((item)=> (
           <SwiperSlide key={item.id}>
             <p id='cardComment' style={{padding:"0rem 3rem", textAlign:"justify", textJustify:"inter-word"}}>{item.comment}</p>
-            <img src={item.profile} />
+            <img src={item.profile} alt='prof' />
             <p id='cardName'>{item.name}</p>
             <p id='cardJob'>{item.job}</p>
           </SwiperSlide>
@@ -208,9 +186,9 @@ const fetchData4 = async () => {
   </div>
 
       <div className='contact_corporates'>
-        <img src="../../assets/logos/آب و فاضلاب استان تهران  سفید.png" alt="aa" className='logoMainPage' style={{height:"85px", width:"230px"}} />
-        <img src="../../assets/logos/موج پردازان البرز سفید.png" alt="aa" className='logoMainPage' style={{height:"85px", width:"230px"}} />
-        <img src="../../assets/logos/بیمه میهن سفید.png" alt="aa" className='logoMainPage' style={{height:"85px", width:"230px"}} />
+        <img src="../../assets/logos/آب و فاضلاب استان تهران  سفید.png" alt="a1" className='logoMainPage' style={{height:"85px", width:"230px"}} />
+        <img src="../../assets/logos/موج پردازان البرز سفید.png" alt="a2" className='logoMainPage' style={{height:"85px", width:"230px"}} />
+        <img src="../../assets/logos/بیمه میهن سفید.png" alt="a3" className='logoMainPage' style={{height:"85px", width:"230px"}} />
       </div>
     </div>
     {/* Part Five */}
@@ -248,7 +226,7 @@ const fetchData4 = async () => {
             <TabPanel key={Tab.id} value={Tab.id.toString()} >
             <div className='popCardEvent'>
               {
-                popularEvents.filter((item)=> item.category === Tab.title).map((item)=> (
+                popularEvents.filter((item)=> item.category === Tab.title).slice(0,3).map((item)=> (
                     <CardPopular key={item.id} {...item} />
                 ))
               }

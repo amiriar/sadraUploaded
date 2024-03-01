@@ -24,9 +24,6 @@ const Header = () => {
           const { id } = response.data;
           setUserId(id);
       })
-      .catch(error => {
-        console.error('please login first !');
-      });
   }, []); 
 
   const navigate = useNavigate()

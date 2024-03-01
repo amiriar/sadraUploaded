@@ -691,6 +691,11 @@
 
 /* Part Five */
 
+@media (max-width : 1185px) {
+    .popCardEvent{
+        gap: 2rem;
+    }
+}
 
 .popCardEvent{
     display: flex;

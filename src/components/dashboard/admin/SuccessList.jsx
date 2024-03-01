@@ -56,7 +56,6 @@ function SuccessList() {
     const [setting , setSetting] = useState(false)
     const mobileSetting = ()=>{
         setSetting(e => !e);
-        console.log(setting)
       }
 
     return (

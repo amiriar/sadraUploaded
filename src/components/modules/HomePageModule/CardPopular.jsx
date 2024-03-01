@@ -5,15 +5,21 @@ import { CiClock2 } from "react-icons/ci";
 import { GoStack } from "react-icons/go";
 import { MdOutlineStackedBarChart } from "react-icons/md";
 import usePersianNumber from '../../../helper/PersianNumbers';
-const CardPopular = ({ thumbnail, teacher, rate, price, time, level , lessons , title , discount}) => {
+import { useNavigate } from 'react-router-dom';
+const CardPopular = ({ image, id,	teacherFirstName, 	teacherLastName, rate, price, time, level , lessons , title , discount }) => {
+  const newImage = image?.split("/").splice(1).splice(1).join("/")
+  const  navigate = useNavigate()
+  const clickHandler = () => {
+    navigate(`/classes/${id}`)
+  }
   return (
-    <Card sx={{ maxWidth: 300 , minWidth : 300 , maxHeight : 412 , minHeight : 412 ,  borderRadius : 3.9 }}>
+    <Card sx={{ maxWidth: 300 , minWidth : 300 , maxHeight : 412 , minHeight : 412 ,  borderRadius : 3.9 , cursor:"pointer"}} onClick={clickHandler} >
     <CardMedia
         sx={{maxHeight : 170}}
         component="img"
         height="170"
-        image={thumbnail}
-        alt={teacher}
+        image={`/${newImage}`}
+        alt={title}
     />
     <CardContent>
     <Typography fontFamily={'Yekan,sans-serif'} gutterBottom variant="h5" component="div">
@@ -22,17 +28,17 @@ const CardPopular = ({ thumbnail, teacher, rate, price, time, level , lessons , 
     <div fontFamily={'Yekan,sans-serif'} style={{display : "flex" , alignItems : "center" , justifyContent : "space-between" , height : 112}}>
     <Typography fontFamily={'Yekan,sans-serif'} gutterBottom variant="h5" component="div">
     <span style={{display : "flex" , alignItems : "center" , justifyContent : "center"}} >
-    <p>استاد {teacher}</p>
+    <p>استاد {teacherFirstName} {teacherLastName}</p>
     </span>
     </Typography>
-    <Typography fontFamily={'Yekan,sans-serif'} sx={{display : "flex" , alignItems : "center" , justifyContent : "space-between"}} variant="body2" color="text.secondary">
+    {/* <Typography fontFamily={'Yekan,sans-serif'} sx={{display : "flex" , alignItems : "center" , justifyContent : "space-between"}} variant="body2" color="text.secondary">
         <FaStar style={{color : "gold" , margin : 5}} /> {rate}
-      </Typography>
+      </Typography> */}
       <Typography fontFamily={'Yekan,sans-serif'} variant="h6" component="div">
       <div>
         
       <span style={{display : "flex"}}>
-           {
+          {
             Number(discount) ? (
             <div>
             <span id="price">{price * (100 - Number(discount)) / 100 ? (
@@ -49,7 +55,7 @@ const CardPopular = ({ thumbnail, teacher, rate, price, time, level , lessons , 
                 )}</span>
             </div>
             ) : <span id="price">{usePersianNumber(price)} <span id="rial">هزارتومان</span></span>
-           }
+          }
       </span>
         
       </div>
@@ -59,7 +65,7 @@ const CardPopular = ({ thumbnail, teacher, rate, price, time, level , lessons , 
     <Divider />
     <CardActions>
       <IconButton aria-label="time">
-        <CiClock2 /> <Typography fontFamily={'Yekan,sans-serif'}  sx={{fontSize : 14}}> {usePersianNumber(time)} دقیقه</Typography>
+        <CiClock2 /> <Typography fontFamily={'Yekan,sans-serif'}  sx={{fontSize : 14}}> {usePersianNumber(time)} ساعت</Typography>
       </IconButton>
       <IconButton aria-label="lessons">
         <GoStack style={{padding : 1}} /> <Typography fontFamily={'Yekan,sans-serif'} sx={{fontSize : 14}} > <span>درس</span> {usePersianNumber(lessons)}</Typography>

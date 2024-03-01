@@ -21,7 +21,6 @@ function UserCard({user}) {
     const [setting , setSetting] = useState(false)
     const mobileSetting = ()=>{
         setSetting(e => !e);
-        console.log(setting)
     }
     const newProf = user?.profile.split("/").splice(1).splice(1).join("/")
 

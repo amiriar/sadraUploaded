@@ -42,7 +42,7 @@ function ContactUs() {
                             </span>
                             &nbsp;
                             &nbsp;
-                            <span>تهران، خیابان نواب، جنب بانک شهر، پلاک۶ ، طبقه دوم</span>
+                            <span>تهران، میدان توحید، خیابان فرصت شیرازی، بیم اسکندری و قریب، پلاک 103، طبقه چهارم، واحد12</span>
                         </div>
                         <div className='contactIconContainer'>
                             <span className='contactIcon'>
@@ -62,7 +62,7 @@ function ContactUs() {
                             &nbsp;
                             &nbsp;
                             &nbsp;
-                            <Link to={'tel:02144672237'} dir='ltr'>۰۲۱ - ۴۴۶۷۲۲۳۷</Link>
+                            <Link to={'tel:02166940883'} dir='ltr'>۰۲۱ - ۶۶۹۴۰۸۸۳</Link>
                         </div>
                         <div className='contactIconContainer'>
                             <span className='contactIcon'>

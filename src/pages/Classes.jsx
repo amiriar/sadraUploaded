@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useState , useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // Components
@@ -103,8 +103,13 @@ function Classes() {
     fetchData();
     } , [])
 
+    const classBodyRef = useRef(null); // Create a ref for classBody div
+
+
+
 
     const ListSearcher = async (e) => {
+        classBodyRef.current.scrollIntoView({ behavior: 'smooth' });
         let text = e.target.innerText;
     
         try {
@@ -114,8 +119,6 @@ function Classes() {
             } else {
                 response = await axios.post(`https://backend.sadra-edu.com/search/categories`, { text });
             }
-    
-            console.log(response.data.data[0]);
             setData(response.data.data[0]);
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -199,7 +202,7 @@ function Classes() {
                                     <li>امنیت <MdOutlineSecurity/></li>
                                     <li>برنامه نویسی <MdDeveloperMode/></li>
                                     <li>مجازی سازی <GrVirtualStorage/></li>
-                                    <li>زیرساخت <GiNetworkBars/></li>
+                                    {/* <li>زیرساخت <GiNetworkBars/></li> */}
                                 </ul>
                             </div>
                         </AccordionDetails>
@@ -220,7 +223,7 @@ function Classes() {
                         <AccordionDetails sx={{backgroundColor : "#2e2e2e" , color : "white"}}>
                             <div className='BoxItems'>
                                 <ul className='unorderList' onClick={ListSearcher}>
-                                    <li>طرحی و تدوین <SiAdobephotoshop/></li>
+                                    <li>طراحی و تدوین <SiAdobephotoshop/></li>
                                     <li>سواد رسانه <TbSocial/></li>
                                     <li>تولید محتوا <MdContentCopy/></li>
                                     <li>نویسندگی <IoIosCreate/></li>
@@ -233,7 +236,7 @@ function Classes() {
                 </div>
             </div>
 
-            <div className='classBody'>
+            <div className='classBody' ref={classBodyRef}>
                 <div className='classBodyTitle'>
                     <h2>دوره های پیشنهادی</h2>
                     <span onClick={allHandler} style={{cursor:"pointer"}}>نمایش همه <FaLongArrowAltLeft/> </span>
