@@ -103,7 +103,7 @@ function Classes() {
     fetchData();
     } , [])
 
-    const classBodyRef = useRef(null); // Create a ref for classBody div
+    const classBodyRef = useRef(null)
 
 
 
@@ -145,16 +145,6 @@ function Classes() {
                 <div className='Categories'>
                     <h2>دپارتمان ها</h2>
                     <div className='BoxContainer'>
-                        {/* {
-                            categories.map((item)=>(
-                                <div key={item.id} className='Box'  >
-
-                                    <span>{item.categorie}</span>
-                                    <span id='boxIdContainer'><item.iconName style={{width : 25 , height : 25}} /></span>
-                                </div>
-                            ))
-                        } */}
-
                         <Accordion sx={{width : 300 , paddingTop :  0 , backgroundColor : "#2e2e2e" , }}>
                         <AccordionSummary
                         expandIcon={<IoLanguage style={{color : "white" , width : 40}} />}
@@ -244,13 +234,9 @@ function Classes() {
 
                 <div className='CardBoxContainer'>
                     {
-                    data?.slice(0 , 7).map((item)=> (
-                        <Link key={item.id} to={`/classes/${item.id}`}><ClassCard key={item.id} {...item} /></Link>
-                    ))
-                    }
-                    
-                    {
-                        data.map((item)=> console.log(item.price))
+                        data?.slice(0 , 7).map((item)=> (
+                            item.isShown === 1 && <Link key={item.id} to={`/classes/${item.id}`}><ClassCard key={item.id} {...item} /></Link>
+                        ))
                     }
                 </div>
 

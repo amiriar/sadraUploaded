@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useState , useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // Components
 import SearchBox from '../components/modules/SearchBox'
 import ClassCard from '../components/modules/classes/ClassCard';
@@ -44,7 +44,7 @@ import Button from '@mui/material/Button';
 import axios from 'axios';
 
 
-function Courses() {
+function Classes() {
 
     const [popularEvent , setPopularEvent] = useState([
         {
@@ -103,8 +103,13 @@ function Courses() {
     fetchData();
     } , [])
 
+    const classBodyRef = useRef(null)
+
+
+
 
     const ListSearcher = async (e) => {
+        classBodyRef.current.scrollIntoView({ behavior: 'smooth' });
         let text = e.target.innerText;
     
         try {
@@ -114,13 +119,17 @@ function Courses() {
             } else {
                 response = await axios.post(`https://backend.sadra-edu.com/search/categories`, { text });
             }
-    
-            console.log(response.data.data[0]);
             setData(response.data.data[0]);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     };
+    
+
+    const navigate = useNavigate()
+    const allHandler = () => {
+        navigate("/courses")
+    }
 
     return (
         <div className='classContainer' dir='rtl'>
@@ -136,31 +145,21 @@ function Courses() {
                 <div className='Categories'>
                     <h2>دپارتمان ها</h2>
                     <div className='BoxContainer'>
-                        {/* {
-                            categories.map((item)=>(
-                                <div key={item.id} className='Box'  >
-
-                                    <span>{item.categorie}</span>
-                                    <span id='boxIdContainer'><item.iconName style={{width : 25 , height : 25}} /></span>
-                                </div>
-                            ))
-                        } */}
-
-                        <Accordion sx={{width : 250 , paddingTop :  0 , backgroundColor : "#252525" , }}>
+                        <Accordion sx={{width : 300 , paddingTop :  0 , backgroundColor : "#2e2e2e" , }}>
                         <AccordionSummary
                         expandIcon={<IoLanguage style={{color : "white" , width : 40}} />}
                         aria-controls="panel1-content"
                         id="panel1-header"
-                        sx={{fontSize : 19 , backgroundColor : "#393939" , paddingLeft : 10 , paddingRight : 10 , color : "white" ,  display : "flex" , alignItems : "center" , justifyContent : "center"}}
+                        sx={{fontSize : 19 , height : 70 , borderRadius : 2 , backgroundColor : "#2e2e2e" , paddingLeft : 10 , paddingRight : 10 , color : "white" ,  display : "flex" , alignItems : "center" , justifyContent : "center"}}
                         >
                         
                         {categories[0].categorie}
                         
                         </AccordionSummary>
-                        <AccordionDetails sx={{backgroundColor : "#393939" , color : "white"}}>
+                        <AccordionDetails sx={{backgroundColor : "#2e2e2e" , color : "white"}}>
                             <div className='BoxItems'>
                                 <ul className='unorderList' onClick={ListSearcher}>
-                                    <li>انگلیسی <span class="fi fi-sh"></span></li> 
+                                    <li>انگلیسی <span class="fi fi-gb"></span></li> 
                                     <li>عربی <span class="fi fi-ae"></span></li> 
                                     <li>ترکی <span class="fi fi-tr"></span></li> 
                                     <li>روسی <span class="fi fi-ru"></span></li> 
@@ -175,46 +174,46 @@ function Courses() {
                         
 
 
-                        <Accordion sx={{width : 250 , paddingTop :  0 , backgroundColor : "#252525" , }}>
+                        <Accordion sx={{width : 300 , paddingTop :  0 ,  backgroundColor : "#2e2e2e" , }}>
                         <AccordionSummary
                         expandIcon={<FaDatabase style={{color : "white" , width : 30}} />}
                         aria-controls="panel1-content"
                         id="panel1-header"
-                        sx={{fontSize : 19 , backgroundColor : "#393939" , paddingLeft : 5 , paddingRight : 5 , color : "white" ,  display : "flex" , alignItems : "center" , justifyContent : "center"}}
+                        sx={{fontSize : 19 , height : 70 , borderRadius : 2 , backgroundColor : "#2e2e2e" , paddingLeft : 5 , paddingRight : 5 , color : "white" ,  display : "flex" , alignItems : "center" , justifyContent : "center"}}
                         >
                         
                         {categories[1].categorie}
                         
                         </AccordionSummary>
-                        <AccordionDetails sx={{backgroundColor : "#393939" , color : "white"}}>
+                        <AccordionDetails sx={{backgroundColor : "#2e2e2e" , color : "white"}}>
                             <div className='BoxItems'>
                                 <ul className='unorderList' onClick={ListSearcher}>
                                     <li>شبکه <FaNetworkWired/></li>
                                     <li>امنیت <MdOutlineSecurity/></li>
                                     <li>برنامه نویسی <MdDeveloperMode/></li>
                                     <li>مجازی سازی <GrVirtualStorage/></li>
-                                    <li>زیرساخت <GiNetworkBars/></li>
+                                    {/* <li>زیرساخت <GiNetworkBars/></li> */}
                                 </ul>
                             </div>
                         </AccordionDetails>
                         </Accordion>
 
 
-                        <Accordion sx={{width : 250 , paddingTop :  0 , backgroundColor : "#252525" , }}>
+                        <Accordion sx={{width : 300 , paddingTop :  0 , backgroundColor : "#2e2e2e" , }}>
                         <AccordionSummary
                         expandIcon={<IoShareSocial style={{color : "white" , width : 30}} />}
                         aria-controls="panel1-content"
                         id="panel1-header"
-                        sx={{fontSize : 19 , backgroundColor : "#393939" , paddingLeft : 5 , paddingRight : 5 , color : "white" ,  display : "flex" , alignItems : "center" , justifyContent : "center"}}
+                        sx={{fontSize : 19 , height : 70 , borderRadius : 2 , backgroundColor : "#2e2e2e" , paddingLeft : 5 , paddingRight : 5 , color : "white" ,  display : "flex" , alignItems : "center" , justifyContent : "center"}}
                         >
                         
                         {categories[2].categorie}
                         
                         </AccordionSummary>
-                        <AccordionDetails sx={{backgroundColor : "#393939" , color : "white"}}>
+                        <AccordionDetails sx={{backgroundColor : "#2e2e2e" , color : "white"}}>
                             <div className='BoxItems'>
                                 <ul className='unorderList' onClick={ListSearcher}>
-                                    <li>طرحی و تدوین <SiAdobephotoshop/></li>
+                                    <li>طراحی و تدوین <SiAdobephotoshop/></li>
                                     <li>سواد رسانه <TbSocial/></li>
                                     <li>تولید محتوا <MdContentCopy/></li>
                                     <li>نویسندگی <IoIosCreate/></li>
@@ -223,34 +222,30 @@ function Courses() {
                             </div>
                         </AccordionDetails>
                         </Accordion>
-                        
-                        
-
                     </div>
-
-
-
                 </div>
             </div>
 
-            <div className='classBody'>
+            <div className='classBody' ref={classBodyRef}>
                 <div className='classBodyTitle'>
                     <h2>دوره های اخیر..</h2>
-                    <span> </span>
+                    <span onClick={allHandler} style={{cursor:"pointer"}}>نمایش همه <FaLongArrowAltLeft/> </span>
                 </div>
 
                 <div className='CardBoxContainer'>
                     {
-                        data.map((item)=> (
-                            <Link key={item.id} to={`/classes/${item.id}`}><ClassCard key={item.id} {...item} /></Link>
-                        ))
+                    data?.slice(0 , 7).map((item)=> (
+                        <Link key={item.id} to={`/classes/${item.id}`}><ClassCard key={item.id} {...item} /></Link>
+                    ))
+                    }
+                    
+                    {
+                        data.map((item)=> console.log(item.price))
                     }
                 </div>
-
             </div>
-
         </div>
     )
 }
 
-export default Courses
+export default Classes

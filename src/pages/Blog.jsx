@@ -57,21 +57,23 @@ function Blog() {
                     {data?.map((card, index) => {
                         const matchedUser = matchAuthorWithUser(card.authorName, card.authorLastName);
 
-                        return (
-                            <Grid item key={index} xs={12} sm={6} md={4}>
-                                <BlogCard
-                                    id={card.id}
-                                    imageData={card.imageData}
-                                    date={card.date}
-                                    title={card.title}
-                                    description={card.description}
-                                    authorName={card.authorName}
-                                    authorLastName={card.authorLastName}
-                                    matchedUser={matchedUser} 
-                                    hashtags={card.hashtags}
-                                />
-                            </Grid>
-                        );
+                        if(card.isShown === 1){
+                            return (
+                                <Grid item key={index} xs={12} sm={6} md={4}>
+                                    <BlogCard
+                                        id={card.id}
+                                        imageData={card.imageData}
+                                        date={card.date}
+                                        title={card.title}
+                                        description={card.description}
+                                        authorName={card.authorName}
+                                        authorLastName={card.authorLastName}
+                                        matchedUser={matchedUser} 
+                                        hashtags={card.hashtags}
+                                    />
+                                </Grid>
+                            );
+                        }
                     })}
                 </Grid>
             </div>

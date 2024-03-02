@@ -20,6 +20,10 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import { Divider, Grid } from '@mui/material';
+import { useDropzone } from 'react-dropzone'
+import { showToast } from '../components/modules/AuthModules/Toastify'
+import axios from 'axios'
+import moment from 'jalali-moment'
 // DataBase
 // import WhysUsDB from '../utils/WhysUsDB.json'
 const Employment = () => {
@@ -132,13 +136,74 @@ const Employment = () => {
   fetchData();
   } , [])
 
+  const dropzoneStyle = {
+    border: '2px dashed #cccccc',
+    borderRadius: '4px',
+    padding: '25px',
+    textAlign: 'center',
+    cursor: 'pointer',
+    marginTop: '10px',
+};
+
+const onDropImage1 = (acceptedFiles) => {
+  const file = acceptedFiles[0];
+  setImageData(file);
+  setFileName(file.name);
+};
+
+const { getRootProps: getRootPropsImage1, getInputProps: getInputPropsImage1 } = useDropzone({ onDrop: onDropImage1 });
+
+const [imageData, setImageData] = useState('');
+const [fileName, setFileName] = useState('');
+const [imagePath, setImagePath] = useState('');
+
+
+  const handleSubmit = async (e) => {
+    // /upload/single
+    // file
+    e.preventDefault()
+
+    if (!imageData) { 
+        showToast('لطفاً یک تصویر را انتخاب کنید.', "error");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', imageData);
+
+    try {
+      const response = await axios.post('https://backend.sadra-edu.com/upload/single', formData, {
+          headers: {
+              'Content-Type': 'multipart/form-data',
+          },
+      });
+  
+      const imagePath1 = await response.data.path.split(`\\`).join("/");
+  
+      showToast('اطلاعات با موفقیت آپلود شد.', 'success');
+      axios.post(`https://backend.sadra-edu.com/resume/add`, {
+          filePath: imagePath1,
+          fileName: fileName,
+          date: moment().locale('fa').format('YYYY-MM-DD')
+      })
+      .then(response => {
+          showToast("بلاگ جدید با موفقیت ثبت شد !", "success")
+      })
+      .catch(error => {
+          console.error('Error:', error.response ? error.response.data : error.message);
+      });
+    } catch (error) {
+        console.error('Error:', error.response ? error.response.data : error.message);
+        showToast(`خطا در آپلود تصویر: ${error.response ? error.response.data.error : error.message}`, 'error');
+    }
+  }
+
   return (
     <div className='Employment_container'>
       <div className='Employment_Head'>
         <h1>همکاری با صدرا</h1>
         <p>صدرا، بستری قدرتمند از جنس خلق و تحول است و به افرادی که به فراتر از خود متعهدند، فرصت می‌دهد که «حرفه‌ای‌ترین و تاثیرگذارترین» نسخه خود را خلق کنند و آن را کار و زندگی کنند.</p>
       </div>
-
       <div className='OurValue'>
         <div className='OurValieIconHead'>
         <Line/> <h2>ارزش‌های ما</h2>
@@ -161,7 +226,6 @@ const Employment = () => {
 
 
       </div>
-
       <div className='Chance_container'>
         <div className='ChanceIcon'>
           <Line/><h2>فرصت‌های شغلی</h2> 
@@ -196,8 +260,31 @@ const Employment = () => {
       </TabContext>
     </Box>
         </div>
+        
+        <div style={{marginBottom:"2rem",marginTop:"2rem"}}>
+          <h1>برای ثبت رزومه ی خود از فرم زیر اقدام فرمایید.</h1>
+          <form action="">
+            <div {...getRootPropsImage1()} style={dropzoneStyle}>
+                <input {...getInputPropsImage1()} />
+                <p>را انتخاب یا اینجا بکشید باید کمتر از 3 مگابایت باشد فایل مورد نظر</p>
+                <p>باید از یکی از این پسوند ها باشد: ( png, jpg, jpeg, pdf )</p>
+                {fileName && (
+                    <p style={{ marginTop: '10px' }}>
+                    نام فایل انتخابی: {fileName}
+                    </p>
+                )}
+            </div>
+            <button
+              className='login_Btn_No_Hid'
+              onClick={handleSubmit}
+              style={{ width: 'fit-content', marginTop: '2rem', cursor: 'pointer' }}
+              type="button">
+                  ارسال
+            </button>
+          </form>
+        </div>
 
-      <div className='whyUs_container'>
+      {/* <div className='whyUs_container'>
         <div className='ChanceIcon'>
         <Line/><h2>چرا ما</h2> 
         </div>
@@ -214,7 +301,7 @@ const Employment = () => {
           }
         </div>
 
-      </div>
+      </div> */}
 
 
       <div className='Question_Container'>

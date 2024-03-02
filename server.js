@@ -47,7 +47,18 @@ const storage = multer.diskStorage({
         cb(null, "public/assets/uploads");
     },
     filename: function (req, file, cb) {
-        const whiteListFormats = ["image/png", "image/jpg", "image/jpeg", "image/webp", "video/mp4", "video/webm", "video/ogg", "video/mkv", "video/avi"];
+        const whiteListFormats = [
+            "image/png", 
+            "image/jpg", 
+            "image/jpeg", 
+            "image/webp", 
+            "video/mp4", 
+            "video/webm", 
+            "video/ogg", 
+            "video/mkv", 
+            "video/avi", 
+            "application/pdf"
+        ];
         if (whiteListFormats.includes(file.mimetype)) {
             const format = path.extname(file.originalname);
             const uniqueFilename = uuidv4() + format;
@@ -59,6 +70,7 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage, limits: { fileSize: 10 * 1000 * 1000 } });
+
 
 
 app.get('/blog/data', async (req, res) => {
@@ -782,6 +794,22 @@ app.post('/dashboard/success/add/3', async (req, res) => {
     `);
     
     res.json({ statusCode: 200, message: 'پست جدید با موفقیت ثبت شد !' }).status(200);
+});
+
+app.post('/resume/add', async (req, res) => {
+    const {
+        filePath,
+        fileName,
+    } = req.body;
+    await db.query(`
+        INSERT INTO resume
+        (filePath,
+        fileName,)
+        VALUES 
+        ('${filePath}', 
+        '${fileName}')
+    `);
+    res.json({ statusCode: 200, message: 'رزومه شما با موفقیت ثبت شد !' }).status(200);
 });
 
 app.post('/upload/single', upload.single('file'), (req, res, next) => {

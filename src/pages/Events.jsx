@@ -164,14 +164,13 @@ const categories = [
 <Box sx={{ width: '100%', typography: 'body1' , direction : "rtl" }}>
   <TabContext value={value}>
 
-
     {
       TabHeaders.map((Tab) => (
         <TabPanel key={Tab.id} value={Tab.id.toString()} >
           <div key={Tab.id} className='event_card_info'>
                 {
                   data.filter((item)=> item.category === Tab.title).map((item)=>(
-                    <Link key={item.id} to={`/events/${item.id}`}><EventCar key={item.id} {...item} /></Link>
+                    item.isShown === 1 && <Link key={item.id} to={`/events/${item.id}`}><EventCar key={item.id} {...item} /></Link>
                   ))
                 }
           </div>
@@ -251,12 +250,12 @@ const categories = [
       </Accordion>
           </Box>
     </Drawer>
-    </div>
+  </div>
 
 
   
   {/* Mobile  */}
-  <div className='FilterContainer'>
+  {/* <div className='FilterContainer'>
 
       <Accordion defaultExpanded sx={{background : "none"}} >
         <AccordionSummary
@@ -311,7 +310,7 @@ const categories = [
       </Accordion>
 
 
-  </div>
+  </div> */}
   
 
 </div>   
