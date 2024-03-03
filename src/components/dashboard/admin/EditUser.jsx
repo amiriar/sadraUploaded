@@ -46,14 +46,14 @@ function EditUser() {
     const [userFacebook, setUserFacebook] = useState('')
 
     useEffect(() => {
-        axios.get('https://backend.sadra-edu.com/dashboard/token', { withCredentials: true })
+        axios.get('https://sadra-edu.com/api/dashboard/token', { withCredentials: true })
         .then(response => {
             const { id, role } = response.data;
             setAdminId(id);
             setAdminRole(role);
         });
         
-        axios.get(`https://backend.sadra-edu.com/users/data/${id}`).then(response =>{
+        axios.get(`https://sadra-edu.com/api/users/data/${id}`).then(response =>{
             setLoading(false)
             setUserId(response.data[0][0].id);
             setUserName(response.data[0][0].name)
@@ -107,9 +107,9 @@ function EditUser() {
 
     const insertHandler = async () => {
         try {
-            if (userName === "" || userLastName === "" || userRole === "" || userEmail === "" || userAge === "" || userPhoneNumber === "" || userEducation === "" || userIsStudent === "" || userDescription === "" || userLinkedin === "" || userPinterest === "" || userTwitterX === "" || userFacebook === "") {
-                showToast('لطفا تمامی فیلد هارا پرکنید.', 'error');
-            } else {
+            // if (userName === "" || userLastName === "" || userRole === "" || userEmail === "" || userAge === "" || userPhoneNumber === "" || userEducation === "" || userIsStudent === "" || userDescription === "" || userLinkedin === "" || userPinterest === "" || userTwitterX === "" || userFacebook === "") {
+            //     showToast('لطفا تمامی فیلد هارا پرکنید.', 'error');
+            // } else {
                 if (!userProfile && !imageData) {
                     showToast('لطفاً یک تصویر را انتخاب کنید.', 'error');
                 } else {
@@ -119,7 +119,7 @@ function EditUser() {
                         const formData = new FormData();
                         formData.append('imageData', imageData);
     
-                        const response = await axios.post('https://backend.sadra-edu.com/upload/single/img', formData, {
+                        const response = await axios.post('https://sadra-edu.com/api/upload/single/img', formData, {
                             headers: {
                                 'Content-Type': 'multipart/form-data',
                             },
@@ -128,7 +128,7 @@ function EditUser() {
                         imagePath = response.data.path.split(`\\`).join("/");
                     }
     
-                    const response2 = await axios.post('https://backend.sadra-edu.com/fullInfoRole', {
+                    const response2 = await axios.post('https://sadra-edu.com/api/fullInfoRole', {
                         id: userId,
                         name: userName,
                         role: userRole,
@@ -147,7 +147,7 @@ function EditUser() {
     
                     showToast("اطلاعات شما ثبت شد! حالا، به صفحات دیگر دسترسی دارید.", "success");
                 }
-            }
+            // }
         } catch (error) {
             console.error('Error:', error.response ? error.response.data : error.message);
             showToast(`خطا در آپلود: ${error.response ? error.response.data.error : error.message}`, 'error');
@@ -155,6 +155,19 @@ function EditUser() {
     };
     
     const navigate = useNavigate()
+
+    const deleteHandler = async () => {
+        if (confirm("آیا از حذف کردن این کاربر اطمینان دارید؟؟!")) {
+            const response = await axios.post(`https://sadra-edu.com/api/users/delete/${id}`);
+            showToast("کاربر با موفقیت حذف شد!، درحال ارسال به صفحه ی قبل", "success");
+            setTimeout(() => {
+                navigate('/dashboard/users')
+            }, 3000); // 3000 milliseconds = 3 seconds
+        } else {
+            console.log("Canceled");
+        }
+    }    
+    
     
     return (
         <>
@@ -262,14 +275,24 @@ function EditUser() {
                                 <InputContact id={'pinterest'} variable={userPinterest} setVariable={setUserPinterest} subTitle={"در صورت نداشتن # بگذارید."} title={'لینک پینترست'} type={'text'} width={'100%'} />
                                 <InputContact id={'twitter'} variable={userTwitterX} setVariable={setUserTwitterX} subTitle={"در صورت نداشتن # بگذارید."} title={'لینک توییتر یا X'} type={'text'} width={'100%'} />
                                 <InputContact id={'facebook'} variable={userFacebook} setVariable={setUserFacebook} subTitle={"در صورت نداشتن # بگذارید."} title={'لینک فیس بوک'} type={'text'} width={'100%'} />
-                                <button
-                                    className='login_Btn_No_Hid'
-                                    onClick={insertHandler}
-                                    style={{ width: 'fit-content', marginTop: '2rem', cursor: 'pointer' }}
-                                    type="button"
-                                >
-                                    ثبت اطلاعات نوشته شده
-                                </button>
+                                <div style={{display:"flex", justifyContent:"space-between"}}>
+                                    <button
+                                        className='login_Btn_No_Hid'
+                                        onClick={insertHandler}
+                                        style={{ width: 'fit-content', marginTop: '2rem', cursor: 'pointer' }}
+                                        type="button"
+                                    >
+                                        ثبت اطلاعات نوشته شده
+                                    </button>
+                                    <button
+                                        className='login_Btn_No_Hid'
+                                        onClick={deleteHandler}
+                                        style={{ width: 'fit-content', marginTop: '2rem', cursor: 'pointer', background:"red" }}
+                                        type="button"
+                                    >
+                                        حذف این کاربر
+                                    </button>
+                                </div>
                                 <ToastContainer
                                     position="top-right"
                                     autoClose={5000}

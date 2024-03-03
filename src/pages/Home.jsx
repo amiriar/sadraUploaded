@@ -60,7 +60,7 @@ const [TabHeaders , setTabHeaders] = useState([
   useEffect(()=> {
     const fetchData = async () => {
       try {
-          const response = await fetch('https://backend.sadra-edu.com/HomeEventData/data');
+          const response = await fetch('https://sadra-edu.com/api/HomeEventData/data');
           const jsonData = await response.json();
           setdataEvent(jsonData);
       } catch (error) {
@@ -69,7 +69,7 @@ const [TabHeaders , setTabHeaders] = useState([
   };
   const fetchData2 = async () => {
       try {
-          const response = await fetch('https://backend.sadra-edu.com/HomeContactsDetail/data');
+          const response = await fetch('https://sadra-edu.com/api/HomeContactsDetail/data');
           const jsonData = await response.json();
           setCommentData(jsonData);
       } catch (error) {
@@ -78,7 +78,7 @@ const [TabHeaders , setTabHeaders] = useState([
   };
   const fetchData3 = async () => {
     try {
-        const response = await fetch('https://backend.sadra-edu.com/classes/data');
+        const response = await fetch('https://sadra-edu.com/api/classes/data');
         const jsonData = await response.json();
         setPopularEvents(jsonData);
     } catch (error) {
@@ -87,7 +87,7 @@ const [TabHeaders , setTabHeaders] = useState([
 };
 const fetchData4 = async () => {
   try {
-      const response = await fetch('https://backend.sadra-edu.com/HomeComment/data');
+      const response = await fetch('https://sadra-edu.com/api/HomeComment/data');
       const jsonData = await response.json();
       setCommetData(jsonData);
   } catch (error) {
@@ -174,7 +174,7 @@ const fetchData4 = async () => {
       <h1>بیش از {usePersianNumber('500')} دانش‌آموخته از مسیر خود راضی بودند</h1>
   <div className='Slider'>
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-        {commentData.map((item)=> (
+        {commentData && commentData?.map((item)=> (
           <SwiperSlide key={item.id}>
             <p id='cardComment' style={{padding:"0rem 3rem", textAlign:"justify", textJustify:"inter-word"}}>{item.comment}</p>
             <img src={item.profile} alt='prof' />
@@ -226,7 +226,7 @@ const fetchData4 = async () => {
             <TabPanel key={Tab.id} value={Tab.id.toString()} >
             <div className='popCardEvent'>
               {
-                popularEvents.filter((item)=> item.category === Tab.title).slice(0,3).map((item)=> (
+                popularEvents?.filter((item)=> item.category === Tab.title).slice(0,3).map((item)=> (
                     <CardPopular key={item.id} {...item} />
                 ))
               }
@@ -283,9 +283,9 @@ const fetchData4 = async () => {
               </div>
               <div className='event_card_data' dir='rtl'>
                 {
-                window.innerWidth >= 1920 ? dataEvent.slice(0 , 4).map((item) => (
+                window.innerWidth >= 1920 ? dataEvent?.slice(0 , 4).map((item) => (
                   <Link key={item.id} to={`/events/${item.id}`} ><EventCard key={item.id} {...item} /></Link>
-                  )) : window.innerWidth <= 1440 && dataEvent.slice(0 , 3).map((item) => (
+                  )) : window.innerWidth <= 1440 && dataEvent?.slice(0 , 3).map((item) => (
                   <Link key={item.id} to={`/events/${item.id}`} ><EventCard key={item.id} {...item} /></Link>
                   ))
                 }
@@ -305,9 +305,9 @@ const fetchData4 = async () => {
 
 <div className='test'>
     <div className='comment_card_container'>
-        {CommentData.slice(0, 3).map((item)=> <CommentCard key={item.id} {...item} />)}
+        {CommentData?.slice(0, 3).map((item)=> <CommentCard key={item.id} {...item} />)}
       <div className='comment_card_container2'>
-        {CommentData.slice(0, 3).map((item)=> <CommentCard key={item.id} {...item} />)}
+        {CommentData?.slice(0, 3).map((item)=> <CommentCard key={item.id} {...item} />)}
       </div>
     </div>
 
@@ -315,9 +315,9 @@ const fetchData4 = async () => {
     <hr/>
 
     <div className='comment_card_container3'>
-        {CommentData.slice(4, 7).map((item)=> <CommentCard key={item.id} {...item} />)}
+        {CommentData?.slice(4, 7).map((item)=> <CommentCard key={item.id} {...item} />)}
       <div className='comment_card_container4'>
-        {CommentData.slice(4, 7).map((item)=> <CommentCard key={item.id} {...item} />)}
+        {CommentData?.slice(4, 7).map((item)=> <CommentCard key={item.id} {...item} />)}
       </div>
     </div>
 

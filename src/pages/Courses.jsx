@@ -86,13 +86,13 @@ function Classes() {
     useEffect(()=> {
         const fetchData = async () => {
         try {
-            const response = await fetch('https://backend.sadra-edu.com/Classes/data');
+            const response = await fetch('https://sadra-edu.com/api/Classes/data');
             const jsonData = await response.json();
             setData(jsonData);
-            const response2 = await fetch('https://backend.sadra-edu.com/ClassEventData/data');
+            const response2 = await fetch('https://sadra-edu.com/api/ClassEventData/data');
             const jsonData2 = await response2.json();
             setdataEvent(jsonData2);
-            const response3 = await fetch('https://backend.sadra-edu.com/ClassEventDataFuture/data');
+            const response3 = await fetch('https://sadra-edu.com/api/ClassEventDataFuture/data');
             const jsonData3 = await response3.json();
             setFuture(jsonData3);
         }   catch (error) {
@@ -115,9 +115,9 @@ function Classes() {
         try {
             let response;
             if (text === "انگلیسی" || text === "عربی" || text === "ترکی" || text === "روسی" || text === "فرانسه" || text === "اسپانیا" || text === "المانی" || text === "فارسی") {
-                response = await axios.post(`https://backend.sadra-edu.com/search/categories/lang`, { text });
+                response = await axios.post(`https://sadra-edu.com/api/search/categories/lang`, { text });
             } else {
-                response = await axios.post(`https://backend.sadra-edu.com/search/categories`, { text });
+                response = await axios.post(`https://sadra-edu.com/api/search/categories`, { text });
             }
             setData(response.data.data[0]);
         } catch (error) {
@@ -234,13 +234,9 @@ function Classes() {
 
                 <div className='CardBoxContainer'>
                     {
-                    data?.slice(0 , 7).map((item)=> (
-                        <Link key={item.id} to={`/classes/${item.id}`}><ClassCard key={item.id} {...item} /></Link>
+                    data?.map((item)=> (
+                        item.isShown === 1 && <Link key={item.id} to={`/classes/${item.id}`}><ClassCard key={item.id} {...item} /></Link>
                     ))
-                    }
-                    
-                    {
-                        data.map((item)=> console.log(item.price))
                     }
                 </div>
             </div>

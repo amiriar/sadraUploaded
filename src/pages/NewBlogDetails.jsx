@@ -35,7 +35,7 @@ function NewBlogDetails() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://backend.sadra-edu.com/blogdetail/${id}`);
+                const response = await axios.get(`https://sadra-edu.com/api/blogdetail/${id}`);
                 const jsonData = response.data[0];
                 setData(jsonData);
     
@@ -45,7 +45,7 @@ function NewBlogDetails() {
     
                 setTags(data?.hashtags?.split(","))
     
-                const responseToken2 = await axios.get('https://backend.sadra-edu.com/TeacherUsers/data');
+                const responseToken2 = await axios.get('https://sadra-edu.com/api/TeacherUsers/data');
                 const allUsers = await responseToken2.data[0];
                 setUsers(allUsers);
                 setUsersLoaded(true);

@@ -20,13 +20,13 @@ function Search() {
 
         const fetchData = async () => {
             try {
-                const responseToken = await axios.post(`https://backend.sadra-edu.com/search`,{
+                const responseToken = await axios.post(`https://sadra-edu.com/api/search`,{
                     option21: option,
                     value21: value
                 });
                 setData(responseToken.data.data[0]);
 
-                const responseToken2 = await axios.get('https://backend.sadra-edu.com/TeacherUsers/data');
+                const responseToken2 = await axios.get('https://sadra-edu.com/api/TeacherUsers/data');
                 setUsers(await responseToken2.data[0]);
             } catch (error) {
                 console.error('Error fetching data:', error);

@@ -14,7 +14,7 @@ function DashboardHandler() {
     const [userRole, setUserRole] = useState(null);
 
     useEffect(() => {
-        axios.get('https://backend.sadra-edu.com/dashboard/token', {withCredentials: true})
+        axios.get('https://sadra-edu.com/api/dashboard/token', {withCredentials: true})
             .then(response => {
             const { email, role, id } = response.data;
             setUserId(id);

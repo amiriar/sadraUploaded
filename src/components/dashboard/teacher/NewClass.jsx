@@ -78,19 +78,19 @@ function NewClass() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const responseToken = await axios.get('https://backend.sadra-edu.com/dashboard/token', { withCredentials: true });
+                const responseToken = await axios.get('https://sadra-edu.com/api/dashboard/token', { withCredentials: true });
                 const { id } = responseToken.data;
                 setUserRole(responseToken.data.role)
     
-                const responseFullDetail = await axios.get(`https://backend.sadra-edu.com/fullDetail/${id}`);
+                const responseFullDetail = await axios.get(`https://sadra-edu.com/api/fullDetail/${id}`);
                 setAuthorName(responseFullDetail.data[0][0].name)
                 setAuthorLastName(responseFullDetail.data[0][0].lastName)
                 setTeacher(`${authorName} ${authorLastName}`)
 
-                const responseToken3 = await axios.get('https://backend.sadra-edu.com/classes/data');
+                const responseToken3 = await axios.get('https://sadra-edu.com/api/classes/data');
                 setData(responseToken3.data);
 
-                const responseToken2 = await axios.get('https://backend.sadra-edu.com/TeacherUsers/data');
+                const responseToken2 = await axios.get('https://sadra-edu.com/api/TeacherUsers/data');
                 setUsers(await responseToken2.data[0]);
             } catch (error) {
                 console.error('Error:', error.response ? error.response.data : error.message);
@@ -148,13 +148,13 @@ function NewClass() {
             formData.append('imageData', imageData);
             
             try {
-                const response2 = await axios.post('https://backend.sadra-edu.com/upload/single/img', formData, {
+                const response2 = await axios.post('https://sadra-edu.com/api/upload/single/img', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },
                 });
                 setImagePath(response2.data.path);
-                const response = await axios.post('https://backend.sadra-edu.com/dashboard/classes/add', {
+                const response = await axios.post('https://sadra-edu.com/api/dashboard/classes/add', {
                     title: title,
                     teacherFirstName: authorName,
                     teacherLastName: authorLastName,
@@ -194,8 +194,7 @@ function NewClass() {
                 }
             }
 
-            showToast('اطلاعات با موفقیت آپلود شد.', 'success');
-            showToast('بلاگ جدید با موفقیت ثبت شد!', 'success');
+            showToast('کلاس یا دوره جدید با موفقیت ثبت شد. بعد از تایید ادمین در سایت قرار میگیرد.', 'success');
         } catch (error) {
             console.error('Error:', error.response ? error.response.data : error.message);
             showToast(`خطا در آپلود تصویر: ${error.response ? error.response.data.error : error.message}`, 'error');

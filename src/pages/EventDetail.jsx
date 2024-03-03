@@ -31,7 +31,7 @@ const [userId , setUserId] = useState(null)
 useEffect(() => {
   const fetchData = async () => {
       try {
-          const response = await axios.get('https://backend.sadra-edu.com/eventsDetail/data');
+          const response = await axios.get('https://sadra-edu.com/api/eventsDetail/data');
           const jsonData = response.data;
           setEventDetailData(jsonData);
       } catch (error) {
@@ -40,7 +40,7 @@ useEffect(() => {
   };
   const fetchData2 = async () => {
     try {
-        const response = await axios.get('https://backend.sadra-edu.com/evetnDetailTeachersData/data');
+        const response = await axios.get('https://sadra-edu.com/api/evetnDetailTeachersData/data');
         const jsonData = await response.data;
         setTeachersData( await jsonData);
     } catch (error) {
@@ -49,7 +49,7 @@ useEffect(() => {
   }
     const fetchData3 = async () => {
       try {
-        axios.get('https://backend.sadra-edu.com/dashboard/token', {withCredentials: true})
+        axios.get('https://sadra-edu.com/api/dashboard/token', {withCredentials: true})
           .then(response => {
           const { id } = response.data;
           setUserId(id);

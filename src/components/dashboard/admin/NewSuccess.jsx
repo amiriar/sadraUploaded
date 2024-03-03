@@ -19,17 +19,17 @@ function NewSuccess() {
         const fetchData = async () => {
             try {
                 // First request to get the user ID
-                const responseToken = await axios.get('https://backend.sadra-edu.com/dashboard/token', { withCredentials: true });
+                const responseToken = await axios.get('https://sadra-edu.com/api/dashboard/token', { withCredentials: true });
                 const { id } = responseToken.data;
                 setUserRole(responseToken.data.role)
     
-                const responseFullDetail = await axios.get(`https://backend.sadra-edu.com/fullDetail/${id}`);
+                const responseFullDetail = await axios.get(`https://sadra-edu.com/api/fullDetail/${id}`);
                 setAuthorName(responseFullDetail.data[0][0].name)
                 setAuthorLastName(responseFullDetail.data[0][0].lastName)
 
-                const responseToken3 = await axios.get('https://backend.sadra-edu.com/blog/data');
+                const responseToken3 = await axios.get('https://sadra-edu.com/api/blog/data');
                 setData(responseToken3.data);
-                const responseToken2 = await axios.get('https://backend.sadra-edu.com/TeacherUsers/data');
+                const responseToken2 = await axios.get('https://sadra-edu.com/api/TeacherUsers/data');
                 setUsers(await responseToken2.data[0]);
             } catch (error) {
                 console.error('Error:', error.response ? error.response.data : error.message);
@@ -172,7 +172,7 @@ function NewSuccess() {
         formData.append('files', descriptionImage2);
 
         try {
-            const response = await axios.post('https://backend.sadra-edu.com/upload/multiple/3', formData, {
+            const response = await axios.post('https://sadra-edu.com/api/upload/multiple/3', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -186,8 +186,7 @@ function NewSuccess() {
             setImagePath2(imagePath2);
             setImagePath3(imagePath3);
         
-            showToast('اطلاعات با موفقیت آپلود شد.', 'success');
-            axios.post(`https://backend.sadra-edu.com/dashboard/success/add`, {
+            axios.post(`https://sadra-edu.com/api/dashboard/success/add`, {
                 imageData: imagePath1,
                 date: moment().locale('fa').format('YYYY-MM-DD'),
                 title: title,
@@ -204,7 +203,7 @@ function NewSuccess() {
                 timeToRead: timeToRead
             })
             .then(response => {
-                showToast("بلاگ جدید با موفقیت ثبت شد !", "success")
+                showToast('موفقیت دانشجو جدید با موفقیت ثبت شد. بعد از تایید ادمین در سایت قرار میگیرد.', 'success');
             })
             .catch(error => {
                 console.error('Error:', error.response ? error.response.data : error.message);
@@ -225,7 +224,7 @@ function NewSuccess() {
         formData.append('imageData', imageData);
 
         try {
-            const response = await axios.post('https://backend.sadra-edu.com/upload/single/img', formData, {
+            const response = await axios.post('https://sadra-edu.com/api/upload/single/img', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -234,8 +233,7 @@ function NewSuccess() {
             const imagePath1 = response.data.path.split(`\\`).join("/");
             setImagePath(imagePath1);
         
-            showToast('اطلاعات با موفقیت آپلود شد.', 'success');
-            axios.post(`https://backend.sadra-edu.com/dashboard/success/add/1`, {
+            axios.post(`https://sadra-edu.com/api/dashboard/success/add/1`, {
                 authorPicture: imagePath1,
                 authorName: authorNameCardFirst,
                 authorJob: JobTitle,
@@ -243,7 +241,7 @@ function NewSuccess() {
                 date: moment().locale('fa').format('YYYY-MM-DD'),
             })
             .then(response => {
-                showToast("پست جدید با موفقیت ثبت شد !", "success")
+                showToast('موفقیت دانشجو جدید با موفقیت ثبت شد. بعد از تایید ادمین در سایت قرار میگیرد.', 'success');
             })
             .catch(error => {
                 console.error('Error:', error.response ? error.response.data : error.message);
@@ -265,7 +263,7 @@ function NewSuccess() {
         formData2.append('files', descriptionImage2);
 
         try {
-            const response = await axios.post('https://backend.sadra-edu.com/upload/multiple/2', formData2, {
+            const response = await axios.post('https://sadra-edu.com/api/upload/multiple/2', formData2, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -277,8 +275,7 @@ function NewSuccess() {
             setImagePath2(imagePath2);
             setImagePath3(imagePath3);
         
-            showToast('اطلاعات با موفقیت آپلود شد.', 'success');
-            axios.post(`https://backend.sadra-edu.com/dashboard/success/add/2`, {
+            axios.post(`https://sadra-edu.com/api/dashboard/success/add/2`, {
                 authorPicture: imagePath2,
                 authorName: addPicName,
                 authorJob: addPicJob,
@@ -287,7 +284,7 @@ function NewSuccess() {
                 date: moment().locale('fa').format('YYYY-MM-DD'),
             })
             .then(response => {
-                showToast("پست جدید با موفقیت ثبت شد !", "success")
+                showToast('موفقیت دانشجو جدید با موفقیت ثبت شد. بعد از تایید ادمین در سایت قرار میگیرد.', 'success');
             })
             .catch(error => {
                 console.error('Error:', error.response ? error.response.data : error.message);
@@ -308,7 +305,7 @@ function NewSuccess() {
     //     formData2.append('videoData', video);
 
     //     try {
-    //         const response = await axios.post('https://backend.sadra-edu.com/upload/video', formData2, {
+    //         const response = await axios.post('https://sadra-edu.com/api/upload/video', formData2, {
     //             headers: {
     //                 'Content-Type': 'multipart/form-data',
     //             },
@@ -319,7 +316,7 @@ function NewSuccess() {
     //         setImagePath3(videoPath);
         
     //         showToast('اطلاعات با موفقیت آپلود شد.', 'success');
-    //         axios.post(`https://backend.sadra-edu.com/dashboard/success/add/2`, {
+    //         axios.post(`https://sadra-edu.com/api/dashboard/success/add/2`, {
     //             authorPicture: imagePath2,
     //             authorName: addPicName,
     //             authorJob: addPicJob,
@@ -349,7 +346,7 @@ function NewSuccess() {
     //     formData2.append('videoData', video);
     
     //     try {
-    //         const response = await axios.post('https://backend.sadra-edu.com/upload/video', formData2, {
+    //         const response = await axios.post('https://sadra-edu.com/api/upload/video', formData2, {
     //             headers: {
     //                 'Content-Type': 'multipart/form-data',
     //             },
@@ -362,7 +359,7 @@ function NewSuccess() {
     //         showToast('اطلاعات با موفقیت آپلود شد.', 'success');
             
     //         // Make sure to handle imagePath2, addPicName, addPicJob, and addPicDesc
-    //         axios.post(`https://backend.sadra-edu.com/dashboard/success/add/3`, {
+    //         axios.post(`https://sadra-edu.com/api/dashboard/success/add/3`, {
     //             videoTitle: videoAuthorName,
     //             videoJob: videoJobTitle,
     //             videoSrc: imagePath3,
@@ -393,7 +390,7 @@ function NewSuccess() {
     
         try {
             // Upload video
-            const videoResponse = await axios.post('https://backend.sadra-edu.com/upload/video', formData, {
+            const videoResponse = await axios.post('https://sadra-edu.com/api/upload/video', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -406,7 +403,7 @@ function NewSuccess() {
             const imageFormData = new FormData();
             imageFormData.append('imageData', descriptionImage2);
     
-            const imageResponse = await axios.post('https://backend.sadra-edu.com/upload/single/img', imageFormData, {
+            const imageResponse = await axios.post('https://sadra-edu.com/api/upload/single/img', imageFormData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -415,9 +412,8 @@ function NewSuccess() {
             const imagePath = imageResponse.data.path.split(`\\`).join("/");
             setImagePath4(imagePath);
     
-            showToast('اطلاعات با موفقیت آپلود شد.', 'success');
     
-            axios.post(`https://backend.sadra-edu.com/dashboard/success/add/3`, {
+            axios.post(`https://sadra-edu.com/api/dashboard/success/add/3`, {
                 videoTitle: videoAuthorName,
                 videoJob: videoJobTitle,
                 videoSrc: imagePath3,
@@ -425,7 +421,7 @@ function NewSuccess() {
                 date: moment().locale('fa').format('YYYY-MM-DD'),
             })
             .then(response => {
-                showToast("پست جدید با موفقیت ثبت شد !", "success")
+                showToast('موفقیت دانشجو جدید با موفقیت ثبت شد. بعد از تایید ادمین در سایت قرار میگیرد.', 'success');
             })
             .catch(error => {
                 console.error('Error:', error.response ? error.response.data : error.message);

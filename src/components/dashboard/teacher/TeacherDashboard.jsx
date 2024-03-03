@@ -61,7 +61,7 @@ function TeacherDashbaord({ userRole, userId }) {
             formData.append('imageData', imageData);
     
             try {
-                const response = await axios.post('https://backend.sadra-edu.com/upload/single/img', formData, {
+                const response = await axios.post('https://sadra-edu.com/api/upload/single/img', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -70,7 +70,7 @@ function TeacherDashbaord({ userRole, userId }) {
                 setImagePath(await response.data.path)
                 const newImagePath = imagePath.split(`\\`).join("/")
                 if(userProf !== '' && !imageData){
-                    const response2 = await axios.post('https://backend.sadra-edu.com/fullInfoWithOutPic', {
+                    const response2 = await axios.post('https://sadra-edu.com/api/fullInfoWithOutPic', {
                         id: userId,
                         name: userName,
                         lastName: userLastName,
@@ -85,7 +85,7 @@ function TeacherDashbaord({ userRole, userId }) {
                         facebook: authorFacebook
                     });
                 } else {
-                    const response2 = await axios.post('https://backend.sadra-edu.com/fullInfo', {
+                    const response2 = await axios.post('https://sadra-edu.com/api/fullInfo', {
                         id: userId,
                         name: userName,
                         lastName: userLastName,
@@ -110,7 +110,7 @@ function TeacherDashbaord({ userRole, userId }) {
         }
     }
     useEffect(() => {
-        userId && axios.get(`https://backend.sadra-edu.com/users/data/${userId}`)
+        userId && axios.get(`https://sadra-edu.com/api/users/data/${userId}`)
             .then(response => {
                 setUserName(response.data[0][0].name);
                 setUserLastName(response.data[0][0].lastName);

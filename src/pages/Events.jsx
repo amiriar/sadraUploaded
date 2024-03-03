@@ -137,7 +137,7 @@ const categories = [
     setValue("1")
     const fetchData = async () => {
       try {
-          const response = await fetch('https://backend.sadra-edu.com/events/data');
+          const response = await fetch('https://sadra-edu.com/api/events/data');
           const jsonData = await response.json();
           setData(jsonData);
       } catch (error) {

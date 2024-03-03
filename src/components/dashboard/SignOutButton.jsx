@@ -8,7 +8,7 @@ const SignOutButton = () => {
 
     const signOut = async () => {
         try {
-            await axios.get('https://backend.sadra-edu.com/signout', {withCredentials: true})
+            await axios.get('https://sadra-edu.com/api/signout', {withCredentials: true})
             .then((res) => navigate(res.data.path))
         } catch (error) {
             console.error('Error signing out:', error);

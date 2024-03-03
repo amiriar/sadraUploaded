@@ -30,7 +30,7 @@ function NewEmployment() {
         const fetchData = async () => {
             try {
                 // First request to get the user ID
-                const responseToken = await axios.get('https://backend.sadra-edu.com/dashboard/token', { withCredentials: true });
+                const responseToken = await axios.get('https://sadra-edu.com/api/dashboard/token', { withCredentials: true });
                 const { id } = responseToken.data;
                 setUserRole(responseToken.data.role)
                 setUserId(responseToken.data.id)
@@ -57,7 +57,7 @@ function NewEmployment() {
             showToast('لطفا تمامی فیلد هارا پرکنید.', 'error');
         }
         
-        const response2 = await axios.post('https://backend.sadra-edu.com/employment/add', {
+        const response2 = await axios.post('https://sadra-edu.com/api/employment/add', {
             branch: jobBranch,
             jobCategory: jobBranch,
             jobPlace: jobPlace,
@@ -65,7 +65,7 @@ function NewEmployment() {
             jobTime: jobTime
         });
 
-        showToast("اطلاعات شما ثبت شد! حالا، به صفحات دیگر دسترسی دارید.", "success");
+        showToast('موقعیت شغلی جدید با موفقیت ثبت شد. بعد از تایید ادمین در سایت قرار میگیرد.', 'success');
     }
 
     return (

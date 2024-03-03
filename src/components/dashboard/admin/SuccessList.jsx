@@ -22,23 +22,23 @@ function SuccessList() {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        axios.get('https://backend.sadra-edu.com/dashboard/token', { withCredentials: true })
+        axios.get('https://sadra-edu.com/api/dashboard/token', { withCredentials: true })
             .then(response => {
                 const { role, id } = response.data;
                 setUserRole(role);
                 setUserId(id);
     
-                return axios.get(`https://backend.sadra-edu.com/fullDetail/${id}`);
+                return axios.get(`https://sadra-edu.com/api/fullDetail/${id}`);
             })
             .then(response2 => {
                 setUser(response2.data[0]);
     
-                return axios.get('https://backend.sadra-edu.com/users/data');
+                return axios.get('https://sadra-edu.com/api/users/data');
             })
             .then(response3 => {
                 setUsers(response3.data[0]);
 
-                return axios.get('https://backend.sadra-edu.com/stusuccess/data');
+                return axios.get('https://sadra-edu.com/api/stusuccess/data');
             }).then(response4 => {
                 setData(response4.data)
             })

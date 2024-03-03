@@ -29,7 +29,7 @@ const AuthForm = ({ isRegister }) => {
     const [userRole, setUserRole] = useState(null);
 
     useEffect(() => {
-        axios.get('https://backend.sadra-edu.com/dashboard/token', {withCredentials: true})
+        axios.get('https://sadra-edu.com/api/dashboard/token', {withCredentials: true})
             .then(response => {
             const { id } = response.data;
             setUserId(id);
@@ -99,7 +99,7 @@ const AuthForm = ({ isRegister }) => {
             
                 if (isREGEmailOK === true && isREGPassOK === true && isREGUsernameOK === true) {
                     try {
-                        const response = await axios.post('https://backend.sadra-edu.com/register', {
+                        const response = await axios.post('https://sadra-edu.com/api/register', {
                             userName: values.userName,
                             email: values.email,
                             password: values.password,
@@ -147,7 +147,7 @@ const AuthForm = ({ isRegister }) => {
                     try {
                         let response = await axios({
                             method: 'post',
-                            url: 'https://backend.sadra-edu.com/login', 
+                            url: 'https://sadra-edu.com/api/login', 
                             data: {
                                 emailOrUsername : values.userEmail,
                                 password: values.password,
@@ -215,6 +215,7 @@ const AuthForm = ({ isRegister }) => {
                                                 value={values.userName}
                                                 onChange={handleChange('userName')}
                                                 required
+                                                autoComplete='true'
                                             />
                                         </FormControl>
             
@@ -230,6 +231,7 @@ const AuthForm = ({ isRegister }) => {
                                                 value={values.email}
                                                 onChange={handleChange('email')}
                                                 required
+                                                autoComplete='true'
                                             />
                                         </FormControl>
                                     </>
@@ -248,6 +250,7 @@ const AuthForm = ({ isRegister }) => {
                                                 value={values.userEmail}
                                                 onChange={handleChange('userEmail')}
                                                 required
+                                                autoComplete='true'
                                             />
                                         </FormControl>
                                     </>
@@ -267,6 +270,7 @@ const AuthForm = ({ isRegister }) => {
                                         value={values.password}
                                         onChange={handleChange('password')}
                                         required
+                                        autoComplete='true'
                                         endAdornment={
                                             <InputAdornment position="end">
                                                 <IconButton
@@ -294,6 +298,7 @@ const AuthForm = ({ isRegister }) => {
                                                     inputProps={{ 'aria-label': 'controlled' }}
                                                     sx={{ color: '#4ca773' }}
                                                     id='is-student'
+                                                    required
                                                 />
                                                 <label htmlFor="is-student" style={{ cursor:"pointer"}}>
                                                     قوانین و مقررات سایت را میپذیرم
@@ -308,18 +313,19 @@ const AuthForm = ({ isRegister }) => {
                                     :
                                     <>
                                         <div className='AuthBtns' style={{display:"flex", justifyContent:"space-between"}}>
-                                            <FormControl sx={{ marginTop: '1rem', display: 'inline', alignItems: 'center' }}>
+                                            {/* <FormControl sx={{ marginTop: '1rem', display: 'inline', alignItems: 'center' }}>
                                                 <Checkbox
                                                     checked={userIsAccepted === 1 ? true : false}
                                                     onChange={handleCheckboxChange}
                                                     inputProps={{ 'aria-label': 'controlled' }}
                                                     sx={{ color: '#4ca773' }}
                                                     id='is-student'
+                                                    required
                                                 />
                                                 <label htmlFor="is-student" style={{ cursor:"pointer"}}>
                                                     مرا به خاطر بسپار
                                                 </label>
-                                            </FormControl>
+                                            </FormControl> */}
                                             <button className='login_Btn_No_Hid' style={{cursor:"pointer"}}>
                                                 ورود
                                             </button>

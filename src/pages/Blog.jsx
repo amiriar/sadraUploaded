@@ -16,9 +16,9 @@ function Blog() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const responseToken = await axios.get('https://backend.sadra-edu.com/blog/data');
+                const responseToken = await axios.get('https://sadra-edu.com/api/blog/data');
                 setData(responseToken.data);
-                const responseToken2 = await axios.get('https://backend.sadra-edu.com/TeacherUsers/data');
+                const responseToken2 = await axios.get('https://sadra-edu.com/api/TeacherUsers/data');
                 setUsers(await responseToken2.data[0]);
             } catch (error) {
                 console.error('Error fetching data:', error);

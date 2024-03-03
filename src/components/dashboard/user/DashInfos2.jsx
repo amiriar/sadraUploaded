@@ -7,7 +7,7 @@ function DashInfo2() {
     const [users,setUsers] = useState([])
 
     useEffect(() => {
-        axios.get('https://backend.sadra-edu.com/users/data').then(response => {setUsers(response.data[0])})
+        axios.get('https://sadra-edu.com/api/users/data').then(response => {setUsers(response.data[0])})
         .catch(error => {
             console.error('Error:', error.response ? error.response.data : error.message);
             setUserRole('error');

@@ -29,18 +29,18 @@ function ClassList() {
     }
 
     useEffect(() => {
-        axios.get('https://backend.sadra-edu.com/dashboard/token', { withCredentials: true })
+        axios.get('https://sadra-edu.com/api/dashboard/token', { withCredentials: true })
             .then(response => {
                 const { role, id } = response.data;
                 setUserRole(role);
                 setUserId(id);
     
-                return axios.get(`https://backend.sadra-edu.com/fullDetail/${id}`);
+                return axios.get(`https://sadra-edu.com/api/fullDetail/${id}`);
             })
             .then(response2 => {
                 setUsers(response2.data);
                 // Fetch data from the third endpoint after the second one is resolved
-                return axios.get('https://backend.sadra-edu.com/classes/data');
+                return axios.get('https://sadra-edu.com/api/classes/data');
             })
             .then(response3 => {
                 setData(response3.data);

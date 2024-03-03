@@ -20,17 +20,17 @@ function NewBlog() {
         const fetchData = async () => {
             try {
                 // First request to get the user ID
-                const responseToken = await axios.get('https://backend.sadra-edu.com/dashboard/token', { withCredentials: true });
+                const responseToken = await axios.get('https://sadra-edu.com/api/dashboard/token', { withCredentials: true });
                 const { id } = responseToken.data;
                 setUserRole(responseToken.data.role)
     
-                const responseFullDetail = await axios.get(`https://backend.sadra-edu.com/fullDetail/${id}`);
+                const responseFullDetail = await axios.get(`https://sadra-edu.com/api/fullDetail/${id}`);
                 setAuthorName(responseFullDetail.data[0][0].name)
                 setAuthorLastName(responseFullDetail.data[0][0].lastName)
 
-                const responseToken3 = await axios.get('https://backend.sadra-edu.com/blog/data');
+                const responseToken3 = await axios.get('https://sadra-edu.com/api/blog/data');
                 setData(responseToken3.data);
-                const responseToken2 = await axios.get('https://backend.sadra-edu.com/TeacherUsers/data');
+                const responseToken2 = await axios.get('https://sadra-edu.com/api/TeacherUsers/data');
                 setUsers(await responseToken2.data[0]);
             } catch (error) {
                 console.error('Error:', error.response ? error.response.data : error.message);
@@ -118,7 +118,7 @@ function NewBlog() {
         formData.append('files', descriptionImage2);
 
         try {
-            const response = await axios.post('https://backend.sadra-edu.com/upload/multiple/3', formData, {
+            const response = await axios.post('https://sadra-edu.com/api/upload/multiple/3', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -133,7 +133,7 @@ function NewBlog() {
             setImagePath3(imagePath3);
         
             showToast('اطلاعات با موفقیت آپلود شد.', 'success');
-            axios.post(`https://backend.sadra-edu.com/dashboard/blogs/add`, {
+            axios.post(`https://sadra-edu.com/api/dashboard/blogs/add`, {
                 imageData: imagePath1,
                 date: moment().locale('fa').format('YYYY-MM-DD'),
                 title: title,
@@ -151,7 +151,7 @@ function NewBlog() {
                 timeToRead: timeToRead
             })
             .then(response => {
-                showToast("بلاگ جدید با موفقیت ثبت شد !", "success")
+                showToast('بلاگ جدید با موفقیت ثبت شد. بعد از تایید ادمین در سایت قرار میگیرد.', 'success');
             })
             .catch(error => {
                 console.error('Error:', error.response ? error.response.data : error.message);

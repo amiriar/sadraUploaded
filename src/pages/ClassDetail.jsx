@@ -36,7 +36,7 @@ export default function ClassDetail() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://backend.sadra-edu.com/ClassEventData/data');
+        const response = await axios.get('https://sadra-edu.com/api/ClassEventData/data');
         setData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -45,7 +45,7 @@ export default function ClassDetail() {
   
     const fetchData2 = async () => {
       try {
-        const response = await axios.get('https://backend.sadra-edu.com/evetnDetailTeachersData/data');
+        const response = await axios.get('https://sadra-edu.com/api/evetnDetailTeachersData/data');
         setTeachersData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -54,7 +54,7 @@ export default function ClassDetail() {
   
     const fetchData3 = async () => {
       try {
-        const response = await axios.get('https://backend.sadra-edu.com/dashboard/token', { withCredentials: true });
+        const response = await axios.get('https://sadra-edu.com/api/dashboard/token', { withCredentials: true });
         const { id } = response.data;
         setUserId(id);
       } catch (error) {

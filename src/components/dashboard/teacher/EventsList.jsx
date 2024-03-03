@@ -49,7 +49,7 @@ function EventsList() {
         setValue(1)
         const fetchData = async () => {
             try {
-                const response = await fetch('https://backend.sadra-edu.com/events/data');
+                const response = await fetch('https://sadra-edu.com/api/events/data');
                 const jsonData = await response.json();
                 setData2(jsonData);
             } catch (error) {
@@ -65,13 +65,13 @@ function EventsList() {
       }
 
     useEffect(() => {
-        axios.get('https://backend.sadra-edu.com/dashboard/token', { withCredentials: true })
+        axios.get('https://sadra-edu.com/api/dashboard/token', { withCredentials: true })
             .then(response => {
             const { role, id } = response.data;
             setUserRole(role);
             setUserId(id);
             // if (id) {
-            //     axios.get(`https://backend.sadra-edu.com/dashboard/blogs/${id}`)
+            //     axios.get(`https://sadra-edu.com/api/dashboard/blogs/${id}`)
             //         .then(secondResponse => {
             //         setTeacherBlog(secondResponse.data[0])
             //         })
@@ -87,9 +87,9 @@ function EventsList() {
 
         // const fetchData = async () => {
         //     try {
-        //         const responseToken = await axios.get('https://backend.sadra-edu.com/blog/data');
+        //         const responseToken = await axios.get('https://sadra-edu.com/api/blog/data');
         //         setData(responseToken.data);
-        //         const responseToken2 = await axios.get('https://backend.sadra-edu.com/TeacherUsers/data');
+        //         const responseToken2 = await axios.get('https://sadra-edu.com/api/TeacherUsers/data');
         //         setUsers(await responseToken2.data[0]);
         //     } catch (error) {
         //         console.error('Error fetching data:', error);

@@ -22,7 +22,7 @@ function DashInfo() {
     const [userIsStudent, setUserIsStudent] = useState(false);
 
     useEffect(() => {
-        axios.get('https://backend.sadra-edu.com/dashboard/token', {withCredentials: true})
+        axios.get('https://sadra-edu.com/api/dashboard/token', {withCredentials: true})
             .then(response => {
             const { email, role, id } = response.data;
             setUserId(id);
@@ -36,7 +36,7 @@ function DashInfo() {
     }, []); 
 
     useEffect(() => {
-        userId && axios.get(`https://backend.sadra-edu.com/users/data/${userId}`)
+        userId && axios.get(`https://sadra-edu.com/api/users/data/${userId}`)
             .then(response => {
                 setUserName(response.data[0][0].name);
                 setUserLastName(response.data[0][0].lastName);
@@ -65,7 +65,7 @@ function DashInfo() {
         if(userEmail === '' || userName === '' || userLastName === '' || userAge === '' || userPhone === '' || userEducation === ''){
             showToast('لطفا تمامی فیلد هارا پرکنید.', 'error');
         } else{
-            const response = await axios.post('https://backend.sadra-edu.com/fullInfo', {
+            const response = await axios.post('https://sadra-edu.com/api/fullInfo', {
                 id: userId,
                 name: userName,
                 lastName: userLastName,

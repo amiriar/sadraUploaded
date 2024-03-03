@@ -120,13 +120,13 @@ const Employment = () => {
     setValue(2)
     const fetchData = async () => {
       try {
-          const response = await fetch('https://backend.sadra-edu.com/employment/data');
+          const response = await fetch('https://sadra-edu.com/api/employment/data');
           const jsonData = await response.json();
           setData(jsonData);
-          const Response3 = await fetch('https://backend.sadra-edu.com/employmentAbout/data');
+          const Response3 = await fetch('https://sadra-edu.com/api/employmentAbout/data');
           const aboutData = await Response3.json();
           setAbout(aboutData)
-          const Response2 = await fetch('https://backend.sadra-edu.com/employmentJobTeam/data');
+          const Response2 = await fetch('https://sadra-edu.com/api/employmentJobTeam/data');
           const aboutData2 = await Response2.json();
           setJobTeam(aboutData2)
       } catch (error) {
@@ -172,7 +172,7 @@ const [imagePath, setImagePath] = useState('');
     formData.append('file', imageData);
 
     try {
-      const response = await axios.post('https://backend.sadra-edu.com/upload/single', formData, {
+      const response = await axios.post('https://sadra-edu.com/api/upload/single', formData, {
           headers: {
               'Content-Type': 'multipart/form-data',
           },
@@ -181,7 +181,7 @@ const [imagePath, setImagePath] = useState('');
       const imagePath1 = await response.data.path.split(`\\`).join("/");
   
       showToast('اطلاعات با موفقیت آپلود شد.', 'success');
-      axios.post(`https://backend.sadra-edu.com/resume/add`, {
+      axios.post(`https://sadra-edu.com/api/resume/add`, {
           filePath: imagePath1,
           fileName: fileName,
           date: moment().locale('fa').format('YYYY-MM-DD')
@@ -314,24 +314,21 @@ const [imagePath, setImagePath] = useState('');
 
         {
         Questions.map(item => (
-          <Accordion>
-          <AccordionSummary
-          expandIcon={<QuestionIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-          key={item.id}
-        >
-        <Typography fontFamily={"Yekan , sans-serif"} >{item.title}</Typography>
-        </AccordionSummary>
+          <Accordion key={item.id}>
+            <AccordionSummary
+              expandIcon={<QuestionIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+            <Typography fontFamily={"Yekan , sans-serif"} >{item.title}</Typography>
+            </AccordionSummary>
 
-        <AccordionDetails>
-          <Typography fontFamily={"Yekan , sans-serif"} >
-            {item.question}
-          </Typography>
-        </AccordionDetails>
-      
-        </Accordion>
-
+            <AccordionDetails>
+              <Typography fontFamily={"Yekan , sans-serif"} >
+                {item.question}
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
         ))
       }
     </div>

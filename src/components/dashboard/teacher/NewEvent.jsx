@@ -71,19 +71,19 @@ import { Link } from 'react-router-dom'
 //     useEffect(() => {
 //         const fetchData = async () => {
 //             try {
-//                 const responseToken = await axios.get('https://backend.sadra-edu.com/dashboard/token', { withCredentials: true });
+//                 const responseToken = await axios.get('https://sadra-edu.com/api/dashboard/token', { withCredentials: true });
 //                 const { id } = responseToken.data;
 //                 setUserRole(responseToken.data.role)
     
-//                 const responseFullDetail = await axios.get(`https://backend.sadra-edu.com/fullDetail/${id}`);
+//                 const responseFullDetail = await axios.get(`https://sadra-edu.com/api/fullDetail/${id}`);
 //                 setAuthorName(responseFullDetail.data[0][0].name)
 //                 setAuthorLastName(responseFullDetail.data[0][0].lastName)
 //                 setTeacher(`${authorName} ${authorLastName}`)
 
-//                 const responseToken3 = await axios.get('https://backend.sadra-edu.com/events/data');
+//                 const responseToken3 = await axios.get('https://sadra-edu.com/api/events/data');
 //                 setData(responseToken3.data);
 
-//                 const responseToken2 = await axios.get('https://backend.sadra-edu.com/TeacherUsers/data');
+//                 const responseToken2 = await axios.get('https://sadra-edu.com/api/TeacherUsers/data');
 //                 setUsers(await responseToken2.data[0]);
 //             } catch (error) {
 //                 console.error('Error:', error.response ? error.response.data : error.message);
@@ -145,7 +145,7 @@ import { Link } from 'react-router-dom'
 
 
 //     //     try {
-//     //         axios.post('https://backend.sadra-edu.com/upload/multiple/2', formData, {
+//     //         axios.post('https://sadra-edu.com/api/upload/multiple/2', formData, {
 //     //         headers: {
 //     //                 'Content-Type': 'multipart/form-data',
 //     //             },
@@ -168,7 +168,7 @@ import { Link } from 'react-router-dom'
 //     //         formData2.append('videoData', video);
 
 //     //         try {
-//     //             const response = await axios.post('https://backend.sadra-edu.com/upload/video', formData2, {
+//     //             const response = await axios.post('https://sadra-edu.com/api/upload/video', formData2, {
 //     //                 headers: {
 //     //                     'Content-Type': 'multipart/form-data',
 //     //                 },
@@ -181,7 +181,7 @@ import { Link } from 'react-router-dom'
 //     //             // Handle the error as needed
 //     //         }
 //     //         showToast('اطلاعات با موفقیت آپلود شد.', 'success');
-//     //         axios.post(`https://backend.sadra-edu.com/dashboard/events/add`, {
+//     //         axios.post(`https://sadra-edu.com/api/dashboard/events/add`, {
 //     //             category: category,
 //     //             title: title,
 //     //             image: imagePath,
@@ -238,7 +238,7 @@ import { Link } from 'react-router-dom'
 
 //             let imagePath5;
 //             try {
-//                 const result = await axios.post('https://backend.sadra-edu.com/upload/single/img', formData, {
+//                 const result = await axios.post('https://sadra-edu.com/api/upload/single/img', formData, {
 //                     headers: {
 //                         'Content-Type': 'multipart/form-data',
 //                     },
@@ -262,7 +262,7 @@ import { Link } from 'react-router-dom'
 //             // const formData2 = new FormData();
 //             // formData2.append('videoData', video);
 
-//         // const videoUploadResponse = await axios.post('https://backend.sadra-edu.com/upload/video', formData2, {
+//         // const videoUploadResponse = await axios.post('https://sadra-edu.com/api/upload/video', formData2, {
 //         //     headers: {
 //         //         'Content-Type': 'multipart/form-data',
 //         //     },
@@ -274,7 +274,7 @@ import { Link } from 'react-router-dom'
 
     
 //           // Make the final Axios call
-//         const response = await axios.post('https://backend.sadra-edu.com/dashboard/events/add', {
+//         const response = await axios.post('https://sadra-edu.com/api/dashboard/events/add', {
 //             category: category,
 //             title: title,
 //             image: imagePath1,
@@ -298,8 +298,7 @@ import { Link } from 'react-router-dom'
 //             detailSubtitle: subtitle,
 //             Detail_Head_Title: shortName,
 //         });
-//             showToast('اطلاعات با موفقیت آپلود شد.', 'success');
-//             showToast('بلاگ جدید با موفقیت ثبت شد!', 'success');
+//             showToast('رویداد جدید با موفقیت ثبت شد. بعد از تایید ادمین در سایت قرار میگیرد.', 'success');
 //         } catch (error) {
 //             console.error('Error:', error.response ? error.response.data : error.message);
 //             showToast(`خطا در آپلود تصویر: ${error.response ? error.response.data.error : error.message}`, 'error');

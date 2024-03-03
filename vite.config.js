@@ -8,7 +8,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/dashbaord': {
-        target: 'https://backend.sadra-edu.com', // Adjust the target URL according to your backend
+        target: 'https://sadra-edu.com/api', // Adjust the target URL according to your backend
         changeOrigin: true,
         withCredentials: true,
       },

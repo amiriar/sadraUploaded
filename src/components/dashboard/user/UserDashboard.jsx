@@ -28,7 +28,7 @@ function UserDashboard() {
     const [userIsStudent, setUserIsStudent] = useState(false);
 
     useEffect(() => {
-        axios.get('https://backend.sadra-edu.com/dashboard/token', {withCredentials: true})
+        axios.get('https://sadra-edu.com/api/dashboard/token', {withCredentials: true})
             .then(response => {
             const { email, role, id } = response.data;
             setUserId(id);
@@ -42,7 +42,7 @@ function UserDashboard() {
     }, []); 
 
     useEffect(() => {
-        userId && axios.get(`https://backend.sadra-edu.com/users/data/${userId}`)
+        userId && axios.get(`https://sadra-edu.com/api/users/data/${userId}`)
             .then(response => {
                 setUserName(response.data[0][0].name);
                 setUserLastName(response.data[0][0].lastName);

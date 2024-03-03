@@ -22,7 +22,7 @@ const StudentDetail = () => {
     useEffect(() => {
         const fetchData2 = async () => {
             try {
-                const response = await fetch('https://backend.sadra-edu.com/students/data');
+                const response = await fetch('https://sadra-edu.com/api/students/data');
                 const jsonData = await response.json();
                 setData(jsonData);
             } catch (error) {

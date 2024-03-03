@@ -16,7 +16,7 @@ function StudentSuccess() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://backend.sadra-edu.com/stusuccess/data');
+                const response = await fetch('https://sadra-edu.com/api/stusuccess/data');
                 const jsonData = await response.json();
                 setData(jsonData);
             } catch (error) {
