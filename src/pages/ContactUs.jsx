@@ -42,7 +42,7 @@ function ContactUs() {
                             </span>
                             &nbsp;
                             &nbsp;
-                            <span>تهران، میدان توحید، خیابان فرصت شیرازی، بیم اسکندری و قریب، پلاک 103، طبقه چهارم، واحد12</span>
+                            <span>تهران، میدان توحید، خیابان فرصت شیرازی، بین اسکندری و قریب، پلاک 103، طبقه چهارم، واحد12</span>
                         </div>
                         <div className='contactIconContainer'>
                             <span className='contactIcon'>
@@ -117,7 +117,7 @@ function ContactUs() {
                                 <Button variant="contained" sx={{
                                     backgroundColor: "#4CA773",
                                     width:"fit-content"
-                                }}>Submit</Button>
+                                }}>ارسال</Button>
                             </form>
                         </div>
                     </div>

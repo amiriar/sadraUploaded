@@ -176,7 +176,7 @@ const fetchData4 = async () => {
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         {commentData && commentData?.map((item)=> (
           <SwiperSlide key={item.id}>
-            <p id='cardComment' style={{padding:"0rem 3rem", textAlign:"justify", textJustify:"inter-word"}}>{item.comment}</p>
+            <p id='cardComment' style={{padding:"0rem 3rem", textAlign:"center", textJustify:"inter-word"}}>{item.comment}</p>
             <img src={item.profile} alt='prof' />
             <p id='cardName'>{item.name}</p>
             <p id='cardJob'>{item.job}</p>

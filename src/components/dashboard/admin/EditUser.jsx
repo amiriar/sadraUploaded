@@ -27,7 +27,7 @@ function EditUser() {
     const mobileSetting = ()=>{
         setSetting(e => !e);
         console.log(setting)
-      }
+    }
     
     const [userId, setUserId] = useState()
     const [userName, setUserName] = useState('')
@@ -39,6 +39,7 @@ function EditUser() {
     const [userEducation, setUserEducation] = useState('')
     const [userIsStudent, setUserIsStudent] = useState('')
     const [userProfile, setUserProfile] = useState('')
+    const [userUserName, setUserUserName] = useState('')
     const [userDescription, setUserDescription] = useState('')
     const [userLinkedin, setUserLinkedin] = useState('')
     const [userPinterest, setUserPinterest] = useState('')
@@ -70,6 +71,7 @@ function EditUser() {
             setUserPinterest(response.data[0][0].pinterest)
             setUserTwitterX(response.data[0][0].twitterX)
             setUserFacebook(response.data[0][0].facebook)
+            setUserUserName(response.data[0][0].userName)
         })
     }, [])
 
@@ -131,8 +133,9 @@ function EditUser() {
                     const response2 = await axios.post('https://sadra-edu.com/api/fullInfoRole', {
                         id: userId,
                         name: userName,
-                        role: userRole,
                         lastName: userLastName,
+                        userName: userUserName,
+                        role: userRole,
                         email: userEmail,
                         age: userAge,
                         phoneNumber: userPhoneNumber,
@@ -162,7 +165,7 @@ function EditUser() {
             showToast("کاربر با موفقیت حذف شد!، درحال ارسال به صفحه ی قبل", "success");
             setTimeout(() => {
                 navigate('/dashboard/users')
-            }, 3000); // 3000 milliseconds = 3 seconds
+            }, 1500);
         } else {
             console.log("Canceled");
         }
@@ -194,6 +197,7 @@ function EditUser() {
                             <form dir='rtl' style={{ display:"flex", flexDirection:"column", gap:"1rem"}}>
                                 <InputContact id={'name'} variable={userName} setVariable={setUserName} title={'نام'} type={'text'} width={'100%'} />
                                 <InputContact id={'lastName'} variable={userLastName} setVariable={setUserLastName} title={'نام خانوادگی'} type={'text'} width={'100%'} />
+                                <InputContact id={'userName'} variable={userUserName} setVariable={setUserUserName} title={'نام کاربری'} type={'text'} width={'100%'} />
 
                                 <FormControl variant="outlined">
                                     <p>سطح کاربری</p>

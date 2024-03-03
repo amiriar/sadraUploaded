@@ -16,6 +16,7 @@ function DashInfo() {
     const [userRole, setUserRole] = useState(null);
     const [userName, setUserName] = useState('');
     const [userLastName, setUserLastName] = useState('');
+    const [userUserName, setUserUserName] = useState('');
     const [userAge, setUserAge] = useState('');
     const [userPhone, setUserPhone] = useState('');
     const [userEducation, setUserEducation] = useState('');
@@ -40,6 +41,7 @@ function DashInfo() {
             .then(response => {
                 setUserName(response.data[0][0].name);
                 setUserLastName(response.data[0][0].lastName);
+                setUserUserName(response.data[0][0].userName);
                 setUserAge(response.data[0][0].age)
                 setUserPhone(response.data[0][0].phoneNumber)
                 setUserEducation(response.data[0][0].education)
@@ -62,19 +64,21 @@ function DashInfo() {
     });
 
     const insertHandler = async () => {
-        if(userEmail === '' || userName === '' || userLastName === '' || userAge === '' || userPhone === '' || userEducation === ''){
+        if(userEmail === '' || userName === '' || userUserName === '' || userLastName === '' || userAge === '' || userPhone === '' || userEducation === ''){
             showToast('لطفا تمامی فیلد هارا پرکنید.', 'error');
         } else{
             const response = await axios.post('https://sadra-edu.com/api/fullInfo', {
                 id: userId,
                 name: userName,
                 lastName: userLastName,
+                userName: userUserName,
                 email: userEmail,
                 age: userAge,
                 phoneNumber: userPhone,
                 education: userEducation,
                 isStudent: userIsStudent
             });
+            showToast('اطلاعات شما با موفقیت ثبت شد.', 'success');
             navigate(response.data.path)
         }
     }
@@ -164,6 +168,21 @@ function DashInfo() {
                                                     sx={{ position: 'relative',fontFamily: "Yekan, sans-serif" }}
                                                     value={userLastName}
                                                     onChange={(e) => setUserLastName(e.target.value)}
+                                                    required
+                                                />
+                                            </FormControl>
+
+                                            <FormControl variant="outlined" sx={{marginTop:"1rem"}}>
+                                                <InputLabel htmlFor="last-name" sx={{ left: 'auto', right: 40, fontFamily: "Yekan,sans-serif" }}>
+                                                    نام کاربری
+                                                </InputLabel>
+                                                <Input
+                                                    id="userName"
+                                                    label="نام کاربری"
+                                                    variant="outlined"
+                                                    sx={{ position: 'relative',fontFamily: "Yekan, sans-serif" }}
+                                                    value={userUserName}
+                                                    onChange={(e) => setUserUserName(e.target.value)}
                                                     required
                                                 />
                                             </FormControl>

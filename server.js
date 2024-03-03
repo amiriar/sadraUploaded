@@ -812,6 +812,17 @@ app.post('/resume/add', async (req, res) => {
     res.json({ statusCode: 200, message: 'رزومه شما با موفقیت ثبت شد !' }).status(200);
 });
 
+app.get('/users/delete/:id', async (req, res) => {
+    const { id } = req.params
+    try {
+        const [rows] = await db.query(`DELETE FROM users WHERE id = ${id}`);
+        res.json(rows);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 app.post('/upload/single', upload.single('file'), (req, res, next) => {
     if (req.file) {
         const { filename, path } = req.file;

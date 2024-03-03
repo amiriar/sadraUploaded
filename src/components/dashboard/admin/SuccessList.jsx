@@ -104,7 +104,9 @@ function SuccessList() {
                                         borderRadius: '0.625rem',
                                         }}
                                     >
-                                        <div style={{display:"flex", justifyContent:"right", marginBottom:"1rem",marginTop:"1rem", boxSizing:'border-box', cursor:"pointer"}} onClick={() => clickHandler({name: item.authorName})}>
+                                        <div style={{display:"flex", justifyContent:"right", marginBottom:"1rem",marginTop:"1rem", boxSizing:'border-box', cursor:"pointer"}} 
+                                        // onClick={() => clickHandler({name: item.authorName})}
+                                        >
                                             <Avatar src={`/${item?.authorPicture?.split("/").splice(1).splice(1).join('/')}`} alt={item.authorName} style={{ marginLeft: 15, objectFit:'cover',marginTop:5, height:"3.125rem",width:"3.125rem"}} />
                                             <div style={{display:'flex', flexDirection:"column"}}>
                                                 <Typography fontFamily={'Yekan,sans-serif'} variant="h6">{item.authorName}</Typography>
