@@ -24,7 +24,11 @@ import { useDropzone } from 'react-dropzone'
 import { showToast } from '../components/modules/AuthModules/Toastify'
 import axios from 'axios'
 import moment from 'jalali-moment'
+<<<<<<< HEAD
+import { Link } from 'react-router-dom'
+=======
 import { ToastContainer } from 'react-toastify'
+>>>>>>> 7f81f16ead4da51b69ff8e61ffa5ff40712895d0
 // DataBase
 // import WhysUsDB from '../utils/WhysUsDB.json'
 const Employment = () => {
@@ -242,6 +246,19 @@ const [imagePath, setImagePath] = useState('');
                 </TabList>
               </Box>
               {
+<<<<<<< HEAD
+                Tab.TabTitle === "همه" ? data.map(item =><Link key={item.id} to={`/employmentForm/${item.id}`}><EmploymentDetailCard key={item.id} job={item.jobTitle} place={item.jobPlace} category={item.jobCategory} time={item.jobTime} /> </Link>) :
+                data.filter((item) => item.jobCategory === Tab.TabTitle).map((filteredItem) => (
+                  <Link key={filteredItem.id} to={`/employmentForm/${filteredItem.id}`}><EmploymentDetailCard key={filteredItem.id} job={filteredItem.jobTitle} place={filteredItem.jobPlace} category={filteredItem.jobCategory} time={filteredItem.jobTime} /></Link>
+              ))
+              }      
+            </div>    
+            </TabPanel>
+            ))
+        }
+      </TabContext>
+    </Box>
+=======
                 tabHeader.map(Tab => (
                   <TabPanel key={Tab.id} value={Tab.id}>
                   <div className='JonsCardsContainer'>
@@ -259,6 +276,7 @@ const [imagePath, setImagePath] = useState('');
               }
             </TabContext>
           </Box>
+>>>>>>> 7f81f16ead4da51b69ff8e61ffa5ff40712895d0
         </div>
         
         <div style={{marginBottom:"3rem",marginTop:"3rem"}}>

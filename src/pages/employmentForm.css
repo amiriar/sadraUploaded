@@ -1,0 +1,18 @@
+.employment{
+  max-width: 1920px;
+  margin: 0 auto;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.employementForm_container{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 2rem;
+  padding: 1rem 2rem ;
+  gap: 1rem;
+  width: 75%;
+}
