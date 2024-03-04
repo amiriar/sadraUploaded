@@ -25,7 +25,6 @@ import { showToast } from '../components/modules/AuthModules/Toastify'
 import axios from 'axios'
 import moment from 'jalali-moment'
 import { ToastContainer } from 'react-toastify'
-
 // DataBase
 // import WhysUsDB from '../utils/WhysUsDB.json'
 const Employment = () => {
@@ -251,7 +250,7 @@ const [imagePath, setImagePath] = useState('');
                     {
                       Tab.TabTitle === "همه" ? data.map(item =><EmploymentDetailCard key={item.id} job={item.jobTitle} place={item.jobPlace} category={item.jobCategory} time={item.jobTime} />) :
                       data.filter((item) => item.jobCategory === Tab.TabTitle).map((filteredItem) => (
-                        <EmploymentDetailCard key={filteredItem.id} job={filteredItem.jobTitle} place={filteredItem.jobPlace} category={filteredItem.jobCategory} time={filteredItem.jobTime} />
+                        <EmploymentDetailCard key={filteredItem.id} job={filteredItem.jobTitle} place={filteredItem.jobPlace} category={filteredItem.jobCategory} time={filteredItem.jobTime} id={filteredItem.id} />
                     ))
                     }      
                   </div>    
@@ -285,24 +284,24 @@ const [imagePath, setImagePath] = useState('');
           </form>
         </div>
 
-      {/* <div className='whyUs_container'>
-        <div className='ChanceIcon'>
-        <Line/><h2>چرا ما</h2> 
-        </div>
+        {/* <div className='whyUs_container'>
+          <div className='ChanceIcon'>
+          <Line/><h2>چرا ما</h2> 
+          </div>
 
-          <h2>صدرا از نگاه همکاران</h2>
+            <h2>صدرا از نگاه همکاران</h2>
 
-        <div className='VideoContents'>
-          
-          {
-            about.map(item => (
-              <div key={item.id} className='videoContainer'><VideoComponent key={item.id} UrlAutorName={item.authorName} videoJob={item.videoJob} videoTitle={item.videoTitle} videoThumbnail={item.videoThumbnail} videoSrc={item.videoSrc} /></div>
+          <div className='VideoContents'>
+            
+            {
+              about.map(item => (
+                <div key={item.id} className='videoContainer'><VideoComponent key={item.id} UrlAutorName={item.authorName} videoJob={item.videoJob} videoTitle={item.videoTitle} videoThumbnail={item.videoThumbnail} videoSrc={item.videoSrc} /></div>
 
-            ))
-          }
-        </div>
+              ))
+            }
+          </div>
 
-      </div> */}
+        </div> */}
 
 
       <div className='Question_Container'>
