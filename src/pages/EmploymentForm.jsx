@@ -1,6 +1,6 @@
 import './employmentForm.css';
 import TextField from '@mui/material/TextField';
-import { useParams, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 function EmploymentForm() {
   const router = useParams();
