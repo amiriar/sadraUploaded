@@ -15,7 +15,7 @@ export default function ClassCard({id, title , teacherFirstName, teacherLastName
         <div className='cardInfo'>
             <h2>{title}</h2>
             {
-              teacherFirstName.trim().length ? (
+              teacherFirstName?.trim().length !== 0 || teacherLastName?.trim().length !== 0 ? (
                 <p>استاد {teacherFirstName} {teacherLastName}</p>
               ) : ""
             }

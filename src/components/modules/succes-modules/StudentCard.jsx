@@ -8,7 +8,7 @@ function StudentCard({ student , account , accountLink }) {
             <CardMedia
                 component="img"
                 alt={student.name}
-                height="140"
+                height="250"
                 image={student.titlePicture}
                 sx={{borderRadius:"1rem", marginBottom:"1.5rem"}}
             />
@@ -19,13 +19,13 @@ function StudentCard({ student , account , accountLink }) {
                 <Typography fontFamily={'Yekan,sans-serif'} variant="subtitle1" color="text.secondary" sx={{textAlign:"center", fontSize:"0.875rem"}}>
                     {student.afterJob}
                 </Typography>
-                {
+                {/* {
                     account && (
                         <Typography fontFamily={'Yekan,sans-serif'} variant="subtitle1" color="text.secondary" sx={{textAlign:"center", fontSize:"0.875rem"}}>
                             <Link to={`${student.accountLink}`} >{student.account}</Link>
                         </Typography>
                     )
-                }
+                } */}
             </CardContent>
         </Card>
     )

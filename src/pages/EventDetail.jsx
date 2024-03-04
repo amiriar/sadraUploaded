@@ -222,7 +222,7 @@ const sabtHandler = () => {
                 <img src={`/${newImage}`} alt={title} />
               <div className='topCard'>
                 {
-                  teacherFirstName.trim().length !== 0 || teacherLastName.trim().length !== 0 ? (
+                  teacherFirstName?.trim().length !== 0 || teacherLastName?.trim().length !== 0 ? (
                     <p>استاد {teacherFirstName} {teacherLastName}</p>
                   ) : ""
                 }

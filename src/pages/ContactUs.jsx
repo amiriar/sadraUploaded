@@ -116,7 +116,8 @@ function ContactUs() {
                                 </div>
                                 <Button variant="contained" sx={{
                                     backgroundColor: "#4CA773",
-                                    width:"fit-content"
+                                    width:"fit-content",
+                                    fontFamily:"Yekan, sans-serif"
                                 }}>ارسال</Button>
                             </form>
                         </div>

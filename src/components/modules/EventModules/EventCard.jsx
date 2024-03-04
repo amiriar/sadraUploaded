@@ -25,7 +25,7 @@ const EventCard = ({ image, title, price, teacherFirstName, teacherLastName, dat
           <div className="CardEventDetail"  >
           <Typography fontFamily={'Yekan, sans-serif'} sx={{fontSize : 17 , fontWeight : 700}} variant="h6" color="text.secondary">
             {
-              teacherFirstName.trim().length !== 0 || teacherLastName.trim().length !== 0 ? (
+              teacherFirstName?.trim().length !== 0 || teacherLastName?.trim().length !== 0 ? (
                 <p>استاد {teacherFirstName} {teacherLastName}</p>
               ) : ""
             }
