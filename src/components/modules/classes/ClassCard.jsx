@@ -7,7 +7,6 @@ import { MdOutlineStackedBarChart } from "react-icons/md";
 
 export default function ClassCard({id, title , teacherFirstName, teacherLastName , level , lessons , time , price , image}) {
   const newImage = image?.split('/').splice(1).splice(1).join('/');
-  // const newImage = image?.split('/').splice(1).join('/');
   return (
     <div className='CardBox'>
     <div className='imgContainer'>
@@ -15,9 +14,9 @@ export default function ClassCard({id, title , teacherFirstName, teacherLastName
         <div className='cardInfo'>
             <h2>{title}</h2>
             {
-              teacherFirstName?.trim().length !== 0 || teacherLastName?.trim().length !== 0 ? (
+              category === "برنامه نویسی" && (teacherFirstName?.trim().length !== 0 || teacherLastName?.trim().length !== 0) ? (
                 <p>استاد {teacherFirstName} {teacherLastName}</p>
-              ) : ""
+              ) : null
             }
             <div className='moreCardDetail'>
                 <span><MdOutlineStackedBarChart className='classIcon' /> سطح {level}</span>
@@ -28,7 +27,6 @@ export default function ClassCard({id, title , teacherFirstName, teacherLastName
     </div>
     
     <div className='priceContainer'>
-       
         {
           price === "0" || !price ? (
             <span id='freePrice'>رایگان</span>

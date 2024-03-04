@@ -24,6 +24,7 @@ import { useDropzone } from 'react-dropzone'
 import { showToast } from '../components/modules/AuthModules/Toastify'
 import axios from 'axios'
 import moment from 'jalali-moment'
+import { ToastContainer } from 'react-toastify'
 // DataBase
 // import WhysUsDB from '../utils/WhysUsDB.json'
 const Employment = () => {
@@ -180,14 +181,13 @@ const [imagePath, setImagePath] = useState('');
   
       const imagePath1 = await response.data.path.split(`\\`).join("/");
   
-      showToast('اطلاعات با موفقیت آپلود شد.', 'success');
       axios.post(`https://sadra-edu.com/api/resume/add`, {
           filePath: imagePath1,
           fileName: fileName,
           date: moment().locale('fa').format('YYYY-MM-DD')
       })
       .then(response => {
-          showToast("بلاگ جدید با موفقیت ثبت شد !", "success")
+          showToast("رزومه ی شما ارسال شد! منتظر پاسخ از تیم پشتیبانی باشید.", "success")
       })
       .catch(error => {
           console.error('Error:', error.response ? error.response.data : error.message);
@@ -234,34 +234,34 @@ const [imagePath, setImagePath] = useState('');
         <h2>فرصت‌هایی برای رسیدن به رویاهای خود</h2>
 
         <div className='Tabs_job_chances'>
-    <Box fontFamily={"Yekan , sans-serif"} sx={{ width: '100%', typography: 'body1'}}>
-      <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <TabList fontFamily={"Yekan , sans-serif"} onChange={handleChange} variant="scrollable" scrollButtons="auto" aria-label="scrollable auto tabs example" TabIndicatorProps={{style:{ backgroundColor: "#4CA773" }}}>
-            {tabHeader.map(item => <Tab key={item.id} sx={{fontFamily:"Yekan , sans-serif"}} label={item.TabTitle} value={item.id} />)}
-          </TabList>
-        </Box>
-        {
-          tabHeader.map(Tab => (
-            <TabPanel key={Tab.id} value={Tab.id}>
-            <div className='JonsCardsContainer'>
-            
-
+          <Box fontFamily={"Yekan , sans-serif"} sx={{ width: '100%', typography: 'body1'}}>
+            <TabContext value={value}>
+              <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                <TabList fontFamily={"Yekan , sans-serif"} onChange={handleChange} variant="scrollable" scrollButtons="auto" aria-label="scrollable auto tabs example" TabIndicatorProps={{style:{ backgroundColor: "#4CA773" }}}>
+                  {tabHeader.map(item => <Tab key={item.id} sx={{fontFamily:"Yekan , sans-serif"}} label={item.TabTitle} value={item.id} />)}
+                </TabList>
+              </Box>
               {
-                Tab.TabTitle === "همه" ? data.map(item =><EmploymentDetailCard key={item.id} job={item.jobTitle} place={item.jobPlace} category={item.jobCategory} time={item.jobTime} />) :
-                data.filter((item) => item.jobCategory === Tab.TabTitle).map((filteredItem) => (
-                  <EmploymentDetailCard key={filteredItem.id} job={filteredItem.jobTitle} place={filteredItem.jobPlace} category={filteredItem.jobCategory} time={filteredItem.jobTime} />
-              ))
-              }      
-            </div>    
-            </TabPanel>
-            ))
-        }
-      </TabContext>
-    </Box>
+                tabHeader.map(Tab => (
+                  <TabPanel key={Tab.id} value={Tab.id}>
+                  <div className='JonsCardsContainer'>
+                  
+
+                    {
+                      Tab.TabTitle === "همه" ? data.map(item =><EmploymentDetailCard key={item.id} job={item.jobTitle} place={item.jobPlace} category={item.jobCategory} time={item.jobTime} />) :
+                      data.filter((item) => item.jobCategory === Tab.TabTitle).map((filteredItem) => (
+                        <EmploymentDetailCard key={filteredItem.id} job={filteredItem.jobTitle} place={filteredItem.jobPlace} category={filteredItem.jobCategory} time={filteredItem.jobTime} />
+                    ))
+                    }      
+                  </div>    
+                  </TabPanel>
+                  ))
+              }
+            </TabContext>
+          </Box>
         </div>
         
-        <div style={{marginBottom:"2rem",marginTop:"2rem"}}>
+        <div style={{marginBottom:"3rem",marginTop:"3rem"}}>
           <h1>برای ثبت رزومه ی خود از فرم زیر اقدام فرمایید.</h1>
           <form action="">
             <div {...getRootPropsImage1()} style={dropzoneStyle}>
@@ -336,22 +336,33 @@ const [imagePath, setImagePath] = useState('');
       </div>
 
       <div>
-        <h1>اعضای تیم جذب و استخدام</h1>
+        <h1 style={{marginBottom:"2rem"}}>اعضای تیم جذب و استخدام</h1>
         <div>
     
           <Grid container spacing={2} >
-              {jobTeam.map((item) => (
-                  <Grid key={item.id} item xs={12} sm={6} md={6} lg={3}>
-                    <StudentCard student={item} account={item.account}  accountLink={item.accountLink}  />
-                  </Grid>
-              ))}
+            {jobTeam.map((item) => (
+                <Grid key={item.id} item xs={12} sm={6} md={6} lg={3}>
+                  <StudentCard student={item} account={item.account}  accountLink={item.accountLink}  />
+                </Grid>
+            ))}
           </Grid>
         </div>
         <div>
           
         </div>
       </div>
-
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
     </div>
   )
