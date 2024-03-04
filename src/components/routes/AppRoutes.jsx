@@ -24,7 +24,6 @@ import ClassList from '../dashboard/teacher/ClassList';
 import UsersList from '../dashboard/admin/UsersList';
 import EditUser from '../dashboard/admin/EditUser';
 import EmploymentList from '../dashboard/admin/EmploymentList';
-import EmployementForm from '../../pages/EmploymentForm';
 import SuccessList from '../dashboard/admin/SuccessList';
 import PageNotFound from '../../pages/404';
 import Search from '../../pages/Search';
@@ -46,7 +45,6 @@ const AppRoutes = () => {
                 <Route path="/success" element={<StudentSuccess />} />
                 <Route path="/student/:name" element={<StudentDetail />} />
                 <Route path="/employment" element={<Employment/>} />
-                <Route path="/employment/:id" element={<EmployementForm/>} />
                 <Route path="/auth/register" element={<AuthRegister/>} />
                 <Route path="/auth/login" element={<AuthLogin/>} />
                 <Route path="/dashboard" element={<DashboardHandler/>} />
