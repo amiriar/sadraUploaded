@@ -24,6 +24,7 @@ import { useDropzone } from 'react-dropzone'
 import { showToast } from '../components/modules/AuthModules/Toastify'
 import axios from 'axios'
 import moment from 'jalali-moment'
+import { Link } from 'react-router-dom'
 // DataBase
 // import WhysUsDB from '../utils/WhysUsDB.json'
 const Employment = () => {
@@ -248,9 +249,9 @@ const [imagePath, setImagePath] = useState('');
             
 
               {
-                Tab.TabTitle === "همه" ? data.map(item =><EmploymentDetailCard key={item.id} job={item.jobTitle} place={item.jobPlace} category={item.jobCategory} time={item.jobTime} />) :
+                Tab.TabTitle === "همه" ? data.map(item =><Link key={item.id} to={`/employmentForm/${item.id}`}><EmploymentDetailCard key={item.id} job={item.jobTitle} place={item.jobPlace} category={item.jobCategory} time={item.jobTime} /> </Link>) :
                 data.filter((item) => item.jobCategory === Tab.TabTitle).map((filteredItem) => (
-                  <EmploymentDetailCard key={filteredItem.id} job={filteredItem.jobTitle} place={filteredItem.jobPlace} category={filteredItem.jobCategory} time={filteredItem.jobTime} />
+                  <Link key={filteredItem.id} to={`/employmentForm/${filteredItem.id}`}><EmploymentDetailCard key={filteredItem.id} job={filteredItem.jobTitle} place={filteredItem.jobPlace} category={filteredItem.jobCategory} time={filteredItem.jobTime} /></Link>
               ))
               }      
             </div>    
