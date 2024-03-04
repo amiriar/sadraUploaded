@@ -2,14 +2,8 @@ import React from 'react'
 import './EmploymentDetailCard.css'
 import { useNavigate } from 'react-router-dom'
 const EmploymentDetailCard = ({job , time , place , category, id}) => {
-
-  const navigate = useNavigate()
-  
-  const clickHandler = async () => {
-    navigate(`/employment/${id}`)
-  }
   return (
-    <div className='JobsCard' onClick={clickHandler} style={{cursor:"pointer"}}>
+    <div className='JobsCard' style={{cursor:"pointer"}}>
       <div className='topPart'>
         <h2>{job}</h2>
         <span>{category}</span>
