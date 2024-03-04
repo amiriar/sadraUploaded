@@ -49,6 +49,7 @@ function Search() {
                 <Grid container spacing={2}>
                     {option === "events" && 
                         data?.map((item, index) => (
+                            item.isShown === 1 && 
                             <Grid item key={index} xs={12} sm={6} md={4} lg={4} xl={4}>
                                 <Link to={`/events/${item.id}`}>
                                     <EventCard 
@@ -61,10 +62,10 @@ function Search() {
                     {option === "blog" && 
                         <Grid container spacing={3} sx={{marginLeft:"0px"}}>
                             {data?.map((card, index) => {
-                                console.log(card);
                                 const matchedUser = matchAuthorWithUser(card.authorName, card.authorLastName);
-
+                                
                                 return (
+                                    card.isShown === 1 && 
                                     <Grid item key={index} xs={12} sm={6} md={4}>
                                         <BlogCard
                                             id={card.id}
@@ -86,6 +87,7 @@ function Search() {
                     <div style={{width:"100%", margin:"10px", marginLeft:"25px"}}>
                         {
                             data.map((item)=> (
+                                item.isShown === 1 && 
                                 <Link key={item.id} to={`/classes/${item.id}`}><ClassCard key={item.id} {...item} /></Link>
                             ))
                         }

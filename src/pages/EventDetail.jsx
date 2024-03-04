@@ -108,51 +108,51 @@ const newImage = image?.split('/').splice(1).join('/');
   
 
     let interval = useRef();
-    const startTimer = async ()=> {
+//     const startTimer = async ()=> {
 
-      const dateMonth = await date.split(" ")[0];
-      const dateDay = await date.split(" ")[1];
-      const dateYear= await date.split(" ")[2];
+//       const dateMonth = await date.split(" ")[0];
+//       const dateDay = await date.split(" ")[1];
+//       const dateYear= await date.split(" ")[2];
       
 
-      const timeHour = await time.split(" ")[0];
-      const timeMin = await time.split(" ")[1];
-      const timeSecound= await time.split(" ")[2];
+//       const timeHour = await time.split(" ")[0];
+//       const timeMin = await time.split(" ")[1];
+//       const timeSecound= await time.split(" ")[2];
 
-      const allTime = `${ dateYear } ${ dateDay } ${ dateMonth } ${timeHour}:${timeMin}:${timeSecound }`
+//       const allTime = `${ dateYear } ${ dateDay } ${ dateMonth } ${timeHour}:${timeMin}:${timeSecound }`
 
-      setTimeout(() => {
-        const countdownDate = new Date(allTime).getTime();
-        interval = setInterval(()=> {
-        const now = new Date().getTime()
-        const distance = countdownDate - now;
+//       setTimeout(() => {
+//         const countdownDate = new Date(allTime).getTime();
+//         interval = setInterval(()=> {
+//         const now = new Date().getTime()
+//         const distance = countdownDate - now;
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24))
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)))
-        const minuts = Math.floor((distance % (1000 * 60 * 60) / (1000 * 60)))
-        const secounds = Math.floor((distance % (1000 * 60)) / 1000)
+//         const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+//         const hours = Math.floor((distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)))
+//         const minuts = Math.floor((distance % (1000 * 60 * 60) / (1000 * 60)))
+//         const secounds = Math.floor((distance % (1000 * 60)) / 1000)
         
-        if(distance < 0){
-            // time stoper
-            clearInterval(interval.current)
-        }else {
-            setTimerDays(days)
-            settimerHours(hours)
-            setTimerMinuts(minuts)
-            setTimerSecounds(secounds)
-        }
-      }, 1000);
+//         if(distance < 0){
+//             // time stoper
+//             clearInterval(interval.current)
+//         }else {
+//             setTimerDays(days)
+//             settimerHours(hours)
+//             setTimerMinuts(minuts)
+//             setTimerSecounds(secounds)
+//         }
+//       }, 1000);
 
-    } , 1000)
-  }
+//     } , 1000)
+//   }
   
-// when site loaded
-  useEffect(()=> {
-    startTimer()
-    return () => {
-      clearInterval(interval.current)
-    }
-  } , [startTimer])
+// // when site loaded
+//   useEffect(()=> {
+//     startTimer()
+//     return () => {
+//       clearInterval(interval.current)
+//     }
+//   } , [startTimer])
 
   const navigate = useNavigate()
 
@@ -221,7 +221,11 @@ const sabtHandler = () => {
             <div className='CardDetail'>
                 <img src={`/${newImage}`} alt={title} />
               <div className='topCard'>
-                <p>مدرس استاد {teacherFirstName} {teacherLastName}</p>
+                {
+                  teacherFirstName.trim().length !== 0 || teacherLastName.trim().length !== 0 ? (
+                    <p>استاد {teacherFirstName} {teacherLastName}</p>
+                  ) : ""
+                }
                 <div>
                 {/* <span style={{display : "flex"}}>
                     {

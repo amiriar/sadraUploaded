@@ -227,7 +227,7 @@ const fetchData4 = async () => {
             <div className='popCardEvent'>
               {
                 popularEvents?.filter((item)=> item.category === Tab.title).slice(0,3).map((item)=> (
-                    <CardPopular key={item.id} {...item} />
+                    item.isShown === 1 && <CardPopular key={item.id} {...item} />
                 ))
               }
             </div>
@@ -284,9 +284,9 @@ const fetchData4 = async () => {
               <div className='event_card_data' dir='rtl'>
                 {
                 window.innerWidth >= 1920 ? dataEvent?.slice(0 , 4).map((item) => (
-                  <Link key={item.id} to={`/events/${item.id}`} ><EventCard key={item.id} {...item} /></Link>
+                  item.isShown === 1 &&  <Link key={item.id} to={`/events/${item.id}`} ><EventCard key={item.id} {...item} /></Link>
                   )) : window.innerWidth <= 1440 && dataEvent?.slice(0 , 3).map((item) => (
-                  <Link key={item.id} to={`/events/${item.id}`} ><EventCard key={item.id} {...item} /></Link>
+                  item.isShown === 1 &&  <Link key={item.id} to={`/events/${item.id}`} ><EventCard key={item.id} {...item} /></Link>
                   ))
                 }
               </div>
