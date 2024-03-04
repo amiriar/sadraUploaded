@@ -1,11 +1,22 @@
 import './employmentForm.css';
 import TextField from '@mui/material/TextField';
+import axios from 'axios';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 function EmploymentForm() {
   const router = useParams();
   const {id} = router;
-  console.log(id)
+
+  useEffect(()=> {
+    const dataFetcher = async () => {
+    const res = await axios.get(`https://sadra-edu.com/api/employment/${id}`)
+    console.log(res)
+    }
+    dataFetcher();
+    
+  } , [])
+
   return (
     <div className='employment'>
       <div className='employementForm_container'>
