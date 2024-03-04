@@ -169,7 +169,7 @@ const categories = [
         <TabPanel key={Tab.id} value={Tab.id.toString()} >
           <div key={Tab.id} className='event_card_info'>
                 {
-                  data.filter((item)=> item.category === Tab.title).map((item)=>(
+                  data.map((item)=>(
                     item.isShown === 1 && <Link key={item.id} to={`/events/${item.id}`}><EventCar key={item.id} {...item} /></Link>
                   ))
                 }

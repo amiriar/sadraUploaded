@@ -14,7 +14,11 @@ export default function ClassCard({id, title , teacherFirstName, teacherLastName
         <img src={`/${newImage}`} alt={title} />
         <div className='cardInfo'>
             <h2>{title}</h2>
-            <p>استاد {teacherFirstName} {teacherLastName}</p>
+            {
+              teacherFirstName.trim().length ? (
+                <p>استاد {teacherFirstName} {teacherLastName}</p>
+              ) : ""
+            }
             <div className='moreCardDetail'>
                 <span><MdOutlineStackedBarChart className='classIcon' /> سطح {level}</span>
                 <span><RiStackFill              className='classIcon'  /> {usePersianNumber(lessons)} درس</span>
@@ -34,9 +38,6 @@ export default function ClassCard({id, title , teacherFirstName, teacherLastName
             <span>هزارتومان</span>
             </>
           )
-        }
-        {
-          console.log(price === "0")
         }
     </div>
     </div>
