@@ -1,6 +1,6 @@
 import './employmentForm.css';
 import TextField from '@mui/material/TextField';
-import { useParams, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 function EmploymentForm() {
   const router = useParams();
@@ -14,6 +14,7 @@ function EmploymentForm() {
       <TextField id="outlined-basic" label="شماره تلفن" variant="outlined" sx={{borderRadius : 15}} />
       {/* Input Upload */}
       Upload Input Amir and Button
+
 
       
       </div>

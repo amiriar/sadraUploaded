@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 const EmploymentDetailCard = ({job , time , place , category, id}) => {
   const navigate = useNavigate()
   const clickHandler = async () => {
-    navigate(`./employment/${id}`)
+    navigate(`/employment/${id}`)
   }
   return (
     <div className='JobsCard' onClick={clickHandler}>
