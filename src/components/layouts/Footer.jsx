@@ -57,7 +57,7 @@ const Footer = () => {
         <div className='detail_right' dir='ltr' >
           <div>
             <h1>صدرا</h1>
-            <Logo/>
+            <img className='logo' src={"/assets/logosadra.png"} />
           </div>
           <p dir='rtl'>صدرا یک پلتفرم یادگیری آنلاین ملی است که به هر کسی و در هر کجا دسترسی به دوره های آنلاین را ارائه می دهد.</p>
         </div>
