@@ -49,7 +49,7 @@ function EmploymentList() {
     const mobileSetting = ()=>{
         setSetting(e => !e);
         console.log(setting)
-      }
+    }
 
     return (
         <>
@@ -103,8 +103,8 @@ function EmploymentList() {
         {/* Responsive */}
 
         <div className='MobileDrawerDash'>
-                    <button onClick={mobileSetting} className='drawerButton'> <IoPerson style={{width : 20 , height : 20}} /></button>
-                </div>
+            <button onClick={mobileSetting} className='drawerButton'> <IoPerson style={{width : 20 , height : 20}} /></button>
+        </div>
 
                 <Drawer anchor='left' open={setting} onClose={()=> setSetting(false)}>
                     <Box>

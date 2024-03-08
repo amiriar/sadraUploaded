@@ -94,7 +94,8 @@ export default function ClassDetail() {
     lessons ,
     level ,
     language,
-    headers
+    headers,
+    category
   } = dataCard;
 
 

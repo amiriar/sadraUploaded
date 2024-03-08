@@ -17,9 +17,6 @@
     color: var(--Gray-300);
 }
 /* Responsive */
-.MobileDrawerDash{
-    
-}
 .drawerButton{
     background-color: var(--prime-green);
     position: absolute;
@@ -169,3 +166,37 @@
     flex-direction: column;
     gap: 2rem;
 }
+
+
+.login_Btn_No_Hid {
+    cursor: pointer;
+    padding: 8px 16px;
+    background-color: #4CA773;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.login_Btn_No_Hid:hover {
+    background-color: #3b825e;
+}
+
+
+.resume-item {
+    width: 100%; 
+    margin-bottom: 16px;
+    padding: 16px;
+    border: 1px solid #ccc;
+}
+
+.resume-details p {
+    margin: 0;
+}
+
+.resume-download {
+    margin-top: 16px;
+}
+
+
+

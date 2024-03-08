@@ -269,7 +269,7 @@ const fetchData4 = async () => {
           </div>
         </div>
     {/* part Seven  */}
-        <div className='event_container'>
+        {/* <div className='event_container'>
               <div className='event_icons'>
                 <button>
                   <p>
@@ -290,7 +290,8 @@ const fetchData4 = async () => {
                   ))
                 }
               </div>
-        </div>
+        </div> */}
+
     </div>
 
   {/* Part Eight */}

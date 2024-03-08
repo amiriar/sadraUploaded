@@ -118,8 +118,6 @@
     grid-column-gap: 32px;
     grid-row-gap: 32px;
     flex-wrap: wrap;
-
-
 }
 .whyUs_container{
     padding: 2rem 0rem;
@@ -302,7 +300,6 @@
         max-height: 100%;
         display: flex;
         flex-wrap: wrap;
-    
     }
     .Chance_container{
         max-width: 100%;

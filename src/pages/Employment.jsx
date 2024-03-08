@@ -260,7 +260,9 @@ const [imagePath, setImagePath] = useState('');
               }
             </TabContext>
           </Box>
-        </div>
+      </div>
+
+
         
         <div style={{marginBottom:"3rem",marginTop:"3rem"}}>
           <h1>برای ثبت رزومه ی خود از فرم زیر اقدام فرمایید.</h1>

@@ -107,9 +107,9 @@ function EmploymentForm() {
           <h2>بازه زمانی: {jobTime}</h2>
         </div>
         <form style={{display:"flex", flexDirection:"column", gap:"1.5rem"}}>
-          <InputContact id={'name'} variable={userName} setVariable={setUserName} title={'نام'} type={'text'} width={'100%'} />
-          <InputContact id={'lastName'} variable={userLastName} setVariable={setUserLastName} title={'نام خانوادگی'} type={'text'} width={'100%'} />
-          <InputContact id={'phone'} variable={userPhone} setVariable={setUserPhone} title={'تلفن همراه'} type={'text'} width={'100%'} />
+          <InputContact id={'name'} variable={userName} setVariable={setUserName} title={'نام'} type={'text'} width={'100%'} required={true} />
+          <InputContact id={'lastName'} variable={userLastName} setVariable={setUserLastName} title={'نام خانوادگی'} type={'text'} width={'100%'} required={true} />
+          <InputContact id={'phone'} variable={userPhone} setVariable={setUserPhone} title={'تلفن همراه'} type={'text'} width={'100%'} required={true} />
 
           <div>
             <h1>برای ثبت رزومه ی خود از فرم زیر اقدام فرمایید.</h1>

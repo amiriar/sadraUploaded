@@ -30,6 +30,7 @@ import Search from '../../pages/Search';
 import Tags from '../../pages/Tags';
 import Courses from '../../pages/Courses';
 import EmploymentForm from '../../pages/EmploymentForm';
+import Resume from '../dashboard/admin/Resume';
 const AppRoutes = () => {
     return (
         <>
@@ -62,6 +63,7 @@ const AppRoutes = () => {
                 <Route path="/search" element={<Search/>} />
                 <Route path="blog/tags/:tag" element={<Tags/>} />
                 <Route path='/employmentForm/:id' element={<EmploymentForm/>} />
+                <Route path='/dashboard/resume' element={<Resume/>} />
                 <Route path='/*' element={<PageNotFound/>} />
             </Routes> 
         </>
