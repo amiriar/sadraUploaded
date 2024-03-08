@@ -242,7 +242,7 @@ function Classes() {
 
             </div>
 
-            <div className='event_container' dir='ltr'>
+            {/* <div className='event_container' dir='ltr'>
                 <div className='event_icons'>
                 <button><p><FaLongArrowAltLeft style={{margin : 12}} /><Link to="/events" style={{fontFamily:"Yekan, sans-serif"}}>رویدادهای بیشتر</Link></p></button>
                 <h2>رویدادهای آینده</h2>
@@ -256,7 +256,7 @@ function Classes() {
                 ))
                 }
                 </div>
-            </div>
+            </div> */}
 
         </div>
     )

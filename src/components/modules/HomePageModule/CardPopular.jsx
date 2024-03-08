@@ -6,7 +6,7 @@ import { GoStack } from "react-icons/go";
 import { MdOutlineStackedBarChart } from "react-icons/md";
 import usePersianNumber from '../../../helper/PersianNumbers';
 import { useNavigate } from 'react-router-dom';
-const CardPopular = ({ image, id,	teacherFirstName, 	teacherLastName, rate, price, time, level , lessons , title , discount }) => {
+const CardPopular = ({ image, id,	teacherFirstName, teacherLastName, rate, price, time, level , lessons , title , discount, category }) => {
   const newImage = image?.split("/").splice(1).splice(1).join("/")
   const  navigate = useNavigate()
   const clickHandler = () => {
@@ -28,7 +28,11 @@ const CardPopular = ({ image, id,	teacherFirstName, 	teacherLastName, rate, pric
     <div fontFamily={'Yekan,sans-serif'} style={{display : "flex" , alignItems : "center" , justifyContent : "space-between" , height : 112}}>
     <Typography fontFamily={'Yekan,sans-serif'} gutterBottom variant="h5" component="div">
     <span style={{display : "flex" , alignItems : "center" , justifyContent : "center"}} >
-    <p>استاد {teacherFirstName} {teacherLastName}</p>
+    {
+      category === "برنامه نویسی" && (teacherFirstName?.trim().length !== 0 || teacherLastName?.trim().length !== 0) ? (
+        <p>استاد {teacherFirstName} {teacherLastName}</p>
+      ) : null
+    }
     </span>
     </Typography>
     {/* <Typography fontFamily={'Yekan,sans-serif'} sx={{display : "flex" , alignItems : "center" , justifyContent : "space-between"}} variant="body2" color="text.secondary">
@@ -37,7 +41,7 @@ const CardPopular = ({ image, id,	teacherFirstName, 	teacherLastName, rate, pric
       <Typography fontFamily={'Yekan,sans-serif'} variant="h6" component="div">
       <div>
         
-      <span style={{display : "flex"}}>
+      {/* <span style={{display : "flex"}}>
           {
             Number(discount) ? (
             <div>
@@ -56,7 +60,7 @@ const CardPopular = ({ image, id,	teacherFirstName, 	teacherLastName, rate, pric
             </div>
             ) : <span id="price">{usePersianNumber(price)} <span id="rial">هزارتومان</span></span>
           }
-      </span>
+      </span> */}
         
       </div>
       </Typography>
