@@ -16,3 +16,29 @@
   gap: 1rem;
   width: 75%;
 }
+
+@media (max-width : 705px ) {
+  .employementForm_container{
+    margin: 0.1rem;
+    margin-top: 1rem;
+    padding: 0.1rem 1.1rem ;
+    gap: 0.5rem;
+    width: 80%;
+  }
+  .titleEmployment{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+
+  }
+  .titleEmployment h1 {
+    font-size: 1.7rem;
+  }
+  .titleEmployment h2 {
+    font-size: 1.1rem;
+  }
+}

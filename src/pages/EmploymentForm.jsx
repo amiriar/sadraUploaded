@@ -101,7 +101,7 @@ function EmploymentForm() {
   return (
     <div className='employment' dir='rtl'>
       <div className='employementForm_container'>
-        <div>
+        <div className='titleEmployment'>
           <h1>درخواست برای: {jobTitle}</h1>
           <h2>واقع شده در: {jobPlace}</h2>
           <h2>بازه زمانی: {jobTime}</h2>
