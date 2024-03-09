@@ -90,7 +90,7 @@ function NewBlogDetails() {
                                         {
                                             tags && tags.map((tag)=> (
                                                 <>
-                                                <Link className='link' key={tag} to={`/blog/`} style={{background: 'rgba(255, 255, 255, 0.65)',color:"black"}}>#{tag}</Link>
+                                                <Link className='link' key={tag} to={`/blog/tags/${tag}`} style={{background: 'rgba(255, 255, 255, 0.65)',color:"black"}}>#{tag}</Link>
                                                 </>
                                             ))
                                         }
@@ -124,7 +124,7 @@ function NewBlogDetails() {
                                         <div className='tags' id='hashtagsDetails' dir='rtl'>
                                             {
                                                 tags && tags.map((tag)=> (
-                                                    <Link className='link' key={tag} to={`/blog/`} style={{background: 'rgba(0, 0, 0, 0.65)',color:"#FFF"}}>#{tag}</Link>
+                                                    <Link className='link' key={tag} to={`/blog/tags/${tag}`} style={{background: 'rgba(0, 0, 0, 0.65)',color:"#FFF"}}>#{tag}</Link>
                                                 ))
                                             }
                                         </div>

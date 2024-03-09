@@ -14,6 +14,8 @@ const BlogCard = ({ id, imageData, date, title, description, authorName, authorL
     if (typeof hashtags === 'string') {
         tags = hashtags.split(',');
     }
+
+
     
     const imagePath = imageData?.split('/').splice(1).join('/');
     const imagePath2 = imagePath?.split("/").splice(1).join('/');
@@ -49,9 +51,10 @@ const BlogCard = ({ id, imageData, date, title, description, authorName, authorL
                             {tags &&
                                 tags.map((tag, index) => (
                                     <>
-                                    {/* <Typography fontSize={''} id="tagsBlog" key={index} variant="body2" fontFamily={'Yekan, sans-serif'} style={{ display: 'inline', marginRight: 5, color: '#FFF', background: 'rgba(0, 0, 0, 0.65)', borderRadius: '0.5rem', padding: '0.3rem 0.6rem' }}>
-                                    </Typography> */}
-                                        #{tag}
+                                    <Typography fontSize={''} id="tagsBlog" key={index} variant="body2" fontFamily={'Yekan, sans-serif'} style={{ display: 'inline', marginRight: 5, color: '#FFF', background: 'rgba(0, 0, 0, 0.65)', borderRadius: '0.5rem', padding: '0.3rem 0.6rem' }}>
+                                    #{tag}
+                                    </Typography>
+
                                     </>
                                 ))}
                         </div>

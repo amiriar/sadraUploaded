@@ -153,6 +153,18 @@
     .blogCardsContainer #titleBlog {
         font-size: 1.2rem;
     }
+    .Data_Container_hero{
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .Data_Container_hero p {
+        text-align: center;
+        margin: 0;
+        margin-bottom: 50px;
+    }
 }
 @media (max-width : 400px) {
     .blogCardsContainer #titleBlog {

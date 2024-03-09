@@ -32,8 +32,21 @@ function Blog() {
         return matchedUser;
     };
 
+    // const categories = data.hashtags.map((fruit) => fruit) // This map call is not necessary, but included for demonstration
+    // .filter((value, index, self) => self.indexOf(value) === index);
+    console.log(data)
 
-    const tags = ['دورکاری','کامپوترها','یادگیری_ماشین','طراحی_گرافیک','رابط_کاربری','تکنولوژی','پایگاه_داده','هوش_مصنوعی','امنیت','بیت_کوین','فرانت_اند','بک_اند','سیو','ارز_دیجیتال','فارکس','کریپتو','بازی']
+    // taggggggg don't touch 
+    let categories = []
+    const cate = data.map(item => {
+        return item.hashtags.split(",").map(item => categories.push(item))
+    })
+    const tags = categories.map((item) => item.trim()) 
+    .filter((value, index, self) => self.indexOf(value) === index);
+
+    // console.log(finalCategory)
+
+    // const tags = ['دورکاری','کامپوترها','یادگیری_ماشین','طراحی_گرافیک','رابط_کاربری','تکنولوژی','پایگاه_داده','هوش_مصنوعی','امنیت','بیت_کوین','فرانت_اند','بک_اند','سیو','ارز_دیجیتال','فارکس','کریپتو','بازی']
 
     return (
         <>
