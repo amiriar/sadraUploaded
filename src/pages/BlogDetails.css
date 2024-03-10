@@ -245,7 +245,9 @@
     flex-wrap: wrap !important;
     justify-content: space-between;
 }
-
+.BlogDetailsPictures img {
+    object-fit: cover;
+}
 @media (max-width: 700px) {
     .BlogDetailsPictures{
         flex-direction: column;

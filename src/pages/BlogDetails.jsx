@@ -67,6 +67,9 @@ function BlogDetails() {
         return matchedUser;
     };
 
+    const date1 = data.date.split("-");
+    const Date = `${date1[0]}/${date1[1]}/${date1[2]}`
+    console.log(Date)
     return (
         <div style={{ maxWidth:"1920px" ,margin:"0 auto"}}>
                 {
@@ -77,7 +80,10 @@ function BlogDetails() {
                                     <div className='tags' id='hashtagsDetails' dir='rtl'>
                                             {
                                                 tags && tags.map((tag)=> (
-                                                    <Link className='link' key={tag} to={`/blog/${tag}`} style={{background: 'rgba(255, 255, 255, 0.65)',color:"black"}}>#{tag}</Link>
+                                                    <>
+                                                        {/* <Link className='link' key={tag} to={`/blog/${tag}`} style={{background: 'rgba(255, 255, 255, 0.65)',color:"black"}}>#{tag}</Link> */}
+                                                        #{tag}
+                                                    </>
                                                 ))
                                             }
                                         </div>
@@ -110,7 +116,10 @@ function BlogDetails() {
                                         <div className='tags' id='hashtagsDetails' dir='rtl'>
                                             {
                                                 tags && tags.map((tag)=> (
-                                                    <Link className='link' key={tag} to={`/blog/${tag}`} style={{background: 'rgba(0, 0, 0, 0.65)',color:"#FFF"}}>#{tag}</Link>
+                                                    <>
+                                                    {/* <Link className='link' key={tag} to={`/blog/${tag}`} style={{background: 'rgba(0, 0, 0, 0.65)',color:"#FFF"}}>#{tag}</Link> */}
+                                                    #{tag}
+                                                    </>
                                                 ))
                                             }
                                         </div>
@@ -145,7 +154,7 @@ function BlogDetails() {
                                 </div>
                                 <div className='timeProgressBlogDetails' dir='rtl'>
                                     <div style={{display:"flex", alignItems:"center"}}>
-                                        <span>{usePersianNumber(data.date)}</span>&nbsp;
+                                        <span>{usePersianNumber(data.date.split("-").join("/"))}</span>&nbsp;
                                         <span><Line/></span>&nbsp;
                                         <span>{usePersianNumber(data.timeToRead)} دقیقه</span>
                                     </div>
