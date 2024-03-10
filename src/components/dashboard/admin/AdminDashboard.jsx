@@ -19,6 +19,7 @@ import { FaUsers } from "react-icons/fa";
 import { FaRegSmileBeam } from "react-icons/fa";
 import { AiFillDatabase } from "react-icons/ai";
 import { BiBookmarkAlt } from "react-icons/bi";
+import { FaCommentAlt } from "react-icons/fa";
 
 const AdminDashboard = ({ userId, userEmail, userRole }) => {
 
@@ -55,6 +56,7 @@ const AdminDashboard = ({ userId, userEmail, userRole }) => {
                             <DashboardCard icon={<AiFillDatabase size={40} />}    title={'موقعیت های شغلی'} link={'/dashboard/employment'} />
                             <DashboardCard icon={<FaRegSmileBeam size={40}/>}     title={'موفقیت دانشجویان'} link={'/dashboard/student-success'} />
                             <DashboardCard icon={<BiBookmarkAlt  size={40}/>}     title={'روزمه ها'} link={'/dashboard/resume'} />
+                            <DashboardCard icon={<FaCommentAlt   size={40}/>}     title={'نظرات'} link={'/dashboard/contact'} />
                         </div>
                     </div>
                 </div>
