@@ -5,6 +5,10 @@ import InputContact from '../components/modules/input/InputContact'
 
 //css 
 import './ContactUs.css'
+import { ToastContainer } from 'react-toastify'
+import axios from 'axios'
+import moment from 'jalali-moment'
+import { showToast } from '../components/modules/AuthModules/Toastify'
 
 
 function ContactUs() {
@@ -13,6 +17,27 @@ function ContactUs() {
     const [lastName,setLastName] = useState('')
     const [phoneNumber,setPhoneNumber] = useState('')
     const [description,setDescription] = useState('')
+
+    const sendHandler = async () => {
+        try {
+            axios.post(`https://sadra-edu.com/api/contact/add`, {
+                firstName: name, 
+                lastName: lastName, 
+                phoneNumber: phoneNumber, 
+                description: description,
+                date: moment().locale('fa').format('YYYY-MM-DD')
+            })
+            .then(response => {
+                showToast("نظر شما ارسال شد! منتظر پاسخ از تیم پشتیبانی باشید.", "success")
+            })
+            .catch(error => {
+                console.error('Error:', error.response ? error.response.data : error.message);
+            });
+        } catch (error) {
+            console.error('Error:', error.response ? error.response.data : error.message);
+            showToast(`خطا در آپلود: ${error.response ? error.response.data.error : error.message}`, 'error');
+        }
+    }
 
     return (
         <div dir='rtl' className='contactDiv' >
@@ -118,7 +143,8 @@ function ContactUs() {
                                     backgroundColor: "#4CA773",
                                     width:"fit-content",
                                     fontFamily:"Yekan, sans-serif"
-                                }}>ارسال</Button>
+                                }}
+                                onClick={sendHandler}>ارسال</Button>
                             </form>
                         </div>
                     </div>
@@ -127,6 +153,18 @@ function ContactUs() {
                     <img  src="/assets/contact/Banner image.png" alt="banner pic" />
                 </div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </div>
     )
 }

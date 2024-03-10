@@ -174,6 +174,8 @@ function EditUser() {
     
     return (
         <>
+        {
+            adminRole === 'admin' ?
             <div dir='rtl' className='panelContainer'>
                 <div className='userPanel' dir='rtl'> 
                     <div className='sideBarPanel'>
@@ -216,7 +218,6 @@ function EditUser() {
                                 <InputContact id={'email'} variable={userEmail} setVariable={setUserEmail} title={'پست الکترونیکی'} type={'email'} width={'100%'} />
                                 <InputContact id={'age'} variable={userAge} setVariable={setUserAge} title={'سن'} type={'number'} width={'100%'} />
                                 <InputContact id={'phone'} variable={userPhoneNumber} setVariable={setUserPhoneNumber} title={'شماره تماس'} type={'text'} width={'100%'} />
-                                {/* <InputContact id={'education`} variable={userEducation} setVariable={setUserEducation} title={`مقطع تحصیلی'} type={'text'} width={'100%'} /> */}
 
                                 <FormControl variant="outlined">
                                     <p>مقطع تحصیلی</p>
@@ -314,6 +315,9 @@ function EditUser() {
                     </div>
                 </div>
             </div>
+            :
+            <h3>ابتدا از حساب کاربری خود خارج شده و دوباره وارد شوید.</h3>
+        }
             {/* Responsive */}
 
             <div className='MobileDrawerDash'>

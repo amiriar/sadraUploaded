@@ -20,4 +20,5 @@ export const adminCategories = [
     {title:'موقعیت های شغلی', link:"/dashboard/employment"},
     {title:'موفقیت دانشجویان', link:"/dashboard/student-success"},
     {title:'رزومه ها', link:"/dashboard/resume"},
+    {title:'نظرات', link:"/dashboard/contact"},
 ]

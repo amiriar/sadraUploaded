@@ -31,6 +31,8 @@ import Tags from '../../pages/Tags';
 import Courses from '../../pages/Courses';
 import EmploymentForm from '../../pages/EmploymentForm';
 import Resume from '../dashboard/admin/Resume';
+import ContactList from '../dashboard/admin/ContactList';
+import EditSuccess from '../dashboard/admin/EditSuccess';
 const AppRoutes = () => {
     return (
         <>
@@ -64,6 +66,8 @@ const AppRoutes = () => {
                 <Route path="blog/tags/:tag" element={<Tags/>} />
                 <Route path='/employmentForm/:id' element={<EmploymentForm/>} />
                 <Route path='/dashboard/resume' element={<Resume/>} />
+                <Route path='/dashboard/contact' element={<ContactList/>} />
+                <Route path='/dashboard/success/edit/:id' element={<EditSuccess/>} />
                 <Route path='/*' element={<PageNotFound/>} />
             </Routes> 
         </>

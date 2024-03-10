@@ -249,11 +249,9 @@ const [imagePath, setImagePath] = useState('');
                   
 
                     {
-                      Tab.TabTitle === "همه" ? data.map(item =><Link to={`/employmentForm/${item.id}`}><EmploymentDetailCard key={item.id} job={item.jobTitle} place={item.jobPlace} category={item.jobCategory} time={item.jobTime} id={item.id} /></Link>) :
+                      Tab.TabTitle === "همه" ? data.map(item =><Link className='navigateLinkStyle' to={`/employmentForm/${item.id}`}><EmploymentDetailCard key={item.id} job={item.jobTitle} place={item.jobPlace} category={item.jobCategory} time={item.jobTime} id={item.id} /></Link>) :
                       data.filter((item) => item.jobCategory === Tab.TabTitle).map((filteredItem) => (
-                        // <Link to={`/employmentForm/${filteredItem.id}`}>
-                          <EmploymentDetailCard key={filteredItem.id} job={filteredItem.jobTitle} place={filteredItem.jobPlace} category={filteredItem.jobCategory} time={filteredItem.jobTime} id={filteredItem.id} />
-                        // </Link>
+                        <Link className='navigateLinkStyle' to={`/employmentForm/${filteredItem.id}`}><EmploymentDetailCard key={filteredItem.id} job={filteredItem.jobTitle} place={filteredItem.jobPlace} category={filteredItem.jobCategory} time={filteredItem.jobTime} id={filteredItem.id} /></Link>
                     ))
                     }      
                   </div>    

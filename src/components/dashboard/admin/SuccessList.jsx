@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { adminCategories, categories } from '../Categories'
 import { Link, useNavigate } from 'react-router-dom'
 import SignOutButton from '../SignOutButton'
-import { Avatar, Divider, Paper, Typography } from '@mui/material'
+import { Avatar, Button, Divider, Paper, Typography } from '@mui/material'
 import NewSuccess from './NewSuccess'
 import axios from 'axios'
 import { Masonry } from '@mui/lab'
@@ -56,7 +56,15 @@ function SuccessList() {
     const [setting , setSetting] = useState(false)
     const mobileSetting = ()=>{
         setSetting(e => !e);
-      }
+    }
+
+    const handleDelete = () => {
+
+    }
+
+    const handleEdit = (id) => {
+        navigate(`/dashboard/success/edit/${id}`)
+    }
 
     return (
         <>
@@ -122,7 +130,11 @@ function SuccessList() {
                                         </div>
                                         <Typography sx={{fontSize:"1rem", lineHeight:"1.4rem", marginBottom:"0.5rem"}} className='successPostDesc' variant="body2" fontFamily={'Yekan,sans-serif'}>{item.description}</Typography>
                                         <Divider/>
-                                        <Typography sx={{fontSize:"1rem", textalign:"left",marginTop:"0.75rem"}} className='successPostDesc' variant="body2" fontFamily={'Yekan,sans-serif'}>{item.date}</Typography>
+                                        <Typography sx={{fontSize:"1rem", textalign:"left",marginTop:"0.75rem"}} className='successPostDesc' variant="body2" fontFamily={'Yekan,sans-serif'}>{item.date.split("-").join("/")}</Typography>
+                                        <Box display="flex" justifyContent="space-between" alignItems="center" marginTop={2}>
+                                            <Button sx={{fontFamily:"Yekan, sans-serif"}} variant="contained" color="secondary" onClick={() => handleEdit(item.id)}>ویرایش</Button>
+                                            <Button sx={{fontFamily:"Yekan, sans-serif"}} variant="contained" color="error" onClick={() => handleDelete(item.id)}>حذف</Button>
+                                        </Box>
                                     </Paper>
                                     )}
                                 </div>
