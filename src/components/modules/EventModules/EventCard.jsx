@@ -30,7 +30,7 @@ const EventCard = ({ image, title, price, teacherFirstName, teacherLastName, dat
               ) : ""
             }
           </Typography>
-          <Typography fontFamily={'Yekan, sans-serif'} variant="h6" sx={{paddingLeft : 2}} color="text.secondary">
+          {/* <Typography fontFamily={'Yekan, sans-serif'} variant="h6" sx={{paddingLeft : 2}} color="text.secondary">
           <span style={{display : "flex"}}>
             {
               Number(discount) ? (
@@ -54,7 +54,7 @@ const EventCard = ({ image, title, price, teacherFirstName, teacherLastName, dat
               )
             }
         </span>
-          </Typography>
+          </Typography> */}
           </div>
         </CardContent>
         </div>
