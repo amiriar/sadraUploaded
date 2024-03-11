@@ -10,6 +10,7 @@ import { adminCategories, categories } from '../Categories';
 import Drawer from '@mui/material/Drawer';
 import { IoPerson } from "react-icons/io5";
 import Box from '@mui/material/Box';
+import Loading from '../../../helper/Loading';
 
 
 function BlogsList() {
@@ -96,7 +97,7 @@ function BlogsList() {
                         <div className='mainPanel'>
                             <div className='blogCardsContainer' style={{ marginTop: "5rem", marginBottom: "2rem" }}>
                                     <Grid container spacing={3}>
-                                        {data?.map((card, index) => {
+                                        {!data ? <Loading/> : data?.map((card, index) => {
                                             const matchedUser = matchAuthorWithUser(card.authorName, card.authorLastName);
 
                                             return (

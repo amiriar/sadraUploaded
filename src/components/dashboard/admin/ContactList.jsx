@@ -5,6 +5,7 @@ import { adminCategories, categories } from '../Categories';
 import SignOutButton from '../SignOutButton';
 import { IoPerson } from 'react-icons/io5';
 import { Box, Drawer } from '@mui/material';
+import Loading from '../../../helper/Loading';
 
 function ContactList() {
 
@@ -61,7 +62,7 @@ function ContactList() {
                     <div className='mainPanel'>
                         <h1 style={{marginTop:"1rem", marginBottom:"2rem"}}>نظرات ارسال شده:</h1>
                         <div className='resume-list'>
-                            {data?.map((item) => (
+                            {!data ? <Loading/> : data?.map((item) => (
                                 <div key={item.id} className='resume-item'>
                                     <div className='resume-details'>
                                         <p>نام: {item.firstName}</p>

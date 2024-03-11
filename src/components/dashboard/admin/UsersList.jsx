@@ -8,6 +8,7 @@ import UserCard from './UserCard';
 import { IoPerson } from "react-icons/io5";
 import Drawer from '@mui/material/Drawer';
 import { Box } from '@mui/material';
+import Loading from '../../../helper/Loading';
 
 function UsersList() {
 
@@ -74,7 +75,7 @@ function UsersList() {
                     </div>
                     <div className='mainPanel'>
                         {
-                            data?.map((user) => <UserCard key={user.id} user={user} />)
+                            !data ? <Loading/> : data?.map((user) => <UserCard key={user.id} user={user} />)
                         }
                     </div>
                 </div>

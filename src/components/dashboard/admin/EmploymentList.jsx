@@ -10,6 +10,7 @@ import { Divider } from '@mui/material';
 import { IoPerson } from "react-icons/io5";
 import Drawer from '@mui/material/Drawer';
 import { Box } from '@mui/material';
+import Loading from '../../../helper/Loading';
 
 function EmploymentList() {
 
@@ -79,7 +80,7 @@ function EmploymentList() {
                     <div className='mainPanel'>
                         <div style={{display:"flex", flexDirection:"column", gap:"10px"}}>
                             {
-                                data?.map((emp,index) => (
+                                !data ? <Loading/> : data?.map((emp,index) => (
                                     <EmploymentDetailCard key={index} job={emp.jobTitle} time={emp.jobTime} place={emp.jobPlace} category={emp.jobCategory} />
                                 ))
                             }

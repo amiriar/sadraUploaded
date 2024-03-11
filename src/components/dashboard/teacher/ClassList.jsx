@@ -10,6 +10,7 @@ import ClassCard from '../../modules/classes/ClassCard'
 import Drawer from '@mui/material/Drawer';
 import { IoPerson } from "react-icons/io5";
 import Box from '@mui/material/Box';
+import Loading from '../../../helper/Loading'
 
 
 
@@ -80,7 +81,7 @@ function ClassList() {
                     <div className='mainPanel'>
                         <div className='CardBoxContainer'>
                             {
-                                data.slice(0 , 7).map((item)=> (
+                                !data ? <Loading/> : data.slice(0 , 7).map((item)=> (
                                     <Link key={item.id} to={`/classes/${item.id}`}><ClassCard key={item.id} {...item} /></Link>
                                 ))
                             }

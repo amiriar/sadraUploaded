@@ -12,6 +12,7 @@ import SuccessCard from '../../modules/successModuels/SuccessCard'
 import { IoPerson } from "react-icons/io5";
 import Drawer from '@mui/material/Drawer';
 import { Box } from '@mui/material';
+import Loading from '../../../helper/Loading'
 
 function SuccessList() {
 
@@ -94,7 +95,7 @@ function SuccessList() {
                                 gutter={2}
                                 style={{ width: '100%' }}
                             >
-                                {data?.map((item) => (
+                                {!data ? <Loading/> : data?.map((item) => (
                                 <div key={item.id}>
                                     {item?.videoSrc ? (
                                         <VideoComponent UrlAutorName={item.authorName} videoSrc={`/${item.videoSrc.split("/").splice(1).splice(1).join('/')}`} videoTitle={item.videoTitle} videoJob={item.videoJob} videoThumbnail={`/${item.videoThumbnail.split("/").splice(1).join('/')}`} />

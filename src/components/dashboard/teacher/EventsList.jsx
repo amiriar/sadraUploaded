@@ -10,6 +10,7 @@ import NewEvent from './NewEvent';
 
 import Drawer from '@mui/material/Drawer';
 import { IoPerson } from "react-icons/io5";
+import Loading from '../../../helper/Loading';
 
 
 function EventsList() {
@@ -137,7 +138,7 @@ function EventsList() {
                                             <TabPanel value={Tab.id} key={Tab.id}>
                                                 <div className='event_card_info'>
                                                         {
-                                                            data2.filter((item)=> item.category === Tab.title).map((item)=>(
+                                                            !data2 ? <Loading/> : data2.filter((item)=> item.category === Tab.title).map((item)=>(
                                                                 <Link key={item.id} to={`/events/${item.id}`}><EventCard key={item.id} {...item} /></Link>
                                                             ))
                                                         }

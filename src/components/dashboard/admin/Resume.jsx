@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { adminCategories, categories } from '../Categories';
 import SignOutButton from '../SignOutButton';
 import { IoPerson } from 'react-icons/io5';
+import Loading from '../../../helper/Loading';
 
 function Resume() {
     const [data, setData] = useState([]);
@@ -73,7 +74,7 @@ function Resume() {
                                             <h1>رزومه های ارسال شده:</h1>
                                         </div>
                                         <div className='resume-list'>
-                                            {data.map((item) => {
+                                            {!data ? <Loading/> : data.map((item) => {
                                                 const newPath = item?.filePath?.split("/").splice(1).splice(1).join("/");
                                                 return (
                                                     <div key={item.id} className='resume-item'>
