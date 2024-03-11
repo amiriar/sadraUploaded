@@ -59,7 +59,7 @@ function SuccessList() {
     }
 
     const handleDelete = () => {
-
+        console.log('delete');
     }
 
     const handleEdit = (id) => {
