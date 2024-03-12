@@ -51,10 +51,10 @@ const AppRoutes = () => {
                 <Route path="/employment" element={<Employment/>} />
                 <Route path="/auth/register" element={<AuthRegister/>} />
                 <Route path="/auth/login" element={<AuthLogin/>} />
+                <Route path="/contact" element={<ContactUs/>} />
                 <Route path="/dashboard" element={<DashboardHandler/>} />
                 <Route path="/dashboard/infos" element={<DashInfo/>} />
                 <Route path="/dashboard/infos/2" element={<DashInfo2/>} />
-                <Route path="/contact" element={<ContactUs/>} />
                 <Route path="/dashboard/blogs" element={<BlogsList/>} />
                 <Route path="/dashboard/events" element={<EventsList/>} />
                 <Route path="/dashboard/classes" element={<ClassList/>} />
@@ -62,12 +62,12 @@ const AppRoutes = () => {
                 <Route path="/dashboard/users/:id" element={<EditUser/>} />
                 <Route path="/dashboard/employment" element={<EmploymentList/>} />
                 <Route path="/dashboard/student-success" element={<SuccessList/>} />
-                <Route path="/search" element={<Search/>} />
-                <Route path="blog/tags/:tag" element={<Tags/>} />
-                <Route path='/employmentForm/:id' element={<EmploymentForm/>} />
                 <Route path='/dashboard/resume' element={<Resume/>} />
                 <Route path='/dashboard/contact' element={<ContactList/>} />
                 <Route path='/dashboard/success/edit/:id' element={<EditSuccess/>} />
+                <Route path="/search" element={<Search/>} />
+                <Route path="blog/tags/:tag" element={<Tags/>} />
+                <Route path='/employmentForm/:id' element={<EmploymentForm/>} />
                 <Route path='/*' element={<PageNotFound/>} />
             </Routes> 
         </>
