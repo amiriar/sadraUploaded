@@ -361,6 +361,7 @@ const AuthForm = ({ isRegister }) => {
                 <h1>شما قبلا وارد شده اید! از دکمه زیر وارد داشبور خود شوید .</h1>
                 <button style={{cursor:"pointer"}} onClick={dashboardLink} className='login_Btn_No_Hid'>داشبورد</button>
             </div>
+            // navigate("/")
         }
             <ToastContainer
                 position="top-right"
