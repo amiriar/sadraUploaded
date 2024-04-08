@@ -9,6 +9,7 @@ import { userCategories } from '../Categories';
 import Drawer from '@mui/material/Drawer';
 import { IoPerson } from "react-icons/io5";
 import Box from '@mui/material/Box';
+import Loading from '../../../helper/Loading';
 
 function DashInfo() {
     const [userId, setUserId] = useState(null);
@@ -21,6 +22,11 @@ function DashInfo() {
     const [userPhone, setUserPhone] = useState('');
     const [userEducation, setUserEducation] = useState('');
     const [userIsStudent, setUserIsStudent] = useState(false);
+
+    const [loading, setLoading] = useState(true)
+
+
+    
 
     useEffect(() => {
         axios.get('https://sadra-edu.com/api/dashboard/token', {withCredentials: true})
@@ -39,6 +45,7 @@ function DashInfo() {
     useEffect(() => {
         userId && axios.get(`https://sadra-edu.com/api/users/data/${userId}`)
             .then(response => {
+                setLoading(false)
                 setUserName(response.data[0][0].name);
                 setUserLastName(response.data[0][0].lastName);
                 setUserUserName(response.data[0][0].userName);
@@ -100,6 +107,7 @@ function DashInfo() {
     return (
         <div dir='rtl' className='panelContainer'>
             {
+                loading ? <Loading/> :
                 userRole === "user" ? 
                     <div className='userPanel'>
                         <div className='sideBarPanel'>

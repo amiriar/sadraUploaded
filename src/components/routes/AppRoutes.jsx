@@ -33,6 +33,8 @@ import EmploymentForm from '../../pages/EmploymentForm';
 import Resume from '../dashboard/admin/Resume';
 import ContactList from '../dashboard/admin/ContactList';
 import EditSuccess from '../dashboard/admin/EditSuccess';
+import EditEmployment from '../dashboard/admin/EditEmployment';
+import JobTeam from '../dashboard/admin/JobTeam';
 const AppRoutes = () => {
     return (
         <>
@@ -61,9 +63,11 @@ const AppRoutes = () => {
                 <Route path="/dashboard/users" element={<UsersList/>} />
                 <Route path="/dashboard/users/:id" element={<EditUser/>} />
                 <Route path="/dashboard/employment" element={<EmploymentList/>} />
+                <Route path="/dashboard/employment/edit/:id" element={<EditEmployment/>} />
                 <Route path="/dashboard/student-success" element={<SuccessList/>} />
                 <Route path='/dashboard/resume' element={<Resume/>} />
                 <Route path='/dashboard/contact' element={<ContactList/>} />
+                <Route path='/dashboard/jobTeam' element={<JobTeam/>} />
                 <Route path='/dashboard/success/edit/:id' element={<EditSuccess/>} />
                 <Route path="/search" element={<Search/>} />
                 <Route path="blog/tags/:tag" element={<Tags/>} />

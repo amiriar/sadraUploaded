@@ -234,33 +234,38 @@ const [imagePath, setImagePath] = useState('');
 
         <h2>فرصت‌هایی برای رسیدن به رویاهای خود</h2>
 
-        <div className='Tabs_job_chances'>
-          <Box fontFamily={"Yekan , sans-serif"} sx={{ width: '100%', typography: 'body1'}}>
-            <TabContext value={value}>
-              <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <TabList fontFamily={"Yekan , sans-serif"} onChange={handleChange} variant="scrollable" scrollButtons="auto" aria-label="scrollable auto tabs example" TabIndicatorProps={{style:{ backgroundColor: "#4CA773" }}}>
-                  {tabHeader.map(item => <Tab key={item.id} sx={{fontFamily:"Yekan , sans-serif"}} label={item.TabTitle} value={item.id} />)}
-                </TabList>
-              </Box>
-              {
-                tabHeader.map(Tab => (
-                  <TabPanel key={Tab.id} value={Tab.id}>
+      <div className='Tabs_job_chances'>
+        <Box fontFamily="Yekan , sans-serif" sx={{ width: '100%', typography: 'body1' }}>
+          <TabContext value={value}>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+              <TabList fontFamily="Yekan , sans-serif" onChange={handleChange} variant="scrollable" scrollButtons="auto" aria-label="scrollable auto tabs example" TabIndicatorProps={{style:{ backgroundColor: "#4CA773" }}}>
+                {tabHeader.map(item => <Tab key={item.id} sx={{fontFamily:"Yekan , sans-serif"}} label={item.TabTitle} value={item.id} />)}
+              </TabList>
+            </Box>
+            {
+              tabHeader.map(Tab => (
+                <TabPanel key={Tab.id} value={Tab.id}>
                   <div className='JonsCardsContainer'>
-                  
-
                     {
-                      Tab.TabTitle === "همه" ? data.map(item =><Link className='navigateLinkStyle' to={`/employmentForm/${item.id}`}><EmploymentDetailCard key={item.id} job={item.jobTitle} place={item.jobPlace} category={item.jobCategory} time={item.jobTime} id={item.id} /></Link>) :
-                      data.filter((item) => item.jobCategory === Tab.TabTitle).map((filteredItem) => (
-                        <Link className='navigateLinkStyle' to={`/employmentForm/${filteredItem.id}`}><EmploymentDetailCard key={filteredItem.id} job={filteredItem.jobTitle} place={filteredItem.jobPlace} category={filteredItem.jobCategory} time={filteredItem.jobTime} id={filteredItem.id} /></Link>
-                    ))
+                      Tab.TabTitle === "همه" ? 
+                      data.filter(item => item.isShown === 1).map(item => (
+                        <Link className='navigateLinkStyle' to={`/employmentForm/${item.id}`}>
+                          <EmploymentDetailCard key={item.id} job={item.jobTitle} place={item.jobPlace} category={item.jobCategory} time={item.jobTime} id={item.id} />
+                        </Link>
+                      )) :
+                      data.filter(item => item.jobCategory === Tab.TabTitle && item.isShown === 1).map(filteredItem => (
+                        <Link className='navigateLinkStyle' to={`/employmentForm/${filteredItem.id}`}>
+                          <EmploymentDetailCard key={filteredItem.id} job={filteredItem.jobTitle} place={filteredItem.jobPlace} category={filteredItem.jobCategory} time={filteredItem.jobTime} id={filteredItem.id} />
+                        </Link>
+                      ))
                     }      
                   </div>    
-                  </TabPanel>
-                  ))
-              }
-            </TabContext>
-          </Box>
-      </div>
+                </TabPanel>
+              ))
+            }
+          </TabContext>
+        </Box>
+    </div>
 
 
         

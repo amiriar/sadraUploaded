@@ -19,6 +19,8 @@ function EmploymentList() {
     const [users, setUsers] = useState(null);
     const [data, setData] = useState(null);
 
+    
+
     useEffect(() => {
         axios.get('https://sadra-edu.com/api/dashboard/token', { withCredentials: true })
             .then(response => {
@@ -81,7 +83,7 @@ function EmploymentList() {
                         <div style={{display:"flex", flexDirection:"column", gap:"10px"}}>
                             {
                                 !data ? <Loading/> : data?.map((emp,index) => (
-                                    <EmploymentDetailCard key={index} job={emp.jobTitle} time={emp.jobTime} place={emp.jobPlace} category={emp.jobCategory} />
+                                    <EmploymentDetailCard key={index} job={emp.jobTitle} time={emp.jobTime} place={emp.jobPlace} category={emp.jobCategory} id={emp.id} isAdmin={true} />
                                 ))
                             }
                         </div>

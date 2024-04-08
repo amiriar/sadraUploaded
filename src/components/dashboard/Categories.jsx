@@ -21,4 +21,5 @@ export const adminCategories = [
     {title:'موفقیت دانشجویان', link:"/dashboard/student-success"},
     {title:'رزومه ها', link:"/dashboard/resume"},
     {title:'نظرات', link:"/dashboard/contact"},
+    {title:'تیم استخدام', link:"/dashboard/jobTeam"},
 ]

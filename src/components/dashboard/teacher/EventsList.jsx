@@ -22,6 +22,9 @@ function EventsList() {
     const [data, setData] = useState([]);
     const [users, setUsers] = useState([]);
 
+    const [loading, setLoading] = useState(true)
+
+
     const [value, setValue] = React.useState('1');
     const [TabHeaders , setTabHeaders] = useState([
         {
@@ -52,6 +55,7 @@ function EventsList() {
             try {
                 const response = await fetch('https://sadra-edu.com/api/events/data');
                 const jsonData = await response.json();
+                setLoading(false)
                 setData2(jsonData);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -105,6 +109,7 @@ function EventsList() {
     return (
         <>
         {
+            loading ? <Loading/> :
             (userRole === 'teacher' ||  userRole === 'admin') ?
             <div className='panelContainer'>
                 {

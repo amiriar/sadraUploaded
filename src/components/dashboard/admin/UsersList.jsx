@@ -21,7 +21,7 @@ function UsersList() {
     const mobileSetting = ()=>{
         setSetting(e => !e);
         console.log(setting)
-      }
+    }
 
     useEffect(() => {
         axios.get('https://sadra-edu.com/api/dashboard/token', { withCredentials: true })

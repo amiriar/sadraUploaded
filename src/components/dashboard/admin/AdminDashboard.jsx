@@ -13,7 +13,7 @@ import { Box } from '@mui/material';
 
 //icons
 import { SiGoogleclassroom } from 'react-icons/si';
-import { FaMicroblog } from 'react-icons/fa';
+import { FaMicroblog, FaUserCheck } from 'react-icons/fa';
 import { MdEvent } from 'react-icons/md';
 import { FaUsers } from "react-icons/fa";
 import { FaRegSmileBeam } from "react-icons/fa";
@@ -22,6 +22,7 @@ import { BiBookmarkAlt } from "react-icons/bi";
 import { FaCommentAlt } from "react-icons/fa";
 
 const AdminDashboard = ({ userId, userEmail, userRole }) => {
+
 
     const [setting , setSetting] = useState(false)
     const mobileSetting = ()=>{
@@ -49,7 +50,7 @@ const AdminDashboard = ({ userId, userEmail, userRole }) => {
                     </div>
                     <div className='mainPanel'>
                         <div style={{textAlign:"center", display:"flex", flexWrap:"wrap", gap:"10px", justifyContent:"space-around"}}>
-                            <DashboardCard icon={<FaMicroblog size={40} />}       title={'بلاگ ها'}       link={'/dashboard/blogs'} />
+                            <DashboardCard icon={<FaMicroblog size={40} />}       title={'بلاگ ها'} link={'/dashboard/blogs'} />
                             <DashboardCard icon={<MdEvent size={40} />}           title={'رویداد ها'} link={'/dashboard/events'} />
                             <DashboardCard icon={<SiGoogleclassroom size={40} />} title={'کلاس ها'} link={'/dashboard/classes'} />
                             <DashboardCard icon={<FaUsers size={40} />}           title={'کاربر ها'} link={'/dashboard/users'} />
@@ -57,6 +58,7 @@ const AdminDashboard = ({ userId, userEmail, userRole }) => {
                             <DashboardCard icon={<FaRegSmileBeam size={40}/>}     title={'موفقیت دانشجویان'} link={'/dashboard/student-success'} />
                             <DashboardCard icon={<BiBookmarkAlt  size={40}/>}     title={'روزمه ها'} link={'/dashboard/resume'} />
                             <DashboardCard icon={<FaCommentAlt   size={40}/>}     title={'نظرات'} link={'/dashboard/contact'} />
+                            <DashboardCard icon={<FaUserCheck    size={40}/>}     title={'تیم استخدام'} link={'/dashboard/jobTeam'} />
                         </div>
                     </div>
                 </div>

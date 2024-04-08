@@ -24,6 +24,11 @@ function ClassList() {
 
     const [targetData, setTargetData] = useState([]);
 
+    const [loading, setLoading] = useState(true)
+
+
+    
+
     const [setting , setSetting] = useState(false)
     const mobileSetting = ()=>{
         setSetting(e => !e);
@@ -44,6 +49,7 @@ function ClassList() {
                 return axios.get('https://sadra-edu.com/api/classes/data');
             })
             .then(response3 => {
+                setLoading(false)
                 setData(response3.data);
             })
             .catch(firstError => {
@@ -56,6 +62,7 @@ function ClassList() {
     return (
         <>
         {
+        loading ? <Loading/> :
         (userRole === 'teacher' ||  userRole === 'admin') ?
             <div dir='rtl' className='panelContainer'>
                 <div className='userPanel' dir='rtl'> 

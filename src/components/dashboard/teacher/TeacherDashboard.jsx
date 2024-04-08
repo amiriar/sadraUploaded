@@ -18,6 +18,7 @@ import { showToast } from '../../modules/AuthModules/Toastify';
 import { ToastContainer } from 'react-toastify';
 import InputContact from '../../modules/input/InputContact';
 import { useDropzone } from 'react-dropzone';
+import Loading from '../../../helper/Loading';
 
 
 function TeacherDashbaord({ userRole, userId }) {
@@ -43,6 +44,9 @@ function TeacherDashbaord({ userRole, userId }) {
     const [imagePath, setImagePath] = useState('');
 
     const [userProf, setUserProf] = useState('');
+
+    const [loading, setLoading] = useState(true)
+
 
     
     const handleSelectChange = (event) => {
@@ -112,6 +116,7 @@ function TeacherDashbaord({ userRole, userId }) {
     useEffect(() => {
         userId && axios.get(`https://sadra-edu.com/api/users/data/${userId}`)
             .then(response => {
+                setLoading(false)
                 setUserName(response.data[0][0].name);
                 setUserLastName(response.data[0][0].lastName);
                 setUserEmail(response.data[0][0].email);
@@ -156,6 +161,7 @@ function TeacherDashbaord({ userRole, userId }) {
     return (
         <>
         {
+            loading ? <Loading/> :
             userRole === "teacher" ?
             <div className='userPanel'>
                 <div className='sideBarPanel'>
@@ -166,14 +172,14 @@ function TeacherDashbaord({ userRole, userId }) {
                             ))
                         }
                     </div>
-                    <br /><br /><br />
+
                     <div>
                         <SignOutButton/>
                     </div>
                 </div>
                  {/* Responsive */}
 
-                 <div className='MobileDrawerDash'>
+                <div className='MobileDrawerDash'>
                     <button onClick={mobileSetting} className='drawerButton'> <IoPerson style={{width : 20 , height : 20}} /></button>
                 </div>
 

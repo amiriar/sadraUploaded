@@ -10,7 +10,7 @@ import Loading from '../../../helper/Loading';
 function ContactList() {
 
     const [userRole, setUserRole] = useState(null);
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(null);
 
     useEffect(() => {
         axios.get('https://sadra-edu.com/api/dashboard/token', { withCredentials: true })

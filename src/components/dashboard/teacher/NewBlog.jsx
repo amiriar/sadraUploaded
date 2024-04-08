@@ -81,6 +81,8 @@ function NewBlog() {
     const [newImagePath2, setNewImagePath2] = useState('');
     const [newImagePath3, setNewImagePath3] = useState('');
 
+
+
     const onDropImage1 = (acceptedFiles) => {
         const file = acceptedFiles[0];
         setImageData(file);

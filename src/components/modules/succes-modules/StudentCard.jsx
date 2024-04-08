@@ -1,8 +1,17 @@
-import { Card, CardContent, CardMedia, Typography } from '@mui/material'
+import { Button, Card, CardContent, CardMedia, Divider, Typography } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function StudentCard({ student , account , accountLink }) {
+function StudentCard({ student , account , accountLink, isAdmin }) {
+
+    const edithandler = () => {
+        alert("این قابلیت درحال ساخت میباشد.")
+    }
+    const deleteHandler = async () => {
+        alert("این قابلیت درحال ساخت میباشد.")
+    }
+    
+    const newPath = student.titlePicture?.filePath?.split("/").splice(1).splice(1).join("/");
     return (
         <Card sx={{padding:"1.5rem", cursor:"pointer"}}>
             <CardMedia
@@ -26,6 +35,34 @@ function StudentCard({ student , account , accountLink }) {
                         </Typography>
                     )
                 } */}
+                {
+                    isAdmin &&
+                    
+                    <div style={{display:"flex", justifyContent:"space-between"}}>
+                        <br />
+                        <Divider/>
+                        <br />
+                        <Button variant="contained" sx={{
+                            backgroundColor: "#d5745b",
+                            width:"fit-content",
+                            fontFamily:"Yekan, sans-serif"
+                            }}
+                            onClick={deleteHandler}
+                            >
+                            حذف
+                        </Button>
+                        &nbsp;&nbsp;
+                        <Button variant="contained" sx={{
+                            backgroundColor: "#3ea2d9",
+                            width:"fit-content",
+                            fontFamily:"Yekan, sans-serif"
+                            }}
+                            onClick={edithandler}
+                            >
+                            ویرایش
+                        </Button>
+                    </div>
+                }
             </CardContent>
         </Card>
     )

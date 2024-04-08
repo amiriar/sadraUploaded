@@ -21,6 +21,9 @@ function BlogsList() {
     const [data, setData] = useState([]);
     const [users, setUsers] = useState([]);
 
+    const [loading, setLoading] = useState(true)
+
+
     useEffect(() => {
         axios.get('https://sadra-edu.com/api/dashboard/token', { withCredentials: true })
             .then(response => {
@@ -30,7 +33,8 @@ function BlogsList() {
             if (id) {
                 axios.get(`https://sadra-edu.com/api/dashboard/blogs/${id}`)
                     .then(secondResponse => {
-                    setTeacherBlog(secondResponse.data[0])
+                        setLoading(false)
+                        setTeacherBlog(secondResponse.data[0])
                     })
                     .catch(secondError => {
                     console.error('Second Request Error:', secondError.response ? secondError.response.data : secondError.message);
@@ -69,6 +73,7 @@ function BlogsList() {
     return (
         <>
         {
+            loading ? <Loading/> :
             (userRole === 'teacher' ||  userRole === 'admin') ?
             <div className='panelContainer'>
             {

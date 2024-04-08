@@ -169,7 +169,7 @@ function EditUser() {
         } else {
             console.log("Canceled");
         }
-    }    
+    }
     
     
     return (
